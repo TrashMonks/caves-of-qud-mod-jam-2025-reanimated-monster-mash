@@ -1,0 +1,27 @@
+<populations>
+    <population Name="RuinsZoneGlobals-Creatures">
+        <object Chance="5" Number="1" Blueprint="HDBrownie_Table Louse" />
+    </population>
+
+    <population Name="BaroqueRuinsZoneGlobals-Creatures">
+        <object Chance="5" Number="1" Blueprint="HDBrownie_Table Louse" />
+    </population>
+
+    <population Name="RiversZoneGlobals">
+        <object Chance="5" Number="1" Blueprint="HDBrownie_Drink Louse" Hint="Aquatic" />
+    </population>
+
+    <population Name="WaterCreatures">
+        <object Chance="100" Number="1" Blueprint="HDBrownie_Drink Louse" Hint="Aquatic" />
+    </population>
+
+    <population Name="LakeHinnomZoneGlobals">
+        <object Chance="5" Number="1" Blueprint="HDBrownie_Drink Louse" Hint="Aquatic" />
+    </population>
+
+    <population Name="PalladiumReefZoneGlobals">
+        <group Name="Creatures">
+            <object Chance="5" Number="1" Blueprint="HDBrownie_Drink Louse" Hint="Aquatic" />
+        </group>
+    </population>
+</populations>
