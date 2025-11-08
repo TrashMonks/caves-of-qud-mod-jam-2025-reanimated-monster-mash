@@ -16,7 +16,7 @@ namespace XRL.World.Quests
 
             if (The.Game.GetIntGameState("Aric_WHCaptain_Slain") == 1)
             {
-                The.Game.FinishQuestStep("Hunting the Hunter", "Slay the Witch-Hunter General");
+                The.Game.FinishQuestStep("AricMJM_Hunting the Hunter", "Slay the Witch-Hunter General");
 
             }
 
@@ -33,4 +33,3 @@ namespace XRL.World.Quests
         }
     }
 }
-

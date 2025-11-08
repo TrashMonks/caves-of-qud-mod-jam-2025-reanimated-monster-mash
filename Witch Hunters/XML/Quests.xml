@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <quests>
 
-	<quest Name="Hunting the Hunter" Factions="Naphtaali" Reputation="100" Level="40" System="AricMJM_Hunted_System"
+	<quest ID="AricMJM_Hunting the Hunter" Name="Hunting the Hunter" Factions="Naphtaali" Reputation="100" Level="40" System="AricMJM_Hunted_System"
          Accomplishment="You stalked the Reef for the Encampment of the Witch-Hunter General, and put it to the sword." 
          Hagiograph="In the month of =month= of =year=, =name=  destroyed the forces of the Witch-Hunters of Oudin in Qud."
          HagiographCategory="DoesSomethingRad"
