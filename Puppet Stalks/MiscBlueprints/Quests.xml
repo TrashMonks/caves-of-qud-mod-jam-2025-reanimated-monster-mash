@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <quests>
-	<quest Name="Save Who You Can Save" Level="20" Factions="Barathrumites" Reputation="200"
+	<quest ID="Brothers_Puppets_Save Who You Can Save" Name="Save Who You Can Save" Level="20" Factions="Barathrumites" Reputation="200"
 	   Accomplishment="You found out about the fate of the missing Barathrumite expedition."
 	   Hagiograph="In the month of =month= of =year=, impervious =name= repelled creeping fungi from jungle villages."
 	   HagiographCategory="DoesSomethingRad"

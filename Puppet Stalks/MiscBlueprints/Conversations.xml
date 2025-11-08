@@ -17,7 +17,7 @@
 		<node ID="Who">
 			<text>
 				Barathrumite... member of the expedition sent here. We didn't know... couldn't know...</text>
-		<choice GotoID="Late" IfHaveActiveQuest="Save Who You Can Save" IfFinishedQuestStep="Save Who You Can Save~Talk to Hortensa">The Barathrumite expedition? Hortensa sends me. What happened here?</choice>
+		<choice GotoID="Late" IfHaveActiveQuest="Brothers_Puppets_Save Who You Can Save" IfFinishedQuestStep="Save Who You Can Save~Talk to Hortensa">The Barathrumite expedition? Hortensa sends me. What happened here?</choice>
 		<choice GotoID="Late">Did not know what?</choice>	
 		</node>
 	
@@ -61,7 +61,7 @@
 			<text>
 				Before you go, Hortensa was looking for you earlier! Wonder what she wants now, quetzal!
 			</text>
-		<choice GotoID="End" StartQuest="Save Who You Can Save">I will convene with her and let you know, Q Girl.</choice>
+		<choice GotoID="End" StartQuest="Brothers_Puppets_Save Who You Can Save">I will convene with her and let you know, Q Girl.</choice>
 		</node>
 	
 	</conversation>
@@ -69,8 +69,8 @@
 	<conversation ID="Hortensa" Load="Merge">
 		
 		<start ID="Greetings" Load="Merge">
-		<choice GotoID="Looking" IfHaveActiveQuest="Save Who You Can Save" IfNotFinishedQuestStep="Save Who You Can Save~Talk to Hortensa" Priority="1">Q Girl said you were looking for me?</choice>
-		<choice GotoID="Nodd" IfHaveActiveQuest="Save Who You Can Save" IfFinishedQuestStep="Save Who You Can Save~Talk to Hortensa" Priority="1">About the Barathrumite expedition to Nodd...</choice>
+		<choice GotoID="Looking" IfHaveActiveQuest="Brothers_Puppets_Save Who You Can Save" IfNotFinishedQuestStep="Save Who You Can Save~Talk to Hortensa" Priority="1">Q Girl said you were looking for me?</choice>
+		<choice GotoID="Nodd" IfHaveActiveQuest="Brothers_Puppets_Save Who You Can Save" IfFinishedQuestStep="Save Who You Can Save~Talk to Hortensa" Priority="1">About the Barathrumite expedition to Nodd...</choice>
 		</start>
 
 		<node ID="Looking">
