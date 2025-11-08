@@ -17,7 +17,7 @@
         <part Name="Render" DisplayName="{{crochide|croccas{{K|sass}}in}}" />
         <part Name="Honorifics" Primary="{{K|lurking}}" />
         <part Name="MeleeWeapon" MaxStrengthBonus="4" BaseDamage="1d4" Skill="Axe" Stat="Strength" Attributes="Bite" Slot="Feet" />
-        <part Name="Physicis" Category="Quest Item" />
+        <part Name="Physics" Category="Quest Item" />
         <tag Name="ExcludeFromDynamicEncounters" />
     </object>
 
