@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+
+	<!-- Mind flayers -->
+	
+	<object Name="AricMJM_Illithid" Inherits="BaseHumanoid">
+		
+		<part Name="Render" DisplayName="mind flayer" Tile="AricMJM_Atlas_Illithid.png" DetailColor="M" ColorString="&amp;b" />
+		<part Name="Description" Short="Tentacles writhe from the base of the robed creature's face, as it floats inexorably towards it's prey." />
+		<part Name="Corpse" CorpseChance="0" />
+		<part Name="Brain" Hostile="true" Factions="Strangers-100" MaxKillRadius="84"/>
+		
+		<stat Name="AV" Value="9" />
+		<stat Name="Level" Value="40" />
+		<stat Name="Hitpoints" Value="200" />
+		<stat Name="Agility" Boost="1" />
+		<stat Name="Ego" Boost="2" />
+		<stat Name="Willpower" Boost="2" />
+		
+		<mutation Name="SensePsychic" Level="5" />
+		<mutation Name="Confusion" Level="5" />
+		<mutation Name="LifeDrain" Level="5" />
+		<mutation Name="Telepathy" Level="10" />
+		
+		<inventoryobject Blueprint="AricMJM_Illithid_Bite" Number="1" />
+		<inventoryobject Blueprint="Psychal Fleshgun" Number="1" Full="true" />
+		
+		<part Name="ConversationScript" ConversationID="AricMJM_Illithid_Conversation" />
+		<part Name="HasThralls" NumberOfThralls="0-2" />
+		<tag Name="HeroHasThralls" Value="2-4" />
+		<tag Name="Tier" Value="7" />
+		<tag Name="DynamicObjectsTable:MoonStair_Creatures" />
+		<removetag Name="InventoryPopulationTable" />
+		
+	
+	</object>
+	
+	<object Name="AricMJM_Illithid_Bite" Inherits="NaturalWeapon">
+		<part Name="Render" DisplayName="writhing tentacles" Tile="Items/sw_tongue_jumble.bmp" ColorString="&amp;M" />
+		<part Name="MeleeWeapon" BaseDamage="4d3" Skill="ShortBlades" Stat="Ego" Slot="Face" Attributes="Bite" />
+		<part Name="StunOnHit" Duration="1d2" SaveTarget="20" />
+		<part Name="MechanicalWings" ChargeUse="0" Level="6" IsBootSensitive="false" IsRealityDistortionBased="true" RequiresOngoingEffort="false" CrashBreakChance="1" Type="AntigravityBoots" FlightSourceDescription="Psionic Levitation" NameForStatus="AntiGravitySystem" />
+		
+	</object>
+	
+		<object Name="AricMJM_Intellect_Devourer" Inherits="BaseAnimal">
+		
+		<part Name="Render" DisplayName="intellect devourer" Tile="AricMJM_Atlas_Us.png" RenderString="w" ColorString="&amp;M" />
+		<part Name="Description" Short="Twisted, skittering legs jut from a cerebral body. Latent psionic energy colours the space around their crown with a greenish, purplish hue." />
+		<part Name="Corpse" CorpseChance="0" />
+		<part Name="Brain" Hostile="true" Factions="Strangers-100" MaxKillRadius="84"/>
+		
+		<stat Name="AV" Value="5" />
+		<stat Name="Level" Value="20" />
+		<stat Name="Hitpoints" Value="40" />
+		<stat Name="Agility" sValue="28" />
+		<stat Name="Ego" Boost="2" />
+		<stat Name="Willpower" Boost="1" />
+		
+		<mutation Name="SensePsychic" Level="10" />
+
+		
+		<inventoryobject Blueprint="AricMJM_Intellect_Devourer_Bite" Number="1" />
+		<inventoryobject Blueprint="AricMJM_Intellect_Devourer_Psychic_Lance" Number="1" />
+		
+		<part Name="Swarmer"/>   
+		<part Name="SapOnPenetration" Stat="Ego" Amount="1" />
+		<tag Name="Tier" Value="5" />
+		<tag Name="DynamicObjectsTable:BaroqueRuins_Creatures" />
+		<tag Name="DynamicObjectsTable:MoonStair_Creatures" />
+		
+	
+	</object>
+	
+	<object Name="AricMJM_Intellect_Devourer_Bite" Inherits="NaturalWeapon">
+		<part Name="Render" DisplayName="mind rending fangs" Tile="Creatures/natural-weapon-bite.bmp" ColorString="&amp;M" />
+		<part Name="MeleeWeapon" BaseDamage="2d3" Skill="ShortBlades" Stat="Ego" Slot="Face" Attributes="Bite" />
+
+		<tag Name="ShowAsPhysicalFeature" Value="*delete" />
+	</object>
+	
+	<object Name="AricMJM_Intellect_Devourer_Psychic_Lance" Inherits="NaturalMissileWeapon">
+		<part Name="Render" DisplayName="psychic lance" Tile="Creatures/natural-weapon-bite.bmp" ColorString="&amp;M" />
+		<part Name="MissileWeapon" Skill="Pistol" AmmoChar="&amp;m&#236;" ShotsPerAction="1" AmmoPerAction="1" ShotsPerAnimation="1" AnimationDelay="16" WeaponAccuracy="3" />
+		<part Name="EnergyAmmoLoader" ChargeUse="0" ProjectileObject="AricProjectilePsionicLance" IsPowerLoadSensitive="false" NameForStatus="Psionically Charged"  />
+		<part Name="AIShootCooldown" Cooldown="2" />
+
+		<tag Name="ShowAsPhysicalFeature" Value="*delete" />
+	</object>
+	
+	<object Name="AricProjectilePsionicLance" Inherits="TemporaryProjectile">
+		<part Name="Render" DisplayName="{{m|psychic throb}}" ColorString="&amp;m" />
+		<part Name="Projectile" BasePenetration="5" BaseDamage="1d8" Attributes="Mental Psionic" PenetrateCreatures="false" PenetrateWalls="false" ColorString="&amp;m" PassByVerb="swirl" />
+		<part Name="AricMJMCleaveonHit" CriticalOnly="false" />
+	</object>
+	
+	
+	<!-- Xenomorph -->
+	
+	<object Name="AricMJM_Xenomorph" Inherits="BaseAnimal">
+		
+		<part Name="Render" DisplayName="Xenomorph" Tile="AricMJM_Atlas_Xenomorph.png" DetailColor="Y" ColorString="&amp;K" />
+		<builder Name="RandomTile" Tiles="AricMJM_Atlas_Xenomorph,AricMJM_Atlas_Xenomorph2.png"/>
+		<part Name="Description" Short="An eyeless, domed skull conceals glittering teeth, and an impaling, fanged tongue. Savage claws and a razor tail twitch with anticipation. Boiling molecular acid pounds through it's veins. A perfect lifeform. " />
+		<part Name="Corpse" CorpseChance="0" />
+		<part Name="Brain" Hostile="true" Factions="Strangers-100" MaxKillRadius="84"/>
+		
+		<stat Name="AV" Value="10" />
+		<stat Name="Level" Value="40" />
+		<stat Name="Hitpoints" Value="150" />
+		<stat Name="Agility" Boost="2" />
+		<stat Name="Strength" Boost="1" />
+		<stat Name="Toughness" Boost="1" />
+		<stat Name="MoveSpeed" Value="50" />
+		
+		<mutation Name="HeightenedHearing" Level="10" />
+		<mutation Name="HeightenedSpeed" Level="20" />
+		
+		<skill Name="Tactics_Charge" />
+		
+		<skill Name="Multiweapon_Fighting" />
+		<skill Name="Multiweapon_Flurry" />
+		<skill Name="Multiweapon_Proficiency"/>
+		<skill Name="Multiweapon_Expertise"/>
+		<skill Name="Multiweapon_Mastery"/>
+		
+		<skill Name="ShortBlades" />
+		<skill Name="ShortBlades_Expertise" />
+		<skill Name="ShortBlades_Bloodletter" />
+		<skill Name="ShortBlades_Jab" />
+		<skill Name="ShortBlades_Hobble" />
+		<skill Name="ShortBlades_Rejoinder" />
+		<skill Name="ShortBlades_Shank" />
+		
+		<skill Name="Axe" />
+		<skill Name="Axe_Expertise" />
+		<skill Name="Axe_Cleave" />
+		<skill Name="Axe_Dismember" />
+		<skill Name="Cudgel_ChargingStrike" />
+		<skill Name="Axe_Decapitate" />
+		<skill Name="Axe_Berserk" />
+
+		
+		<inventoryobject Blueprint="AricMJM_Xenomorph_Bite" Number="1" />
+		<inventoryobject Blueprint="AricMJM_Xenomorph_Claw" Number="2" />
+		<inventoryobject Blueprint="AricMJM_Xenomorph_Tail" Number="1" />
+		
+		<part Name="Swarmer" ExtraBonus="2" /> 
+		<part Name="LiquidBurst" EelChance="0" Liquid="AricMJM_MolecularAcidPuddle" />
+
+		<tag Name="Tier" Value="8" />
+		<tag Name="DynamicObjectsTable:MoonStair_Creatures" />
+		<tag Name="BleedLiquid" Value="acid-1000" />
+		
+		<stat Name="AcidResistance" Value="100" />
+		
+	
+	</object>
+	
+	<object Name="AricMJM_Xenomorph_Claw" Inherits="NaturalWeapon">
+		<part Name="Render" DisplayName="claw" Tile="Creatures/natural-weapon-paw.bmp" ColorString="&amp;K" />
+		<part Name="MeleeWeapon" BaseDamage="4d4" Skill="ShortBlades" Stat="Strength" Slot="Foot" />
+		<part Name="BleedingOnHit" Amount="2d4" SaveTarget="25" Stack="true" />
+		<part Name="ModSerrated" Chance="75" />
+	</object>
+	
+	<object Name="AricMJM_Xenomorph_Tail" Inherits="NaturalWeapon">
+		<part Name="Render" DisplayName="bladed tail" Tile="Creatures/natural-weapon-paw.bmp" ColorString="&amp;K" />
+		<part Name="MeleeWeapon" BaseDamage="2d12" Skill="Axe" Stat="Strength" Slot="Tail" />
+		<part Name="ModSerrated" Chance="75" />
+	</object>
+	
+	<object Name="AricMJM_Xenomorph_Bite" Inherits="NaturalWeapon">
+		<part Name="Render" DisplayName="glittering maw" Tile="Creatures/natural-weapon-paw.bmp" ColorString="&amp;K" />
+		<part Name="MeleeWeapon" BaseDamage="3d6" Skill="Axe" Stat="Strength" Slot="Face" />
+		<part Name="ModSerrated" Chance="75" />
+	</object>
+	
+	<!-- Witch hunters -->
+	
+	<object Name="AricMJM_Witch_Hunter" Inherits="Templar">
+	
+		<part Name="Render" ColorString="&amp;Y" TileColor="&amp;K" RenderString="t" Tile="AricMJM_Atlas_VanHelsing.png" DetailColor="y" DisplayName="Templar witch hunter" />
+		<part Name="Description" Short="Burned. Twisted. Suffering all manner of gentic abnormality that the Templar traditionally fear. In search of the power of their enemy, these warriors become that which they hate. And now, Qud shall burn." />
+		<stat Name="Level" Value="30" />
+		<stat Name="Hitpoints" Value="120" />
+		<stat Name="Strength" Boost="2" />
+		<stat Name="Toughness" Boost="1" />
+		<stat Name="Willpower" Boost="1" />
+		<stat Name="Ego" Boost="2" />
+		<stat Name="AV" Value="9" />
+		<stat Name="DV" Value="8" />
+		
+		<mutation Name="FlamingRay" Level="10" Variant="Ghostly Flames Face" BodyPartType="Face" />
+		<part Name="RandomMutations" Mental="1d2" MentalLevel="3d3+1" Physical="1d2" PhysicalLevel="3d3+1" />
+		<part Name="AricMJM_RandomDefect" MentalDefects="1d2" PhysicalDefects="1d2" />
+		<part Name="Preacher" Book="AricMJM_WitchHunter" Prefix="The witch hunter screeches, {{R|'" Frozen="The hatred of the hunter is inaudible through the ice." ChatWait="400" />
+		<part Name="ConversationScript" ConversationID="AricMJM_WitchHunter_Conversation" />
+		
+		<inventoryobject Blueprint="AricMJM_Handcannon" Number="1" />
+		<inventoryobject Blueprint="Lead Slug" Number="20-30" />
+		<inventoryobject Blueprint="AricMJM_Hunter_Sword" Number="1" />
+		<inventoryobject Blueprint="AricMJM_Witchblade" Number="1" />
+		<inventoryobject Blueprint="AricMJM_Hunter_Hat" Number="1" />
+		<inventoryobject Blueprint="AricMJM_Mindblank_Tonic" Number="1-2" />
+		
+		<skill Name="Pistol_SteadyHands" />
+		<skill Name="Pistol_WeakSpotter" />
+		
+		<skill Name="LongBlades" />
+		<skill Name="LongBladesProficiency" />
+		<skill Name="LongBladesLunge" />
+		<skill Name="LongBladesSwipe" />
+		<skill Name="LongBladesImprovedAggressiveStance" />
+		
+		<skill Name="SingleWeaponFighting" />
+		<skill Name="SingleWeaponFighting_WeaponExpertise" />
+		<skill Name="SingleWeaponFighting_OpportuneAttacks"/>
+		
+		<stat Name="HeatResistance" Value="25" />
+		<stat Name="ColdResistance" Value="25" />
+		<stat Name="ElectricResistance" Value="25" />
+		<tag Name="Tier" Value="5" />
+		<removetag Name="InventoryPopulationTable" />
+	</object>
+	
+	<object Name="AricMJM_Witch_Hunter_General" Inherits="AricMJM_Witch_Hunter">
+		<part Name="Render" DisplayName="" />
+		<part Name="Description" Short="Eyes burn with hate from beneath a twisted metal mask. Few Witch Hunters join their order by choice, but those that do are particularly dangerous. There is little more fearsome than an evil creature that believes it's cause is just. And so, Qud shall burn." />
+		<part Name="Uplift" />
+		
+		<stat Name="Level" Value="40" />
+		<stat Name="Strength" Boost="1" />
+		<stat Name="Willpower" Boost="1" />
+		<stat Name="Ego" Boost="1" />
+		<stat Name="AV" Value="12" />
+		<stat Name="DV" Value="12" />
+		
+		<part Name="ConversationScript" ConversationID="AricMJM_WitchHunterCaptain" />
+		<tag Name="StaticHateReason" Value="burning their elders" />
+		
+		<mutation Name="FlamingRay" Level="15" Variant="Ghostly Flames Face" BodyPartType="Face" />
+		<part Name="RandomMutations" Mental="1d2" MentalLevel="3d3+1" Physical="1d2+1" PhysicalLevel="3d3+1" />
+		<removepart Name="AricMJM_RandomDefect"/>
+		
+		
+		<removeinventoryobject Blueprint="AricMJM_Handcannon" Number="1" />
+		<removeinventoryobject Blueprint="AricMJM_Hunter_Sword" Number="1" />
+		<removeinventoryobject Blueprint="AricMJM_Witchblade" Number="1" />
+		<removeinventoryobject Blueprint="AricMJM_Hunter_Hat" Number="1" />
+		
+		<inventoryobject Blueprint="AricMJM_Captain_Handcannon" Number="1" />
+		<inventoryobject Blueprint="AricMJM_Hunter_Captain_Sword" Number="1" />
+		<inventoryobject Blueprint="AricMJM_Captain_Witchblade" Number="1" />
+		<inventoryobject Blueprint="AricMJM_Legendary_Hunter_Hat" Number="1" />
+		
+		<skill Name="LongBladesDeathblow" />
+		<skill Name="SingleWeaponFighting_PenetratingStrikes" />
+		<skill Name="SingleWeaponFighting_WeaponMastery" />
+		
+		<stat Name="HeatResistance" Value="60" />
+		<stat Name="ColdResistance" Value="60" />
+		<stat Name="ElectricResistance" Value="60" />
+		<tag Name="Tier" Value="7" />
+		<tag Name="ExcludeFromDynamicEncounters"/>
+		<tag Name="NamingTag" Value="WitchHunter" />
+		<part Name="FinishQuestStepWhenSlain" Quest="Hunting the Hunter" Step="Slay the Witch-Hunter General"  GameState="Aric_WHCaptain_Slain"/>
+		<removetag Name="InventoryPopulationTable" />
+	</object>
+	
+	<object Name="AricMJM_Naphtaali_Esper" Inherits="BaseNaphtaali">
+	
+		<part Name="Render" DisplayName="Qolohish, Naphtaali Esper" ColorString="&amp;m"/>
+		<part Name="Brain" Hostile="false" Factions="YdFreehold-100" />
+		<part Name="ConversationScript" ConversationID="AricMJM_Qolohish" />
+		
+		<stat Name="Ego" Boost="3" />
+		
+		<part Name="RandomMutations" Mental="2d3" MentalLevel="3d3+1"/>
+		
+		<stat Name="Hitpoints" Value="50" />
+		<tag Name="ExcludeFromDynamicEncounters"/>
+		<tag Name="AllowIdleBehavior" Value="*delete" />
+		<part Name="Interesting" />		
+	
+	</object>
+
+</objects>
