@@ -1,0 +1,25 @@
+<reanimatedmonstermashwishcommands>
+  <!--
+    wish attributes
+    - ModName: Name of mod
+    - Author: Author(s) of mod
+    - DisplayName: Wish name
+    - Commands: Comma-delimited set of wish commands to run in sequence
+      - goto:<direct location> - teleports to that location (defaults DisplayName/Icon)
+      - <blueprint name> - summons that blueprint (defaults DisplayName/Icon)
+      - revealandgoto:<map note id (e.g., $stopsvalinn)> - reveals that location and teleports
+    - Icon: Path to tile
+    - ColorPair: Two-character string of fg/detail colors
+  -->
+  <!-- utility wishes -->
+  <wish DisplayName="Toggle Godmode" Commands="idkfa" Icon="Mutations/light_manipulation.bmp" ColorPair="wW"/>
+  <wish DisplayName="Calm creatures" Commands="calm" Icon="Mutations/narcolepsy.bmp" ColorPair="wW"/>
+  <wish DisplayName="Swap bodies" Commands="swap" Icon="Mutations/domination.bmp" ColorPair="wW"/>
+  <wish DisplayName="Beguile creature" Commands="beguile" Icon="Mutations/beguiling.bmp" ColorPair="wW"/>
+  <wish DisplayName="Set all faction rep to 2000" Commands="allloved" Icon="Mutations/two-hearted.bmp" ColorPair="wW"/>
+  <wish DisplayName="Gear up" Commands="stage6" Icon="Items/sw_longblade_1.bmp" ColorPair="wW"/>
+  <!-- wishes that grant items -->
+  <!-- wishes that spawn creatures -->
+  <!-- wishes that teleport to a location -->
+  <!-- wishes that do more complicated stuff -->
+</reanimatedmonstermashwishcommands>

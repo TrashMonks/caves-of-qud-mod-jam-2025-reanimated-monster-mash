@@ -1,0 +1,4 @@
+<commands>
+    <command ID="CmdReanimatedMonsterMashWishMenu" DisplayText="reanimated Monster Mash-Up Wish Menu" Category="Debug" Layer="Adventure" Auto="DownPass">
+    </command>
+</commands>

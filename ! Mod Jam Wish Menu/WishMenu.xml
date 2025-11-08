@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wishcommands>
+  <wish DisplayName="Open the reanimated Monster Mash-Up wish menu" ModName="reanimated Monster Mash-Up" Author="Mod Jam Participants and Organizers" Commands="reanimatedmonstermashwishmenu" Icon="Items/sw_electrothing.bmp" ColorPair="wW" />
+</wishcommands>
