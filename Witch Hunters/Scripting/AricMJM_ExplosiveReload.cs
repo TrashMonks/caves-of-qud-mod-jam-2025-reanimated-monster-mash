@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.Forms;
 using UnityEngine;
 using XRL.World.Capabilities;
 using XRL.World.Effects;
@@ -118,5 +117,3 @@ namespace XRL.World.Effects
         }
     }
 }
-
-
