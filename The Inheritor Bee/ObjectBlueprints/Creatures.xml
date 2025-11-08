@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+
+<!-- Base Bee Templates -->
+
+ <object Name="ix_inheritorbees_worker" Inherits="BaseInsect">
+	<part Name="Render" DisplayName="artisan-shaping-twilight" Tile="ix_inheritorbees_worker.png"  RenderString="b" ColorString="&amp;W" DetailColor="g" />
+	<part Name="Description" Short="Her pollen-baskets are packed with the day's labor, and her abdomen quivers her desire to dance. The sisterhood of artisans toils unceasing so that the twilight hives may one day escape the gaze of the high salt sun." />
+	<stat Name="Agility" Boost="2"/>
+	<stat Name="AV" Value="1"/>
+	<stat Name="Hitpoints" Value="12"/>
+	<stat Name="Level" Value="6" />
+	<part Name="Brain" Hostile="false" Factions="Insects-100" />
+	<mutation Name="Wings" Level="10" />
+	<tag Name="Gender" Value="female" />
+	<tag Name="Role" Value="Minion" />
+	<part Name="Swarmer" />
+	<inventoryobject Blueprint="ix_worker_sting" Number="1" />
+	<!-- ADD CORPSE? -->
+ </object>
+  <object Name="ix_worker_sting" Inherits="Bite">
+	<part Name="Render" DisplayName="stinger" Tile="Mutations/stinger.bmp" ColorString="&amp;W" DetailColor="g" />
+	<part Name="MeleeWeapon" Slot="Body" />
+	<part Name="PoisonOnHit" Chance="20" Strength="10" DamageIncrement="1" Duration="1d6" />
+  </object>
+
+ <object Name="ix_inheritorbees_drone" Inherits="BaseInsect">
+	<part Name="Render" DisplayName="courtesan-embracing-twilight" Tile="ix_inheritorbees_drone.png"  RenderString="b" ColorString="&amp;W" DetailColor="g" />
+	<!-- CREATE TILE ^^ -->
+	<part Name="Description" Short="Curved mandibles snap, scattering gluey droplets of some sweetrotten almost-honey. Vestigal wings buzz a battle hymn that echoes off her armored thorax. The sisterhood of courtesans are ever-eager to prove their worthiness for next season's nuptials." />
+	<stat Name="AV" Value="6"/>
+	<stat Name="Hitpoints" Value="35"/>
+	<stat Name="Strength" Boost="2"/>
+	<stat Name="Level" Value="8" />
+	<part Name="Brain" Hostile="false" Factions="Insects-100" />
+	<tag Name="Gender" Value="female" />
+	<tag Name="Role" Value="Tank" />
+	<part Name="Swarmer" />
+	<!-- ADD CORPSE? -->
+	<skill Name="Axe" />
+	<skill Name="Axe_Cleave" />
+	<inventoryobject Blueprint="ix_drone_bite" Number="1" />
+ </object>
+  <object Name="ix_drone_bite" Inherits="NaturalWeapon">
+	<part Name="Render" DisplayName="honeyed mandibles" Tile="Creatures/natural-weapon-mandible.bmp" ColorString="&amp;Y" />
+	<part Name="MeleeWeapon" BaseDamage="1d4" Slot="Head" Stat="Strength" Skill="Axe" />
+	<part Name="StickOnHit" Chance="50" SaveVs="Honey Stuck Restraint" />
+	<tag Name="Gender" Value="plural" />
+  </object>
+
+ <object Name="ix_inheritorbees_queen" Inherits="BaseInsect">
+	<part Name="AIShootAndScoot" Duration="1d3-1" />
+	<part Name="AISelfPreservation" Threshold="50" />
+	<part Name="Render" DisplayName="monarch-inheriting-twilight" Tile="ix_inheritorbees_queen.png"  RenderString="B" ColorString="&amp;w" DetailColor="g" />
+	<part Name="Description" Short="The chitinous spines of the monarch's crown proceed down her scutum in serried ranks, growing wicked with age. With peristaltic pulses she thus decrees the impalement of her foe. The unrefuseable urge drives these royals and their retinues to leave the safety of the twilight hive and scour the surface of Qud, searching for a new nesting-place." />
+	<stat Name="Hitpoints" Value="24"/>
+	<stat Name="Speed" Value="95" />
+	<stat Name="Intelligence" sValue="14" />
+	<stat Name="Willpower" sValue="14" />
+	<stat Name="Ego" sValue="20" />
+	<stat Name="Level" Value="10" />
+	<part Name="Brain" Hostile="false" Factions="Insects-100" />
+	<tag Name="Gender" Value="female" />	
+	<tag Name="Role" Value="Artillery" />
+	<part Name="Swarmer" ExtraBonus="1" />
+	<mutation Name="Wings" Level="10" />
+	<mutation Name="Regeneration" Level="2" />
+	<skill Name="Endurance_PoisonTolerance" />
+	<skill Name="Rifle_SteadyHands" />
+	<!-- ADD CORPSE? -->
+	<!-- ADD SPAWNER PART? -->
+	<inventoryobject Blueprint="ix_queen_crown" Number="1" />
+	<inventoryobject Blueprint="ix_queen_spine" Number="1" />
+	<inventoryobject Blueprint="Portable Beehive" Number="1" Chance="10"/>
+ </object>
+  <object Name="ix_queen_crown" Inherits="BaseHat">
+    <part Name="Armor" AV="0" DV="1" WornOn="Head" />
+	<part Name="Render" DisplayName="{{spaser|twilight coronet}}" Tile="Items/sw_wreath.bmp" ColorString="&amp;g" DetailColor="O"/>
+	<part Name="Description" Short="The chitinous crown of a monarch-inheriting-twilight. Still living, it yearns to knit to another scalp. Scholars claim the twilight inheritors originate from the environs of Ekuemekiyye, the Holy City - from depthless jungle so dense that light barely penetrates the canopy. There they accrete a vast and waxy metropole that will one day grow to compass the continent. Other scholars deride these theories as mead-visions." />
+	<part Name="Physics" Weight="3" Organic="true" />
+	  <tag Name="EquipSound" Value="sfx_equip_armor_organic" />
+	<part Name="MutationOnEquip" ClassName="Stinger" Variant="Stinger Poison" Level="3" />
+	<part Name="Commerce" Value="200" />
+	<tag Name="Tier" Value="2" />
+	<part Name="AddsRep" Faction="Insects" Value="+200" />
+	<part Name="Cursed" RevealInDescription="true" />
+	<part Name="CauseBleedingWhenDestroyed" Damage="2-4" SaveTarget="30" Stack="true" />
+	<tag Name="BleedLiquid" Value="honey-1000" />
+  </object>
+  <object Name="ix_queen_spine" Inherits="NaturalMissileWeapon">
+    <part Name="Render" DisplayName="royal spines" Tile="Creatures/natural-weapon-thorns.bmp" ColorString="&amp;g"/>
+    <part Name="MissileWeapon" Skill="Rifle" />
+    <part Name="BioAmmoLoader" MaxCapacity="8" Available="8" TurnsToGenerate="3" ProjectileObject="ix_projectile_queen_spine" />
+    <tag Name="MissileFireSound" Value="Sounds/Missile/Fires/Pistols/sfx_missile_dartGun_fire" />
+	<tag Name="Gender" Value="plural" />
+  </object>
+    <object Name="ix_projectile_queen_spine" Inherits="TemporaryProjectile">
+    <part Name="Render" DisplayName="royal spine" />
+    <part Name="Projectile" BasePenetration="7" BaseDamage="1d6" ColorString="&amp;g" PassByVerb="hiss" />
+    <tag Name="ProjectileVFX" Value="MissileWeaponsEffects/small_laser" />
+    <tag Name="ProjectileVFXConfiguration" Value="duration::0.25;;beamColor0::#13b307" />
+	<tag Name="MissileFireSound" Value="Sounds/Missile/Fires/Bows/sfx_missile_bow_fire" />
+	<tag Name="ImpactSound" Value="Sounds/Missile/Hits/sfx_missile_bow_hit" />
+  </object>
+
+
+</objects>
