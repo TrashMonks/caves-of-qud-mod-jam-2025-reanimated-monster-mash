@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+	<!--
+
+    ********************
+       Quest triggers
+    ********************
+
+  -->
+	<object Name="Finish_SaveWhoYouCanSave_TraveltoNodd" Inherits="Widget">
+		<part Name="QuestStepFinisher" Trigger="Created" Quest="Save Who You Can Save" Step="Travel to Nodd" />
+	</object>
+
+
+</objects>

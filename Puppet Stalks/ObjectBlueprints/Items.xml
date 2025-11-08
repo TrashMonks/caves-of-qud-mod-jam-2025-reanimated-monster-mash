@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<objects>
+
+	<object Name="Brothers_PuppetInfection" Inherits="FungalInfection">
+		<part Name="Physics" Weight="2" />
+		<part Name="Render" DisplayName="{{w|puppet stalks}}" Tile="Items/puppetstalks.png" ColorString="&amp;w" DetailColor="M" />
+		<part Name="Brothers_PuppetInfection" ColorString="w" />
+		<part Name="Description" Short="Ascomata rise in swaying spires from furrowed skin, sampling open air. Prospective descendance is arrayed in spores, poised to take over decomissioned synapses." />
+		<tag Name="Gender" Value="plural" />
+		<part Name="Brothers_TurnIntoZombieOnDeath"/>
+	</object>
+
+	<object Name="Brothers_Puppets_Hazmat" Inherits="BaseArmor">
+		<part Name="Armor" AV="4" DV="-2" Elec="10" Cold="10" Heat="10" Acid="18" WornOn="Body" />
+		<part Name="Render" DisplayName="{{plastifer|plastifer}} hazard suit" ColorString="&amp;W" DetailColor="K" Tile="Items/hazmat.png" />
+		<part Name="Commerce" Value="950" />
+		<part Name="Description" Short="Gas-caught foam was stiffened into a membrane of rubber seals, forming a portable sanctuary of tepid air. The muffled world awaits beyond marble polymer, dust and spores breaking against the laminate shores." />
+		<part Name="GasMask" Power="8" />
+		<part Name="Physics" Weight="35" />
+		<part Name="Springy" Factor="0.8" />
+		<tag Name="EquipSound" Value="sfx_equip_armor_synthetic" />
+	    <tag Name="UsesSlots" Value="Body,Head,Face" />
+		<part Name="RulesDescription" Text="You are immune to fungal spores and protected against breathing in dangerous gases." />
+		<tag Name="Tier" Value="4" />
+		<part Name="Brothers_ImmuneToSpores" />
+	</object>
+	
+	<object Name="Brothers_Puppets_Logs" Inherits="BaseDataDisk">
+		<part Name="Render" DisplayName="{{Y|Barathrumite expedition logs}}" Tile="items/sw_data_disc.bmp" ColorString="&amp;Y" DetailColor="y" RenderString="004" RenderLayer="5" />
+		<part Name="Description" Short="A crystalline disk stands as the lone storyteller of doomed prospects." />
+		<part Name="Physics" Category="Quest Items" />
+		<part Name="Examiner" Complexity="1" Understanding="1" />    
+		<tag Name="QuestItem" />
+		<tag Name="ExcludeFromDynamicEncounters" />
+		<tag Name="NoSparkingQuest" />
+		<stag Name="Scrap" />
+		<part Name="QuestStepFinisher" Trigger="Taken" Quest="Save Who You Can Save" Step="Retrieve the Expedition Logs" />
+	</object>
+
+</objects>
