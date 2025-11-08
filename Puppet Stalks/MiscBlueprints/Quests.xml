@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<quests>
+	<quest Name="Save Who You Can Save" Level="20" Factions="Barathrumites" Reputation="200"
+	   Accomplishment="You found out about the fate of the missing Barathrumite expedition."
+	   Hagiograph="In the month of =month= of =year=, impervious =name= repelled creeping fungi from jungle villages."
+	   HagiographCategory="DoesSomethingRad"
+	   Gospel="Leading a clan of urshiib, =name= held a seance, warding off spirits that had taken over the dreams of peaceful beings and liberating the people of Nodd.">
+
+		<step Name="Talk to Hortensa" XP="250">
+			<text>Hortensa is looking for help with a missing Barathrumite expedition.</text>
+		</step>
+
+		<step Name="Travel to Nodd" XP="250">
+			<text>Make your way across the jungle to the village of Nodd, two parasangs west of the Rainbow Wood.</text>
+		</step>
+
+		<step Name="Determine the Fate of the the Barathrumite Expedition" XP="1500">
+			<text>Visit the village of Nodd and discover the fate of the Barathrumite expedition.</text>
+		</step>
+
+		<step Name="Retrieve the Expedition Logs" XP="1500">
+			<text>Collect the detailed expedition logs from the Barathrumite tinkerers.</text>
+		</step>
+
+		<step Name="Report Back to Hortensa" XP="3000">
+			<text>Bring the expedition logs back to Hortensa.</text>
+		</step>
+	</quest>
+
+</quests>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<conversations>
+
+
+	<conversation ID="Brothers_Puppet_DeadManWalking">
+		
+		<node ID="Start" IfNotHaveState="Brothers_DeadUrshiib">
+			<text>
+				{{emote|*The urshiib pants, out-of-breath.*}}
+			
+				Please, listen to me. You have to turn back...</text>
+		<choice GotoID="Who">Who are you?</choice>
+		<choice GotoID="Late">What do you mean?</choice>	
+		<choice GotoID="End">I am not dealing with any of that. Live and drink.</choice>				
+		</node>
+	
+		<node ID="Who">
+			<text>
+				Barathrumite... member of the expedition sent here. We didn't know... couldn't know...</text>
+		<choice GotoID="Late" IfHaveActiveQuest="Save Who You Can Save" IfFinishedQuestStep="Save Who You Can Save~Talk to Hortensa">The Barathrumite expedition? Hortensa sends me. What happened here?</choice>
+		<choice GotoID="Late">Did not know what?</choice>	
+		</node>
+	
+		<node ID="Late">
+			<text>
+				{{emote|*The urshiib winces, rocking back and forth.*}}
+
+				... the stalks, they're everywhere! Everywhere! They got under my skin, I can feel them!</text>
+		<choice GotoID="Dying">You are going to be alright, please talk to me.</choice>
+		<choice GotoID="Dying">Pull yourself together! What happened?</choice>	
+		</node>	
+	
+		<node ID="Dying">
+			<text>
+				I'm sorry- I'm sorry- I'm sorry- I'm sorry- I'm sorry-
+				
+				{{emote|*The urshiib wimpers.*}}</text>
+		<choice GotoID="End" SetBooleanState="Brothers_DeadUrshiib,true">Do not move, I will check on the village and be right back.</choice>
+		<choice GotoID="End" SetBooleanState="Brothers_DeadUrshiib,true">I will see for myself. Live and drink.</choice>	
+		</node>	
+	
+		<node ID="Start">
+			<text>
+				{{emote|*The urshiib winces and blabbers incoherently.*}}</text>
+		<choice GotoID="End">Hold on, I will get some help.</choice>
+		<choice GotoID="End">If you want to stay there, I cannot help you.</choice>
+		</node>
+		
+	</conversation>
+	
+	<conversation ID="Q Girl">
+		
+		<node ID="Disk" Load="Replace">
+			<text>
+				I do, brave friend. I'll imprint them now.
+			</text>
+		<choice GotoID="Hortensa" IfHaveQuest="Decoding the Signal" CompleteQuestStep="Decoding the Signal~Get Q Girl's Instructions onto the Data Disk" TakeItem="Argyve's Data Disk" GiveItem="Argyve's Data Disk Encoded">Thank you, Q Girl.</choice>
+		</node>
+		
+		<node ID="Hortensa" AllowEscape="false">
+			<text>
+				Before you go, Hortensa was looking for you earlier! Wonder what she wants now, quetzal!
+			</text>
+		<choice GotoID="End" StartQuest="Save Who You Can Save">I will convene with her and let you know, Q Girl.</choice>
+		</node>
+	
+	</conversation>
+ 
+	<conversation ID="Hortensa" Load="Merge">
+		
+		<start ID="Greetings" Load="Merge">
+		<choice GotoID="Looking" IfHaveActiveQuest="Save Who You Can Save" IfNotFinishedQuestStep="Save Who You Can Save~Talk to Hortensa" Priority="1">Q Girl said you were looking for me?</choice>
+		<choice GotoID="Nodd" IfHaveActiveQuest="Save Who You Can Save" IfFinishedQuestStep="Save Who You Can Save~Talk to Hortensa" Priority="1">About the Barathrumite expedition to Nodd...</choice>
+		</start>
+
+		<node ID="Looking">
+			<text>
+			Indeed I was! There may be some work you can assist me with, should you find the time.
+			</text>
+		<choice GotoID="Work">Work you say?</choice>
+		<choice GotoID="End">Not now. live and drink.</choice>
+		</node>
+	
+		<node ID="Work">
+			<text>
+			Work indeed,=name=. Some weeks ago, an expedition of tinkers went to the village of Nodd on the edges of the Rainbow Wood, where some form of new fungal infection had been spotted. They ought to be back by now, but as you can see, there is no sign of them.
+			</text>
+		<choice GotoID="Happened">Do you reckon something happened to them?</choice>
+		<choice GotoID="Investigate">Do you want me investigate the matter?</choice>
+		</node>
+
+		<node ID="Happened">
+			<text>
+			I shudder to think of it, cub, but that may very well be the case. Would you check on them, please? I will hold some hope in my heart, but should the worst have arrived, I trust you to recover their expedition logs.
+			</text>
+		<choice GotoID="End" CompleteQuestStep="Save Who You Can Save~Talk to Hortensa">I will see what I can do, Hortensa. In the meantime, live and drink.</choice>
+		</node>
+
+		<node ID="Investigate">
+			<text>
+			Is my worry that obvious? But yes, if that is not too much to ask, cub. Should their fate be as dire as I fear, would you recover their expedition logs?
+			</text>
+		<choice GotoID="End" CompleteQuestStep="Save Who You Can Save~Talk to Hortensa">I will see what I can do, Hortensa. In the meantime, live and drink.</choice>
+		</node>
+		
+		<node ID="Nodd">
+			<text>
+			Yes, =player.offspringTerm=?
+			</text>
+			<choice GotoID="Fate" IfFinishedQuestStep="Save Who You Can Save~Determine the Fate of the the Barathrumite Expedition">They succumbed to a new kind of fungal infection.</choice>
+			<choice GotoID="End">I will make my way there quickly. Live and drink, Hortensa.</choice>
+		</node>
+
+		<node ID="Fate">
+			<text>
+			{{emote|*Hortensa's expression darkens.*}}
+			
+			A dire fate indeed. What about the logs? Is there anything to glean from this tragedy?
+			</text>
+			<choice GotoID="Logs" IfHaveBlueprint="Brothers_Puppets_Logs">Hopefully there is. See for yourself.</choice>
+			<choice GotoID="End">I will retrieve them. Live and drink, Hortensa.</choice>
+		</node>
+
+		<node ID="Logs" AllowEscape="false">
+			<text>
+			{{emote|*Hortensa takes the data disk gingerly.*}}
+			
+			You have my thanks, =name=. I will see what we can learn from this. In the meantime, please take my old hazard suit. It should help you in case of any more run-ins with fungi.
+			</text>
+			<choice GotoID="End" CompleteQuestStep="Save Who You Can Save~Report Back to Hortensa">
+				<text>Thank you Hortensa. Live and drink.</text>
+			    <part Name="ReceiveItem" Blueprints="Brothers_Puppets_Hazmat" />
+			</choice>
+			<choice GotoID="End" CompleteQuestStep="Save Who You Can Save~Report Back to Hortensa">
+				<text>That would have been useful earlier. Live and drink, Hortensa.</text>
+			    <part Name="ReceiveItem" Blueprints="Brothers_Puppets_Hazmat" />
+			</choice>	
+		</node>
+		
+	</conversation> 
+ 
+
+ 
+</conversations>

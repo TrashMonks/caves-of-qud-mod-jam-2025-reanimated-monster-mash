@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--   Physical phenomena object blueprints.-->
+<objects>
+  <object Name="Brothers_FungalSporeGasPuppet" Inherits="Gas">
+	<part Name="Gas" ColorString="&amp;w" />
+    <part Name="Render" DisplayName="fungal spores" />
+    <part Name="Description" Short="Brumes of spinning mold-dots make the air look fuzzy." />
+    <part Name="Brothers_Z_GasFungalSpores" Infection="Brothers_PuppetInfection" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+</objects>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<worlds>
+	<world Name="JoppaWorld" Load="Merge">
+		<cell Name="Brothers_CellNodd" Inherits="Jungle" ApplyTo="Brothers_TerrainNodd" LandingZone="1,2" Mutable="false">
+			<zone Level="5-9" x="0-2" y="0-2" Name="sky above Nodd" IndefiniteArticle="the" >
+				<builder Class="Sky" />
+			</zone>
+			<zone Level="10" x="1" y="1" Name="ruins of Nodd" ProperName="true" IncludeStratumInZoneDisplay="false" >
+				<map FileName="Brothers_NoddCenter.rpm" />
+				<music Track="Music/Golgotha" />
+			</zone>
+			<zone Level="10" x="1" y="2" Name="fungus-ridden pathway" NameContext="Nodd" IndefiniteArticle="some" IncludeStratumInZoneDisplay="false" HasWeather="true" WindSpeed="0-50" WindDirections="N,NW,NW,W,W,SW,S,SE" WindDuration="200-3000" >
+				<map FileName="Brothers_NoddSouth.rpm" />
+				<music Track="Music/Golgotha" />
+			</zone>
+		</cell>
+	</world>
+</worlds>

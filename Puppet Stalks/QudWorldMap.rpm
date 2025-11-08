@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map
+  Width="80"
+  Hight="25">
+  <cell
+    X="48"
+    Y="16">
+    <object Name="Brothers_TerrainNodd"></object>
+  </cell>
+</Map>

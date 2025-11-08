@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mutations Hidden="true" ExcludeFromPool="true">
+	<category Name="Physical">
+		<mutation Name="Umber Puff" Cost="1" Class="Brothers_ZSporePuffer" BearerDescription="those who puff spores" Tile="Items/sw_ficklegill.bmp" />
+	</category>
+</mutations>

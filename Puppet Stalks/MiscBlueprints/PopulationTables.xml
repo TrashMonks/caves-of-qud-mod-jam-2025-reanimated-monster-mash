@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<populations>
+	
+	<population Name="FungalJunglePopulation" Load="Merge">
+		<group Name="Creatures" Style="pickeach" Load="Merge">
+			<object Blueprint="Brothers_Puppets_Puffer" Number="1-3" Chance="50" />
+			<object Blueprint="Brothers_Puppets_ZombieSnapjaw" Number="1-3" Chance="20" />
+		</group>
+	</population>
+
+	<population Name="FungalBiome1" Load="Merge">
+		<group Name="Creatures" Style="pickeach" Load="Merge">
+			<object Blueprint="Brothers_Puppets_Puffer" Number="1-3" Chance="66" />
+			<object Blueprint="Brothers_Puppets_ZombieGoatfolk" Number="1-3" Chance="20" />
+		</group>
+	</population>
+	
+	<population Name="FungalBiome2" Load="Merge">
+		<group Name="Creatures" Style="pickeach" Load="Merge">
+			<object Blueprint="Brothers_Puppets_Puffer" Number="2-3" Chance="60" />
+			<object Blueprint="Brothers_Puppets_ZombieHuman" Number="1-3" Chance="20" />
+		</group>
+	</population>	
+	
+	<population Name="FungalBiome3" Load="Merge">
+		<group Name="Creatures" Style="pickeach" Load="Merge">
+			<object Blueprint="Brothers_Puppets_Puffer" Number="2-4" Chance="66" />
+			<object Blueprint="Brothers_Puppets_ZombieWoodsprog" Number="1-3" Chance="20" />
+		</group>
+	</population>	
+
+	<population Name="RainbowWoodZoneGlobals" Load="Merge">
+		<table Name="StandardSurfaceGlobals" Load="Merge"/>
+			<object Chance="75"  Number="2-7" Blueprint="Brothers_Puppets_Puffer" />
+			<object Chance="20"	 Number="2-4" Blueprint="Brothers_Puppets_ZombieWoodsprog" />
+	</population>
+
+	<population Name="CaveGlobals" Load="Merge">
+		<group Name="Contents" Style="pickeach" Load="Merge">
+			<group Name="Types" Style="pickone" Load="Merge">
+				<group Name="Mushroomy" Load="Merge">
+					<object Blueprint="Brothers_Puppets_Puffer" Number="0-2" Chance="50" />
+				</group>
+			</group>
+		</group>
+	</population>
+
+	<population Name="FungusPuffers" Load="Merge">
+		<group Name="Puffer" Style="pickone" Load="Merge">
+			<object Blueprint="Brothers_Puppets_Puffer" />
+		</group>
+	</population>
+
+	<population Name="LairOwners_Fungal" Load="Merge">
+		<group Name="Options" Style="pickone" Load="Merge">
+          <object Blueprint="Brothers_Puppets_Puffer" Weight="4" />
+        </group>
+	</population>
+	
+	
+</populations>
