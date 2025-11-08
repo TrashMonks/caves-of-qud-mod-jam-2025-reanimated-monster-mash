@@ -1,0 +1,8 @@
+<populations>
+    <population Name="Gnarf_ShoeRack">
+        <group Name="Items" Style="pickeach">
+            <object Blueprint="Croccasins" Number="1-2" Chance="75"/>
+            <table Name="DynamicInheritsTable:BaseBoot:Tier{zonetier}" Number="0-8" />
+        </group>
+    </population>
+</populations>
