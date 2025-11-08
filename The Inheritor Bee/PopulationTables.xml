@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<populations>
+  <population Name="ix_beeparty_twilight">
+    <group Name="Creatures" Style="pickeach">
+      <object Chance="100" Number="3-5" Blueprint="ix_inheritorbees_worker" />
+      <object Chance="75" Number="1-3" Blueprint="ix_inheritorbees_worker" />
+      <object Chance="25" Number="1-3" Blueprint="ix_inheritorbees_worker" />
+      <object Chance="100" Number="1" Blueprint="ix_inheritorbees_drone" />
+	  <object Chance="75" Number="1" Blueprint="ix_inheritorbees_drone" />
+	  <object Chance="25" Number="1" Blueprint="ix_inheritorbees_drone" />
+	  <object Chance="100" Number="1" Blueprint="ix_inheritorbees_queen" />
+      <table Chance="50" Name="FlowerPatches" />
+    </group>
+  </population>
+  
+  <population Name="FlowerFieldsPopulation" Load="Merge">
+	<group Name="Creatures" Load="Merge">
+		<table Weight="5" Name="ix_beeparty_twilight" />
+	</group>
+  </population>
+</populations>
