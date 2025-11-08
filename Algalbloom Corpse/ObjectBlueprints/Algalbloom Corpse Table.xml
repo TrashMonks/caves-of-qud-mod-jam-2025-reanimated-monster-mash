@@ -1,0 +1,54 @@
+<populations>
+  <population Name="Algalboom Corpse Table">
+    <group Name="Algalboom Corpse Table" Style="pickeach">
+      <group Name="Weapon" Style="pickone">
+        <object Blueprint="High-Voltage Arc Winder " Weight="8" />
+        <object Blueprint="Spaser Pistol" Weight="1" />
+        <object Blueprint="Laser Pistol" Weight="12" />
+        <object Blueprint="Semi-Automatic Pistol" Weight="10" />
+        <object Blueprint="Turbow" Weight="8" />
+        <object Blueprint="Hand Rail" Weight="6" />
+        <object Blueprint="Battle Axe7" Weight="8" />
+        <object Blueprint="Battle Axe6" Weight="10" />
+        <object Blueprint="Cudgel7" Weight="8" />
+        <object Blueprint="Cudgel6" Weight="10" />
+        <object Blueprint="Long Sword7 " Weight="9" />
+        <object Blueprint="Sharpened Polyp" Weight="10" />
+        <object Blueprint="Vibro Blade " Weight="5" />
+        <object Blueprint="Dagger7" Weight="10" />
+        <object Blueprint="Gaslight Chisel " Weight="7" />
+        <object Blueprint="Vibro Dagger " Weight="6" />
+      </group>
+      <group Name="Gear" Style="pickone">
+        <object Blueprint="VISAGE" Weight="1" />
+        <object Blueprint="Compass Bracelet" Weight="8" />
+        <object Blueprint="Plastifer Jerkin" Weight="8" />
+        <object Blueprint="Nanoweave Vest" Weight="5" />
+        <object Blueprint="Mercurial Cloak" Weight="3" />
+        <object Blueprint="Kaleidocera Cape" Weight="1" />
+        <object Blueprint="Enigma Cap" Weight="1" />
+        <object Blueprint="Flawless Crysteel Gauntlets" Weight="1" />
+        <object Blueprint="Kaleidocera Muffs" Weight="1" />
+      </group>
+      <group Name="Cybernetics" Style="pickone">
+        <object Blueprint="Crusty Loaf" Weight="12" />
+        <object Blueprint="Bubble Level " Weight="10" />
+        <object Blueprint="Advanced Toolkit" Weight="8" />
+        <object Blueprint="Pentaceps" Weight="1" />
+        <object Blueprint="StabilizerArmLocks" Weight="1" />
+        <object Blueprint="BionicLiver" Weight="1" />
+        <object Blueprint="IntravenousPort" Weight="1" />
+        <object Blueprint="MedassistModule" Weight="1" />
+        <object Blueprint="TransparentSkin" Weight="1" />
+        <object Blueprint="UltraElasticAnkleTendons" Weight="1" />
+        <object Blueprint="MagneticCore" Weight="1" />
+        <object Blueprint="Phase-Adaptive Scope" Weight="1" />
+        <object Blueprint="MicromanipulatorArray" Weight="1" />
+        <object Blueprint="StasisProjector" Weight="1" />
+        <object Blueprint="CrysteelHandBones" Weight="1" />
+        <object Blueprint="InflatableAxons" Weight="1" />
+        <object Blueprint="CyberneticsCreditWedge2" Weight="12" />
+      </group>
+    </group>
+  </population>
+</populations>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<populations>
+
+<population Name="Tier4LakeHinnom" Load="Merge">
+	<group Name="Creatures" Style="pickone" Load="Merge">
+      <object Weight="1" Number="1" Blueprint="Luz_Algalbloom Corpse" />  
+	</group>
+</population>
+
+<population Name="Tier5LakeHinnom" Load="Merge">
+	<group Name="Creatures" Style="pickone" Load="Merge">
+      <object Weight="5" Number="1" Blueprint="Luz_Algalbloom Corpse" />  
+	</group>
+</population>
+
+<population Name="Tier6LakeHinnom" Load="Merge">
+	<group Name="Creatures" Style="pickone" Load="Merge">
+      <object Weight="2" Number="1" Blueprint="Luz_Algalbloom Corpse" />  
+	</group>
+</population>
+<population Name="Tier4PalladiumReef" Load="Merge">
+	<group Name="Creatures" Style="pickone" Load="Merge">
+      <object Weight="1" Number="1" Blueprint="Luz_Algalbloom Corpse" />  
+	</group>
+</population>
+
+<population Name="Tier5PalladiumReef" Load="Merge">
+	<group Name="Creatures" Style="pickone" Load="Merge">
+      <object Weight="5" Number="1" Blueprint="Luz_Algalbloom Corpse" />  
+	</group>
+</population>
+
+<population Name="Tier6PalladiumReef" Load="Merge">
+	<group Name="Creatures" Style="pickone" Load="Merge">
+      <object Weight="2" Number="1" Blueprint="Luz_Algalbloom Corpse" />  
+	</group>
+</population>
+</populations>

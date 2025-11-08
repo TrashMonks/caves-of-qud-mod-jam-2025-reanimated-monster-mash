@@ -1,0 +1,11 @@
+It moves very slowly until prey moves nearby, when it uses a burst of speed to take down the prey and consume it, adding to the rotting mass
+
+It photosynthesizes and lives in a nutrient-rich environment already, so it's reason for hunting is unknown. Perhaps it evolved in different circumstances yet still retains it's predatory nature? Or perhaps such a being arose out of malice towards the more traditionally alive
+
+NEED:
+-tile
+-description
+-drop table
+-thing telling it where to spawn
+
+-add special effects on weapon (OPTIONAL)

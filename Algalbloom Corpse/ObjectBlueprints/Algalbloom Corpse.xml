@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+  <object Name="Luz_Algalbloom Corpse" Inherits="BaseOoze">
+    <part Name="Description" Short="A shambling mound of algal rot lies in wait, eager to feast on a new corpse." />
+    <part Name="Render" DisplayName="{{g-g-G-g-K-g-g-G-G-K sequence|Algalbloom Corpse}}" Tile="Luz_Algalbloom Corpse.png" ColorString="&amp;Y" DetailColor="R" />
+    <part Name="Brain" Hostile="true" />
+    <part Name="Corpse" CorpseChance="90" CorpseBlueprint="Algae Corpse" />
+    <part Name="LiquidBurst" EelChance="0" Liquid="AlgaeRotPool" />
+
+  <object Name="Algae Corpse" Inherits="Humanoid Corpse">    
+    <part Name="Render" DisplayName="rotted corpse" />        
+    <part Name="Physics" Weight="60" />    
+    <tag Name="Tier" Value="3" />    
+  </object>
+
+
+    <stat Name="Hitpoints" sValue="72" />
+    <stat Name="Level" sValue="32" />
+    <stat Name="DV" sValue="2" />
+    <stat Name="AV" sValue="8" />
+    <stat Name="Speed" Value="80" />
+    <stat Name="Agility" sValue="21" />
+    <stat Name="Ego" sValue="10" />
+    <stat Name="Intelligence" sValue="12" />
+    <stat Name="Strength" sValue="28" />
+    <stat Name="Toughness" sValue="21" />
+    <stat Name="Willpower" sValue="15" />
+    <stat Name="HeatResistance" sValue="25" />
+
+    <skill Name="Cudgel_Expertise" />
+    <skill Name="Cudgel_Bludgeon" />
+    <skill Name="Submersion" />
+    <skill Name="Endurance_PoisonTolerance " />
+    <skill Name="Endurance_Swimming" />
+    <skill Name="Tactics_Run" />
+    <skill Name="Tactics_Charge" />
+
+    <mutation Name="DarkVision" />
+    <mutation Name="AdrenalControl2" Level="11" />
+    <mutation Name="CorrosiveGasGeneration" Level="1" />
+    <mutation Name="PhotosyntheticSkin" Level="1" />
+    <mutation Name="SleepGasGeneration" Level="1" />
+    <mutation Name="SlimeGlands" />
+    <mutation Name="Amphibious" />
+    <mutation Name="Analgesia" />
+    <mutation Name="ColdBlooded" />
+    <mutation Name="Myopia" />
+
+    <inventoryobject Blueprint="Rotting_Algae_Clump" Number="2" />
+
+    <tag Name="InventoryPopulationTable" Value="Algalbloom Corpse Table" />
+
+    <tag Name="BleedLiquid" Value="algae-700,putrid-300" />
+    <tag Name="Role" Value="Brute" />
+    <tag Name="DynamicObjectsTable:PalladiumReef_Creatures" />
+    <tag Name="DynamicObjectsTable:LakeHinnom_Creatures" />
+  </object>
+</objects>
