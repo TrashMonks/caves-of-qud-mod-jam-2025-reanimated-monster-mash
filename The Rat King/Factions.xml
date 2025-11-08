@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<factions LoadPriority="800">
+	<faction Name="Hazzary453_TRK_Rats" DisplayName="Rats" Old="true" EmblemTile="Hazzary453_TRK/Rat.png" EmblemTileColor="k" EmblemDetailColor="w" Visible="true" InitialPlayerReputation="-475">
+		<feeling About="Beasts" Value="0" />
+		<feeling About="*" Value="-100" />
+		<waterritual Skill="ShortBlades_Hobble" />
+	</faction>
+</factions>

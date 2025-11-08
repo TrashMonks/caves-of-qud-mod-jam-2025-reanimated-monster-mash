@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<conversations>
+	<conversation ID="Hazzary453_TRK_Rat_King">
+		<start ID="HaveCrown" IfHaveBlueprint="Hazzary453_TRK_Rat_Crown" AllowEscape="false">
+			<text>
+				CROWN! GIVE BACK!
+			</text>
+			<choice GotoID="End">
+				<text>Wait!</text>
+				<part Name="StartFight"/>
+			</choice>
+		</start>
+
+		<start ID="Normal">
+			<text>
+				Bow kneel before king!~
+				You grovel!~
+				Hehe...~
+				Me king monarch. You servant.~
+				You bring tribute offer?
+			</text>
+			<choice GotoID="Why">Why are you the king?</choice>
+			<choice GotoID="Honour">You are as fine and mighty a monarch as any.</choice>
+			<choice GotoID="End">Live and drink, monarch.</choice>
+		</start>
+
+		<node ID="Why">
+			<text>
+				{{emote|*The rat shrieks*}} HOW DARE! You see crown? That mean I king!~
+				{{emote|*The rat scowls*}} Because I AM. Grovel, be gone!~
+				None your business!
+			</text>
+			<choice GotoID="Honour">My apologies. You are as fine and mighty a monarch as any.</choice>
+			<choice GotoID="End">Live and drink, monarch.</choice>
+		</node>
+
+		<node ID="Honour">
+			<text>
+				Hehe... YES!~
+				{{emote|*The rat puffs out his chest*}} I am! I am!~
+				The best!
+			</text>
+			<choice GotoID="Why">Why are you the king?</choice>
+			<choice GotoID="End">Live and drink, monarch.</choice>
+		</node>
+	</conversation>
+
+	<conversation ID="Hazzary453_TRK_Rat">
+		<start ID="HaveCrown" IfWearingBlueprint="Hazzary453_TRK_Rat_Crown">
+			<text>
+				{{emote|*The rat collapses and grovels at your feet*}} Monarch! Me love you.~
+				{{emote|*The rat bows too far*}} Your great highness!~
+				{{emote|*The rat trembles*}} Spare me, no hurt!
+			</text>
+			<choice GotoID="JoinMe">
+				<text>You, rat. I am your great monarch. Come with me.</text>
+				<part Name="WaterRitualJoinParty"/>
+			</choice>
+			<choice GotoID="worship">Continue your flattery.</choice>
+			<choice GotoID="AtEase">There is no need for that, be at ease.</choice>
+			<choice GotoID="End">I have no need of you. Begone.</choice>
+			<choice GotoID="End">Live and drink, friend.</choice>
+		</start>
+
+		<start ID="Normal">
+			<text>
+				You worship king monarch?~
+				Rat friend team!~
+				{{emote|*The rat gnaws on =pronouns.possessive= surroundings*}}~
+				Hehe...
+			</text>
+			<choice GotoID="End">Live and drink, rat friend.</choice>
+		</start>
+
+		<node ID="JoinMe">
+			<text>
+				Ye- Yes! Yes my monarch!~
+				You show much grace honour!
+			</text>
+			<choice GotoID="End">Good.</choice>
+		</node>
+
+		<node ID="worship">
+			<text>
+				You grand and gracious!~
+				You wondrous!~
+				None greater than you!~
+				I never forget your beauty!~
+				You boon to all rat rodents!~
+				Me name all my childs after you!~
+				You need servant? Me make great servant!~
+				Your crown fit perfect! Rat god must chosen you!~
+				{{emote|*The rat kisses the ground infront of =pronouns.objective=*}}~
+				{{emote|*The rat offers you a jumbled assortment of unpleasant trinkets*}}~
+				{{emote|*The rat breaks into an endless sermon of various compliments and flattery*}}
+			</text>
+			<choice GotoID="worshipAgain">Again.</choice>
+			<choice GotoID="End">Enough. Begone.</choice>
+		</node>
+
+		<node ID="worshipAgain">
+			<text>
+				You grand and gracious!~
+				You wondrous!~
+				None greater than you!~
+				I never forget your beauty!~
+				You boon to all rat rodents!~
+				Me name all my childs after you!~
+				You need servant? Me make great servant!~
+				Your crown fit perfect! Rat god must chosen you!~
+				{{emote|*The rat kisses the ground infront of =pronouns.objective=*}}~
+				{{emote|*The rat offers you a jumbled assortment of unpleasant trinkets*}}~
+				{{emote|*The rat breaks into an endless sermon of various compliments and flattery*}}
+			</text>
+			<choice GotoID="worship">More.</choice>
+			<choice GotoID="End">Enough. Begone.</choice>
+		</node>
+
+		<node ID="AtEase">
+			<text>
+				Beauty AND mercy!~
+				{{emote|*The rat salutes you*}}~
+				Thank thank!
+			</text>
+			<choice GotoID="JoinMe">
+				<text>You, rat. I am your great monarch. Come with me.</text>
+				<part Name="WaterRitualJoinParty"/>
+			</choice>
+			<choice GotoID="worship">On second thought. Continue your flattery.</choice>
+			<choice GotoID="End">I have no need of you. Begone.</choice>
+			<choice GotoID="End">Live and drink, friend.</choice>
+		</node>
+	</conversation>
+</conversations>

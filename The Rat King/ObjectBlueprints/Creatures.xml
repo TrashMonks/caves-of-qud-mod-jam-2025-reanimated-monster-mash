@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+	<object Name="Hazzary453_TRK_Rat_King" Inherits="BaseHumanoid">
+		<part Name="Description" Short="Clumps of fur hang loose as scratches and bites mar =pronouns.possessive= skin. A tangled crown made of =pronouns.possessive= lesser kin makes its temporary home upon =pronouns.possessive= head waiting for a new usurper." />
+		<part Name="Render" DisplayName="King Rat" Tile="Hazzary453_TRK/Rat_King.png" RenderString="R" ColorString="&amp;K" DetailColor="y" />
+    	<part Name="Brain" Hostile="true" Factions="Hazzary453_TRK_Rats-600" />
+    	<part Name="ConversationScript" ConversationID="Hazzary453_TRK_Rat_King" />
+    	<part Name="AISelfPreservation" Threshold="35" />
+
+    	<stat Name="Level" Value="16" />
+    	<stat Name="Hitpoints" Value="110" />
+    	<stat Name="DV" Value="12" />
+    	<stat Name="AV" Value="4" />
+    	<stat Name="МА" Value="6" />
+    	<stat Name="Strength" Value ="30" />
+    	<stat Name="Agility" Value="34" />
+    	<stat Name="Toughness" Value="24" />
+    	<stat Name="Intelligence" Value="12" />
+    	<stat Name="Willpower" Value="26" />
+    	<stat Name="Ego" Value="28" />
+
+    	<inventoryobject Blueprint="Hazzary453_TRK_Rat_Bite" Number="1" />
+    	<mutation Name="HeightenedAgility" Level="8" />
+    	<mutation Name="AdrenalControl2" Level="6" />
+    	<mutation Name="ThickFur" />
+
+    	<skill Name="ShortBlades" />
+    	<skill Name="ShortBlades_Hobble" />
+    	<skill Name="ShortBlades_Shank" />
+    	<skill Name="ShortBlades_Jab" />
+    	<skill Name="Tactics" />
+    	<skill Name="Tactics_Run" />
+
+    	<inventoryobject Blueprint="Hazzary453_TRK_Rat_Crown" Number="1" />
+    	<inventoryobject Blueprint="Black Robes" Number="1" />
+    	<inventoryobject Blueprint="Dagger6" Number="1" />
+    	
+    	<xtagGrammar Proper="true" />
+    	<part Name="GivesRep" />
+    	<tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+    	<tag Name="Gender" Value="male" />
+	</object>
+
+
+
+	<object Name="Hazzary453_TRK_Rat" Inherits="BaseHumanoid">
+		<part Name="Description" Short="An impish bipedal rat. =pronouns.Possessive= front teeth tremble as =pronouns.subjective= =verb:mutter:afterpronoun= to =pronouns.reflexive=."/>
+		<part Name="Render" DisplayName="Under Rat" Tile="Hazzary453_TRK/Rat.png" RenderString="r" ColorString="&amp;K" DetailColor="w" />
+		<part Name="Brain" Factions="Hazzary453_TRK_Rats-100" />
+		<part Name="ConversationScript" ConversationID="Hazzary453_TRK_Rat" />
+		<part Name="AISelfPreservation" Threshold="70" />
+
+		<stat Name="Level" Value="3" />
+    	<stat Name="Hitpoints" Value="8" />
+    	<stat Name="DV" Value="7" />
+    	<stat Name="AV" Value="1" />
+    	<stat Name="МА" Value="4" />
+    	<stat Name="Strength" Value ="18" />
+    	<stat Name="Agility" Value="20" />
+    	<stat Name="Toughness" Value="17" />
+    	<stat Name="Intelligence" Value="16" />
+    	<stat Name="Willpower" Value="14" />
+    	<stat Name="Ego" Value="18" />
+
+		<inventoryobject Blueprint="Hazzary453_TRK_Rat_Bite" Number="1" />
+		<mutation Name="ThickFur" />
+		<mutation Name="HeightenedAgility" Level="5" />
+
+		<skill Name="ShortBlades" />
+    	<skill Name="ShortBlades_Hobble" />
+    	<skill Name="ShortBlades_Shank" />
+    	<skill Name="ShortBlades_Jab" />
+    	<skill Name="Tactics" />
+    	<skill Name="Tactics_Run" />
+
+		<inventoryobject Blueprint="Filthy Toga" Number="1" />
+		<tag Name="InventoryPopulationTable" Value="Snapjaw Minion 0" />
+	</object>
+
+
+
+	<object Name="Hazzary453_TRK_Rat_Bite" Inherits="Adiyy_Bite">
+		<part Name="Render" DisplayName="Gnawing Bite" />
+		<part Name="MeleeWeapon" BaseDamage="1d4" Slot="Head" />
+	</object>
+</objects>	

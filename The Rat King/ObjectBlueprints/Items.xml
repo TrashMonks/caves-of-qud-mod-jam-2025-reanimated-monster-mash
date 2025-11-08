@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+	<object Name="Hazzary453_TRK_Rat_Crown" Inherits="BaseHat">
+		<part Name="Armor" AV="0" DV="1" Ego="2" WornOn="Head"/>
+		<part Name="Render" DisplayName="The Rat King" RenderString="^" Tile="Hazzary453_TRK/Rat_Crown.png" ColorString="&amp;K" DetailColor="w"/>
+		<part Name="Description" Short="A wreath of desicated rats, crudely shaped to fit the head." />
+		<part Name="Physics" Weight="3" Organic="true"/>
+		<part Name="Commerce" Value="10" />		
+		<part Name="AddsRep" Faction="Hazzary453_TRK_Rats" Value="1500" />
+		<tag Name="EquipSound" Value="sfx_equip_armor_organic" />
+		<tag Name="NoSparkingQuest" />
+    	<tag Name="ExcludeFromDynamicEncounters" />
+    	<removepart Name="TinkerItem" />
+    	<tag Name="Mods" Value="None" />
+    	<xtagGrammar Proper="true" />
+	</object>
+</objects>
