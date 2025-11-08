@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+
+  <!-- Base prismacaw -->
+  <object Name="Gearlink_FORGETTABLE_Prismacaw" Inherits="BaseBird">
+    <part Name="Render" DisplayName="prismacaw" RenderString="b" Tile="creatures/Prismacaw.png" ColorString="&amp;R" DetailColor="y" CustomRender="true" />
+		<part Name="Description" Short="Ornamentation's burden has stooped =pronouns.possessive= back and clipped =pronouns.possessive= wings, but oh how =pronouns.subjective= =verb:shine:afterpronoun=. Each turn of =pronouns.possessive= head reveals a new pallet of colors. The salt sun shatters into the idealized points of the spectrum on =pronouns.possessive= feathers and wreaths =pronouns.objective= in an iridescent corona. Eyes delight in the feast, even as the morsels disintegrate at memory's touch.
+" />
+    <part Name="Brain" Hostile="True" />
+    <part Name="AIJuker" />
+    <mutation Name="Gearlink_FORGETTABLE_ObjectImpermanence" />    
+    <skill Name="Axe" />
+    <skill Name="Axe_Expertise" />
+    <skill Name="Axe_Cleave" />
+    <skill Name="Tactics_Charge" />
+    <part Name="RefractLight" Chance="50" />
+    <removemutation Name="Wings" />
+    <tag Name="Species" Value="prismacaw" /> 
+    <tag Name="Role" Value="Brute" />
+  </object>
+
+  <!-- Lesser prismacaw -->
+  <object Name="Gearlink_FORGETTABLE_LesserPrismacaw" Inherits="Gearlink_FORGETTABLE_Prismacaw">
+    <stat Name="AV" Value="5" />
+    <stat Name="Level" Value="16" />
+    <stat Name="Hitpoints" Value="40" />
+    <stat Name="Strength" Boost="1" />
+    <inventoryobject Blueprint="Gearlink_FORGETTABLE_LesserPrismacaw_Beak" Number="1" />
+    <part
+      Name="AnimatedMaterialGeneric"
+      AnimationLength="350"
+      ColorStringAnimationFrames="0=&amp;r,50=&amp;R,100=&amp;W,150=&amp;G,200=&amp;B,250=&amp;b,300=&amp;m"
+    />
+    <tag Name="DynamicObjectsTable:Jungle_Creatures" />
+    <tag Name="DynamicObjectsTable:Ruins_Creatures" />  
+  </object>
+
+  <object Name="Gearlink_FORGETTABLE_LesserPrismacaw_Beak" Inherits="NaturalWeapon">
+    <part Name="Render" DisplayName="crushing beak" Tile="Creatures/natural-weapon-beak.bmp" ColorString="&amp;w"/>
+    <part Name="DisplayNameColor" Color="&amp;Y" />
+    <part Name="MeleeWeapon" BaseDamage="2d3" Skill="Axe" Stat="Strength" Slot="Face" />
+  </object>
+
+  <!-- Greater prismacaw -->
+  <object Name="Gearlink_FORGETTABLE_GreaterPrismacaw" Inherits="Gearlink_FORGETTABLE_Prismacaw">
+    <part Name="Render" DisplayName="ancient prismacaw" Tile="creatures/GreaterPrismacaw.png" />
+    <part Name="Description" Short="Ornamentation's burden has stooped =pronouns.possessive= back and clipped =pronouns.possessive= wings, but oh how =pronouns.subjective= =verb:shine:afterpronoun=. Uncounted molts have pulled =pronouns.possessive= plumage to light's furthest extremes. The salt sun shatters into every point of the spectrum on =pronouns.possessive= feathers and wreaths them in an iridescent corona. Eyes delight in the feast, even as the morsels disintegrate at memory's touch.
+" />
+    <stat Name="AV" Value="8" />
+    <stat Name="Level" Value="32" />
+    <stat Name="Hitpoints" Value="90" />
+    <stat Name="Strength" Boost="2" />
+    <stat Name="Toughness" Boost="1" />
+    <part Name="RefractLight" Chance="100" />
+    <skill Name="Axe_Dismember" />
+    <inventoryobject Blueprint="Gearlink_FORGETTABLE_GreaterPrismacaw_Beak" Number="1" />
+    <part
+      Name="AnimatedMaterialGeneric"
+      AnimationLength="650"
+      ColorStringAnimationFrames="0=&amp;r,50=&amp;R,100=&amp;o,150=&amp;O,200=&amp;W,250=&amp;g,300=&amp;G,350=&amp;b,400=&amp;B,450=&amp;c,500=&amp;C,550=&amp;m,600=&amp;M"
+    />
+    <tag Name="DynamicObjectsTable:DeepJungle_Creatures" />
+    <tag Name="DynamicObjectsTable:BaroqueRuins_Creatures" />
+  </object>
+
+  <object Name="Gearlink_FORGETTABLE_GreaterPrismacaw_Beak" Inherits="NaturalWeapon">
+    <part Name="Render" DisplayName="crushing beak" Tile="Creatures/natural-weapon-beak.bmp" ColorString="&amp;w"/>
+    <part Name="DisplayNameColor" Color="&amp;Y" />
+    <part Name="MeleeWeapon" BaseDamage="5d3" Skill="Axe" Stat="Strength" Slot="Face" />
+  </object>
+</objects>
