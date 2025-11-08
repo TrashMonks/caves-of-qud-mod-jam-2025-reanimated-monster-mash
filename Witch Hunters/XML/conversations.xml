@@ -132,9 +132,9 @@
 	
 		<node ID="Start" Load="Merge">
 		
-			<choice Target="AricMJM_HunterQuestStart" IfNotHaveQuest="Hunting the Hunter">You seem troubled, Warden.</choice>
-			<choice Target="AricMJM_HunterInfo" IfHaveQuest="Hunting the Hunter">Can you tell me about the Witch Hunters?</choice>
-			<choice Target="AricMJM_WardenReward" IfFinishedQuest="Hunting the Hunter">I have slain the Witch Hunter General.</choice>
+			<choice Target="AricMJM_HunterQuestStart" IfNotHaveQuest="AricMJM_Hunting the Hunter">You seem troubled, Warden.</choice>
+			<choice Target="AricMJM_HunterInfo" IfHaveQuest="AricMJM_Hunting the Hunter">Can you tell me about the Witch Hunters?</choice>
+			<choice Target="AricMJM_WardenReward" IfFinishedQuest="AricMJM_Hunting the Hunter">I have slain the Witch Hunter General.</choice>
 		</node>
 		
 		<node ID="AricMJM_HunterQuestStart">
@@ -160,7 +160,7 @@
 			
 			What's worse is that the man hunting our woodsprog friend is no mere press-ganged recruit, but a true believer, from a noble family that was able to fund injectors that significantly reduced his risk, meaning he lacks any of the weaknesses of his allies. And there is nothing more dangerous than an evil man, convinced that what he does is right. </text>
 		
-			<choice Target="AricMJM_WhereQolohish" IfNotHaveQuest="Hunting the Hunter"> I'd be happy to speak to this person, where might I find them?</choice>
+			<choice Target="AricMJM_WhereQolohish" IfNotHaveQuest="AricMJM_Hunting the Hunter"> I'd be happy to speak to this person, where might I find them?</choice>
 			<choice Target="AricMJM_WhyMe"> If they are as dangerous as you say, why not hunt them yourself?</choice>
 			<choice Target="End"> Let us discuss this later. Live and drink, Une.</choice>
 		</node>
@@ -168,7 +168,7 @@
 		<node ID="AricMJM_WhyMe">
 			<text>Would that I could, but I am required here. With Templar active so close to the Freehold, my responsibility as a protector has never been so necessary. Should an attack fall whilst I were away, my conscience could not bear it. And so I ask you, will you assist us? </text>
 		
-			<choice Target="AricMJM_WhereQolohish" IfNotHaveQuest="Hunting the Hunter"> I'd be happy to speak to this person, where might I find them?</choice>
+			<choice Target="AricMJM_WhereQolohish" IfNotHaveQuest="AricMJM_Hunting the Hunter"> I'd be happy to speak to this person, where might I find them?</choice>
 			<choice Target="AricMJM_WhichHunter"> Tell me more about these Witch Hunters.</choice>
 			<choice Target="End"> Let us discuss this later. Live and drink, Une.</choice>
 		</node>
@@ -211,23 +211,23 @@
 	
 	<conversation ID="AricMJM_Qolohish">
 	
-		<node ID="Start" IfNotHaveQuest="Hunting the Hunter">
+		<node ID="Start" IfNotHaveQuest="AricMJM_Hunting the Hunter">
 			<text>Branches part for you, tallfolk. I am Qolohish. </text>
 			
 			<choice Target="AricMJM_intro"> You seem troubled.</choice>
 			<choice Target="End"> Live and drink, Qolohish.</choice>
 		</node>
 		
-		<node ID="Start" IfHaveQuest="Hunting the Hunter">
+		<node ID="Start" IfHaveQuest="AricMJM_Hunting the Hunter">
 			<text>Friend, do you bring news of my hunter's fate?</text>
 			
 			<choice Target="AricMJM_YourStory">Tell me again of how you came to be here. </choice>
-			<choice Target="AricMJM_Victory" IfNotFinishedQuest="Hunting the Hunter" IfFinishedQuestStep="Hunting the Hunter~Slay the Witch-Hunter General">I do. The Witch Hunter is no more. </choice>
+			<choice Target="AricMJM_Victory" IfNotFinishedQuest="AricMJM_Hunting the Hunter" IfFinishedQuestStep="AricMJM_Hunting the Hunter~Slay the Witch-Hunter General">I do. The Witch Hunter is no more. </choice>
 			<choice Target="End"> Live and drink, Qolohish.</choice>
 		
 		</node>
 		
-		<node ID="Start" IfFinishedQuest="Hunting the Hunter">
+		<node ID="Start" IfFinishedQuest="AricMJM_Hunting the Hunter">
 			<text>Sower's eye pass over you, friend.</text>
 			
 			<choice Target="AricMJM__WhatDoNow"> With the Witch Hunter gone, what will you do now?</choice>
@@ -240,7 +240,7 @@
 			
 			<choice Target="AricMJM_QoloWhichHunter"> Tell me more about this hunter.</choice>
 			<choice Target="AricMJM_YourStory">They sound like a dangerous foe, how did you come to earn their ire? </choice>
-			<choice Target="AricMJM_IHelp" IfNotHaveQuest="Hunting the Hunter" StartQuest="Hunting the Hunter">The Templar are no friends of mine, do you know where this hunter might be? I would gladly free you from his predation.</choice>
+			<choice Target="AricMJM_IHelp" IfNotHaveQuest="AricMJM_Hunting the Hunter" StartQuest="AricMJM_Hunting the Hunter">The Templar are no friends of mine, do you know where this hunter might be? I would gladly free you from his predation.</choice>
 			<choice Target="End"> Live and drink, Qolohish.</choice>
 		</node>
 		
@@ -248,7 +248,7 @@
 			<text>I know little. Know that he is very cruel. Very Powerful. Spoke with the Warden Une. They know. Speak to them? </text>
 			
 			<choice Target="AricMJM_YourStory">Regardless, they sound like a dangerous foe. How did you come to earn their ire? </choice>
-			<choice Target="AricMJM_IHelp" IfNotHaveQuest="Hunting the Hunter" StartQuest="Hunting the Hunter">The Templar are no friends of mine, do you know where this hunter might be? I would gladly free you from his predation.</choice>
+			<choice Target="AricMJM_IHelp" IfNotHaveQuest="AricMJM_Hunting the Hunter" StartQuest="AricMJM_Hunting the Hunter">The Templar are no friends of mine, do you know where this hunter might be? I would gladly free you from his predation.</choice>
 			<choice Target="End"> I shall, live and drink, Qolohish.</choice>
 		</node>
 		
@@ -256,7 +256,7 @@
 		<text>Is a long tale. Terrible pain, but I shall share it. I was once shaman to a Minyan, our community. I had a vision, as a young sprog. Drew me to an old place. There we found the base for the Godhed. For many years, we accompanied it, teaching it our ways. So that we might bestow it our mask. I know not how the hunter heard of me. Maybe he had not. But as we fled the Sowers' eye, the hunter fell upon us both. He burned the Sower shaman, and turned on us. He wrecked the holy godhed. Slaughtered the Minyan. Burned the Sowers. Only I escaped, and he followed me for many days. As I fled, the trees thinned and were replaced by the great eastern water. Still he came for me. I crossed the water, and he did follow. Then into the great coral I fled, before collapsing at the gates of this place. Saw me come here, I do not know why he has not tried to take me. But he will. He always follows. </text>
 			
 			<choice Target="AricMJM_YourStory">Regardless, they sound like a dangerous foe. How did you come to earn their ire? </choice>
-			<choice Target="AricMJM_IHelp" IfNotHaveQuest="Hunting the Hunter" StartQuest="Hunting the Hunter">I am sorry to hear how you have suffered. The Templar are no friends of mine, do you know where this hunter might be now? I would gladly free you from his predation.</choice>
+			<choice Target="AricMJM_IHelp" IfNotHaveQuest="AricMJM_Hunting the Hunter" StartQuest="AricMJM_Hunting the Hunter">I am sorry to hear how you have suffered. The Templar are no friends of mine, do you know where this hunter might be now? I would gladly free you from his predation.</choice>
 			<choice Target="End"> I am sorry that you suffered so. Live and drink, Qolohish.</choice>
 		</node>
 		
@@ -278,14 +278,14 @@
 			<text>A great weight is lifted. My Minyan and our Godhed are gone. But no more will suffer. You are friend to tribe. Take my mask as a token of my thanks. Perhaps I will make another. Perhaps I will not. Wear it, and all the tribe shall know you as friend.</text>
 			
 			
-			<choice Target="End" FinishQuest="Hunting the Hunter" GiveItem="AricMJM_Minyan_Mask">Thank you, Qolohish. May their memories bless you.</choice>
+			<choice Target="End" FinishQuest="AricMJM_Hunting the Hunter" GiveItem="AricMJM_Minyan_Mask">Thank you, Qolohish. May their memories bless you.</choice>
 
 		</node>
 		
 		<node ID="AricMJM__WhatDoNow">
 			<text>I do not know. Perhaps I will return west across the eastern water to the canopies. Find new Minyan. But have grown fond of this place and it's people. Perhaps I will stay a while.</text>
 			
-			<choice FinishQuest="Hunting the Hunter" Target="End">I am glad to hear it. I hope to see you again. Live and drink.</choice>
+			<choice FinishQuest="AricMJM_Hunting the Hunter" Target="End">I am glad to hear it. I hope to see you again. Live and drink.</choice>
 
 		</node>
 	

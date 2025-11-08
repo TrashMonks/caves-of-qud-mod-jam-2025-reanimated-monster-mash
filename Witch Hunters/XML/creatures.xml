@@ -264,7 +264,7 @@
 		<tag Name="Tier" Value="7" />
 		<tag Name="ExcludeFromDynamicEncounters"/>
 		<tag Name="NamingTag" Value="WitchHunter" />
-		<part Name="FinishQuestStepWhenSlain" Quest="Hunting the Hunter" Step="Slay the Witch-Hunter General"  GameState="Aric_WHCaptain_Slain"/>
+		<part Name="FinishQuestStepWhenSlain" Quest="AricMJM_Hunting the Hunter" Step="Slay the Witch-Hunter General"  GameState="Aric_WHCaptain_Slain"/>
 		<removetag Name="InventoryPopulationTable" />
 	</object>
 	
