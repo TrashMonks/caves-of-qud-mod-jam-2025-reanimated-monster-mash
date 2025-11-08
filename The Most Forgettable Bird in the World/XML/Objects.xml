@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+
+  <object Name="Gearlink_FORGETTABLE_PigskinJournal" Inherits="Book">
+    <part Name="Render" DisplayName="{{W|pigskin journal}}" ColorString="&amp;w" RenderString="=" RenderLayer="5" Tile="Items/sw_book_2.bmp" TileColor="&amp;w" DetailColor="r" />
+    <part Name="Description" Short="A fistfull of parchment bound in thick boar's hide." />
+    <part Name="Book" ID="Gearlink_FORGETTABLE_PigskinJournal" />
+    <part Name="Commerce" Value="1" />
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+    <xtagGrammar Proper="false" />
+  </object>
+
+</objects>
+
+

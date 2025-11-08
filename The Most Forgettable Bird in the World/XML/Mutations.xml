@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mutations Hidden="true" ExcludeFromPool="true">
+  <category Name="Mental" Load="Merge">
+    <mutation Name="Forgettable" Cost="1" Class="Gearlink_FORGETTABLE_ObjectImpermanence" BearerDescription="the forgettable" Tile="Mutations/invisibility.png" />
+  </category>
+</mutations>
+
