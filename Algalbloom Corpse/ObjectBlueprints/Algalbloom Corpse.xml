@@ -7,13 +7,6 @@
     <part Name="Corpse" CorpseChance="90" CorpseBlueprint="Algae Corpse" />
     <part Name="LiquidBurst" EelChance="0" Liquid="AlgaeRotPool" />
 
-  <object Name="Algae Corpse" Inherits="Humanoid Corpse">    
-    <part Name="Render" DisplayName="rotted corpse" />        
-    <part Name="Physics" Weight="60" />    
-    <tag Name="Tier" Value="3" />    
-  </object>
-
-
     <stat Name="Hitpoints" sValue="72" />
     <stat Name="Level" sValue="32" />
     <stat Name="DV" sValue="2" />
@@ -54,5 +47,11 @@
     <tag Name="Role" Value="Brute" />
     <tag Name="DynamicObjectsTable:PalladiumReef_Creatures" />
     <tag Name="DynamicObjectsTable:LakeHinnom_Creatures" />
+  </object>
+
+  <object Name="Algae Corpse" Inherits="Humanoid Corpse">
+    <part Name="Render" DisplayName="rotted corpse" />
+    <part Name="Physics" Weight="60" />
+    <tag Name="Tier" Value="3" />
   </object>
 </objects>
