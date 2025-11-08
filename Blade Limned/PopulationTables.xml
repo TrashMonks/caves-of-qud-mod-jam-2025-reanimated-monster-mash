@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<populations>
+  <!-- Item tables -->
+  <population Name="NightcapNeal_Blades_Carbide">
+    <group Name="NightcapNeal_Blades_Carbide" Style="pickone">
+      <object Blueprint="Dagger3" />
+      <object Blueprint="Long Sword3" />
+    </group>
+  </population>
+  <population Name="NightcapNeal_Blades_Crysteel">
+    <group Name="NightcapNeal_Blades_Crysteel" Style="pickone">
+      <object Blueprint="Dagger6" />
+      <object Blueprint="Long Sword6" />
+    </group>
+  </population>
+  <population Name="NightcapNeal_Blades_Zetachrome">
+    <group Name="NightcapNeal_Blades_Zetachrome" Style="pickone">
+      <object Blueprint="Dagger8" />
+      <object Blueprint="Long Sword8" />
+    </group>
+  </population>
+
+  <!-- Creature population tables -->
+  <population Name="JungleZoneGlobals" Load="Merge">
+    <group Name="CreatureEncounter" Load="Merge">
+      <group Name="Creatures" Load="Merge">
+        <object Chance="3" Number="1" Blueprint="NightcapNeal_BladeLimned_Carbide" />
+      </group>
+    </group>
+  </population>
+  <population Name="BethesdaSusaStandardWard" Load="Merge">
+    <object Chance="5" Number="1" Blueprint="NightcapNeal_BladeLimned_Carbide" />
+  </population>
+  <population Name="BethesdaSusaRuinedWard" Load="Merge">
+    <object Chance="10" Number="1" Blueprint="NightcapNeal_BladeLimned_Carbide" />
+  </population>
+  <population Name="RuinsZoneGlobals-Creatures" Load="Merge">
+    <object Chance="2" Number="1" Blueprint="NightcapNeal_BladeLimned_Carbide" />
+  </population>
+
+  <population Name="DeepJungleZoneGlobals-Creatures" Load="Merge">
+    <object Chance="3" Number="1" Blueprint="NightcapNeal_BladeLimned_Crysteel" />
+  </population>
+  <population Name="BaroqueRuinsZoneGlobals-Creatures" Load="Merge">
+    <object Chance="3" Number="1" Blueprint="NightcapNeal_BladeLimned_Crysteel" />
+  </population>
+  <population Name="LairOwners_BaroqueRuins" Load="Merge">
+    <group Name="Options" Load="Merge">
+      <object Blueprint="NightcapNeal_BladeLimned_Crysteel" />
+    </group>
+  </population>
+
+  <population Name="MoonStairZoneGlobals-Creatures" Load="Merge">
+    <object Chance="1" Number="1" Blueprint="NightcapNeal_BladeLimned_Zetachrome" />
+  </population>
+</populations>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+  <object Name="NightcapNeal_BladeLimned" Inherits="BaseOoze">
+    <tag Name="BaseObject" Value="*noinherit" />
+
+    <part Name="Description" Short="Glints of light orbit a mass of limb-weapons at apoapsis and periapsis. The quivering aggregate at barycenter rises out of the primordial soup, tool use within its cosmological grasp." />
+    <part Name="Render" DisplayName="blade limned" Tile="NightcapNeal_BladeLimned/blade_limned2.png" ColorString="&amp;O" DetailColor="Y" />
+
+    <part Name="Brain" Hostile="true" />
+
+    <skill Name="ShortBlades" />
+    <skill Name="LongBlades" />
+    <skill Name="Multiweapon_Fighting" />
+
+    <stat Name="Agility" sValue="6,2d2,(t)d2" />
+  </object>
+
+  <!-- Carbide - Tier 3 -->
+  <object Name="NightcapNeal_BladeLimned_Carbide" Inherits="NightcapNeal_BladeLimned">
+    <part Name="Render" DisplayName="{{b|blade}} limned" Tile="NightcapNeal_BladeLimned/blade_limned.png" ColorString="&amp;y" DetailColor="b" />
+    <inventoryobject Blueprint="@NightcapNeal_Blades_Carbide" Number="4" />
+    <stat Name="Hitpoints" Value="50" />
+    <tag Name="Tier" Value="3" />
+  </object>
+
+  <!-- Crysteel - Tier 5 -->
+  <object Name="NightcapNeal_BladeLimned_Crysteel" Inherits="NightcapNeal_BladeLimned">
+    <part Name="Render" DisplayName="{{G|blade}} limned" Tile="NightcapNeal_BladeLimned/blade_limned.png" ColorString="&amp;y" DetailColor="G" />
+    <inventoryobject Blueprint="@NightcapNeal_Blades_Crysteel" Number="4" />
+    <stat Name="Hitpoints" Value="150" />
+    <skill Name="LongBladesLunge" />
+    <tag Name="Tier" Value="5" />
+  </object>
+
+  <!-- Zetachrome - Tier 8 -->
+  <object Name="NightcapNeal_BladeLimned_Zetachrome" Inherits="NightcapNeal_BladeLimned">
+    <part Name="Render" DisplayName="{{M|blade}} limned" Tile="NightcapNeal_BladeLimned/blade_limned.png" ColorString="&amp;y" DetailColor="M" />
+    <inventoryobject Blueprint="@NightcapNeal_Blades_Zetachrome" Number="4" />
+    <stat Name="Hitpoints" Value="400" />
+    <skill Name="Tactics_Charge" />
+    <skill Name="LongBladesLunge" />
+    <skill Name="ShortBlades_Bloodletter" />
+    <skill Name="ShortBlades_Jab" />
+    <stat Name="Strength" Boost="4" />
+    <tag Name="Tier" Value="8" />
+  </object>
+</objects>
