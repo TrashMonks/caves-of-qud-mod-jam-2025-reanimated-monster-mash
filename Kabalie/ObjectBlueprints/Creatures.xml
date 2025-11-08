@@ -19,7 +19,7 @@
 		<skill Name="Skirmishing_Skirmish" />
 		<part Name="Corpse" CorpseChance="0" />
 			<part Name="DropOnDeath" Blueprints="Random Stone Statue" />
-		<inventoryobject Blueprint="Gargoyle_Bite" Number="1" />
+		<inventoryobject Blueprint="Monosophy_Kabalie_Gargoyle_Bite" Number="1" />
 		<!--mutation Name="Wings" Level="5"/-->
 		<xtagGrammar Proper="true" />
 	</object>
