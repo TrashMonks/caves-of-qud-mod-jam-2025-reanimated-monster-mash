@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<populations>
+  <!--Modified tables-->
+   <population Name="Tier5CavePopulation" Load="Merge">
+    <group Name="Contents" Load="Merge">  <!-- Add the Load="Merge" attribute to each nested group, mimicking the base game's PopulationTables.xml structure -->
+      <object Weight="10" Number="2" Blueprint="Monosophy_Kabalie_OverloadedGargoyle" /> <!-- Insert your new item! -->
+    </group>
+  </population>
+  <population Name="Tier6CavePopulation" Load="Merge">
+    <group Name="Contents" Load="Merge">  <!-- Add the Load="Merge" attribute to each nested group, mimicking the base game's PopulationTables.xml structure -->
+      <object Weight="10" Number="4" Blueprint="Monosophy_Kabalie_OverloadedGargoyle" /> <!-- Insert your new item! -->
+    </group>
+  </population>
+  <population Name="Tier7CavePopulation" Load="Merge">
+    <group Name="Contents" Load="Merge">  <!-- Add the Load="Merge" attribute to each nested group, mimicking the base game's PopulationTables.xml structure -->
+      <object Weight="10" Number="6" Blueprint="Monosophy_Kabalie_OverloadedGargoyle" /> <!-- Insert your new item! -->
+    </group>
+  </population>
+  <population Name="Tier8CavePopulation" Load="Merge">
+    <group Name="Contents" Load="Merge">  <!-- Add the Load="Merge" attribute to each nested group, mimicking the base game's PopulationTables.xml structure -->
+      <object Weight="10" Number="4" Blueprint="Monosophy_Kabalie_OverloadedGargoyle" /> <!-- Insert your new item! -->
+    </group>
+  </population>
+  <population Name="BaroqueRuinsZoneGlobals-Creatures" Load="Merge">
+    <group Name="Contents" Load="Merge">  <!-- Add the Load="Merge" attribute to each nested group, mimicking the base game's PopulationTables.xml structure -->
+      <object Weight="10" Number="4" Blueprint="Monosophy_Kabalie_OverloadedGargoyle" /> <!-- Insert your new item! -->
+    </group>
+  </population>
+  <population Name="Golgotha Creatures" Load="Merge">
+    <group Name="Contents" Load="Merge">  <!-- Add the Load="Merge" attribute to each nested group, mimicking the base game's PopulationTables.xml structure -->
+      <object Weight="1" Number="1" Blueprint="Monosophy_Kabalie_OverloadedGargoyle" /> <!-- Insert your new item! -->
+    </group>
+  </population>
+</populations>

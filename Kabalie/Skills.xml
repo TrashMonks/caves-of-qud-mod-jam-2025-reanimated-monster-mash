@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<skills>
+
+  <skill Name="Skirmishing" Class="Skirmishing" Hidden="true" Description="You have been introduced to the hidden path of the horse." Cost="0" Attribute="Agility" Snippet="acrobatics" Tile="Abilities/sw_skill_tactics.png" Foreground="y" Detail="G">
+  <power Name="Skirmish" Cost="0" Attribute="Agility" Minimum="10" Class="Skirmishing_Skirmish" Snippet="horse" Description="Leap to a threatened space." Tile="Abilities/sw_skill_tactics.png" Foreground="K" Detail="m"/>
+  </skill>
+</skills>
