@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+	<object Name="Monosophy_Kabalie_OverloadedGargoyle" Inherits="BaseHumanoid">
+		<part Name="Body" Anatomy="SlugWithHands" />
+		<part Name="Description" Short="Oozing, trembling. The Gargoyle's purpose is to redirect water and sin from buildings. Eventually, leaves clog the spout in its head, preventing the flow of both. The plant matter decays, the three mix, and the melange animates the statue." />
+		<part Name="Render" DisplayName="Kabalie" Tile="Monosophy_Kabalie/OverloadedGargoyle.png" ColorString="&amp;y" DetailColor="K" />
+		<part Name="Brain" Factions="Oozes-100,Equines-100"/>
+		<stat Name="Level" Value="17" />
+		<stat Name="Hitpoints" Value="25" />
+		<stat Name="AV" Value="16" />
+		<stat Name="DV" Value="0" />
+		<stat Name="Toughness" Boost="2" />
+		<stat Name="HeatResistance" Value="50" />
+		<stat Name="ColdResistance" Value="50" />
+		<stat Name="AcidResistance" Value="75" />
+		<stat Name="MoveSpeed" sValue="150" />
+		<mutation Name="SlogGlands" />
+		<part Name="LiquidBurst" EelChance="25" Liquid="OozePuddle" />
+		<skill Name="Skirmishing_Skirmish" />
+		<part Name="Corpse" CorpseChance="0" />
+			<part Name="DropOnDeath" Blueprints="Random Stone Statue" />
+		<inventoryobject Blueprint="Gargoyle_Bite" Number="1" />
+		<!--mutation Name="Wings" Level="5"/-->
+		<xtagGrammar Proper="true" />
+	</object>
+	<object Name="Monosophy_Kabalie_Gargoyle_Bite" Inherits="Bite">
+		<part Name="Render" DisplayName="{{K|oozing spout}}" Tile="Creatures/natural-weapon-pseudopod.bmp" ColorString="&amp;K" />
+		<part Name="MeleeWeapon" BaseDamage="3d3" Skill="Cudgel" />
+		<part Name="DiseaseOnHit" Chance="100" />
+	</object>
+</objects>
