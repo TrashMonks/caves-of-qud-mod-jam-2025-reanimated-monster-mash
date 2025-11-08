@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<worlds>
+	<world Name="JoppaWorld" Load="Merge">
+
+		<cell Name="TheRatDen" Inherits="DesertCanyon" ApplyTo="Hazzary453_TRK_RatDen" Mutable="false">
+			<zone Level="10" x="1" y="1" Name="The Rat Den" ProperName="true" IncludeStratumInZoneDisplay="false" HasWeather="true" WindSpeed="0-60" WindDirections="N,NW,NW,W,W,SW,S,SE" WindDuration="50-3000">
+				<map FileName="Hazzary453_RatDen.rpm"></map>
+			</zone>
+		</cell>
+
+	</world>
+</worlds>

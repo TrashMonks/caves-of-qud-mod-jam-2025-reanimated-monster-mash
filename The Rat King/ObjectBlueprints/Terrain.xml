@@ -1,0 +1,11 @@
+<objects>
+  
+  <object Name="Hazzary453_TRK_RatDen" Inherits="Terrain">
+    <part Name="Render" DisplayName="The Rat Den" Tile="Terrain/sw_ruins6.bmp" ColorString="&amp;w" DetailColor="w"/>
+    <part Name="Description" Short="Lost in the underbrush sits a boastful encampment of rodent architecture, barely discernible from the untouched wilds around them."></part>
+    <tag Name="NoBiomes" Value="1"></tag>
+    <tag Name="OverlayColor" Value="&amp;W"></tag>
+  </object>
+
+
+</objects>
