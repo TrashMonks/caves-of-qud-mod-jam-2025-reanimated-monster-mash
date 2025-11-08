@@ -1,0 +1,9 @@
+{
+    "id": "NightcapNeal_BladeLimned",
+    "title": "Blade Limned",
+    "description": "Adds the new Blade Limned creature to Caves of Qud.",
+    "version": "0.1.3",
+    "author": "Nightcap Neal",
+    "tags": "Creature",
+    "PreviewImage": "blade_limned_preview.png"
+}
