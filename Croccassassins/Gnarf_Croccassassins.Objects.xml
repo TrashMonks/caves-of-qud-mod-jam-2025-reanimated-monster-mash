@@ -1,0 +1,36 @@
+<objects>
+    <object Name="Croccasins" Load="Merge">
+        <part Name="Gnarf_Croccassassin_Spawner" />
+    </object>
+
+    <object Name="Gnarf_Croccassassin" Inherits="Croc">
+        <part Name="ConversationScript" ConversationID="Gnarf_Croccassassin" />
+        <stat Name="Level" Value="6" />
+        <skill Name="Axe" />
+        <skill Name="Axe_Expertise" />
+        <skill Name="Axe_Dismember" />
+        <part Name="Render" DisplayName="{{crochide|croccas{{K|sass}}in}}" />
+    </object>
+
+    <object Name="Gnarf_Lurking Croc" Inherits="Croccasins">
+        <removepart Name="Gnarf_Croccassassin_Spawner" />
+        <part Name="Render" DisplayName="{{crochide|croccas{{K|sass}}in}}" />
+        <part Name="Honorifics" Primary="{{K|lurking}}" />
+        <part Name="MeleeWeapon" MaxStrengthBonus="4" BaseDamage="1d4" Skill="Axe" Stat="Strength" Attributes="Bite" Slot="Feet" />
+        <part Name="Physicis" Category="Quest Item" />
+        <tag Name="ExcludeFromDynamicEncounters" />
+    </object>
+
+    <object Name="Gnarf_Shoe Rack" Inherits="Weapon Rack">
+        <part Name="Render" DisplayName="shoe rack" Tile="gnarf_shoerack.png" ColorString="&amp;c" DetailColor="W" />
+        <tag Name="InventoryPopulationTable" Value="Gnarf_ShoeRack" />
+        <part Name="Description" Short="Wooden and chrome poles let shoes rest peacefully." />
+        <tag Name="Tier" Value="2" />
+        <tag Name="NoSparkingQuest" />
+        <tag Name="DynamicObjectsTable:Chests" />
+        <tag Name="HangingSupport" />
+		<tag Name="FullDetailColor" Value="W" />
+		<tag Name="EmptyDetailColor" Value="k" />
+    </object>
+
+</objects>

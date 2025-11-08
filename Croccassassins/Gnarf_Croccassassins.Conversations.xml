@@ -1,0 +1,43 @@
+<conversations>
+    <conversation ID="Gnarf_Croccassassin" Inherits="Reptiles">
+        <start ID="Start" Priority="2">
+            <text>
+{{emote|*sighs*}}
+I've been waiting many moons for a "snap jaw" to find me, why did you disturb my hiding place?!
+            </text>
+            <choice ID="JoinPartyChoice" IfReputationAtLeast="Loved">
+                <text>I would ask you to join me.</text>
+                <part Name="WaterRitualJoinParty" />
+            </choice>
+            <choice Target="StartQuest" IfNotHaveQuest="Gnarf_Croccassassin_Quest" IfNotFinishedQuest="Gnarf_Croccassassin_Quest">Can I help you?</choice>
+            <choice Target="End">...</choice>
+        </start>
+        <node ID="StartQuest">
+            <text>
+Have you heard of these dispicable creatures named "Snap Jaws"?!
+
+Who do they think they are? We are the true "snap jaw" {{emote|*chomps*}}.
+
+Will you help me in our quest to remove them from the equation and claim our true name?
+            </text>
+            <choice Target="Start">Uhhh.... nevermind.</choice>
+            <choice Target="TookQuest">
+                Of course, I hate those "snap jaws" too!
+            </choice>
+        </node>
+        <node ID="TookQuest">
+            <text>
+Many thanks! I will wait in your bag until you travel to the snapjaw fort, located =directions=.
+
+Leave me upon the {{c|=shoerack=}} and I will forever be greatful.
+
+Let's teach those "snap jaws!"
+            </text>
+            <part Name="Gnarf_Croccassassin_Quest_Giver" />
+            <choice Target="End" StartQuest="Gnarf_Croccassassin_Quest" CompleteQuestStep="Gnarf_Croccassassin_Quest~Find an assassin" GiveItem="Gnarf_Lurking Croc" >
+                <text>{{emote|*Take the {{crochide|croc}}*}}</text>
+                <part Name="Gnarf_Croccassassin_Remove_Self" />
+            </choice>
+        </node>
+    </conversation>
+</conversations>

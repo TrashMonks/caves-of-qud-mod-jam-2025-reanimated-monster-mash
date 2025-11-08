@@ -1,0 +1,16 @@
+<quests>
+  <!-- System="ChompingToesSystem" -->
+  <quest ID="Gnarf_Croccassassin_Quest" Name="Snap Jaws and Chomp Toes" Level="10"
+    Factions="Unshelled Reptiles"
+    Reputation="250">
+    <step Name="Find an assassin" XP="50">
+      <text>You've found a croc assassin with a specific target in mind.</text>
+    </step>
+    <step Name="Find the target" XP="100">
+      <text>You've found the correct snapjaw settlement located =directions=.</text>
+    </step>
+    <step Name="Set the trap" XP="1000">
+      <text>You've left the croc assassin to spring its trap.</text>
+    </step>
+  </quest>
+</quests>
