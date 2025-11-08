@@ -1,0 +1,35 @@
+<objects>
+    <object Name="HDBrownie_Base Louse" Inherits="BaseInsect">
+        <tag Name="BaseObject" Value="*noinherit" />
+        <part Name="Brain" Calm="True" />
+        <part Name="HDBrownie_FixedWeight" Weight="5" />
+        <stat Name="Hitpoints" Value="4" />
+        <tag Name="ExcludeFromVillagePopulations" />
+        <tag Name="NoLibrarian" />
+    </object>
+
+    <object Name="HDBrownie_Table Louse" Inherits="HDBrownie_Base Louse">
+        <part Name="Render" DisplayName="table louse" Tile="HDBrownie/table louse.png" ColorString="&amp;r" DetailColor="K" />
+        <part Name="Description"
+            Short="Six skittering legs transport a hard, segmented body with a bulbous rear. Keen mandibles capable of cutting through nearly anything are nonetheless flatly uninterested in the organic; in its furnishings, however, =pronouns.subjective= =verb:find:afterpronoun= =pronouns.possessive= paradise." />
+        <part Name="Swarmer" />
+        <part Name="HDBrownie_AITableLouse" />
+        <inventoryobject Blueprint="HDBrownie_Louse Bite" />
+    </object>
+
+    <object Name="HDBrownie_Drink Louse" Inherits="HDBrownie_Base Louse">
+        <part Name="Render" DisplayName="drink louse" Tile="HDBrownie/drink louse.png" ColorString="&amp;r" DetailColor="K" />
+        <part Name="Description"
+            Short="Six scuttling legs transport a soft, segmented body with a distended rear. Clumsy mandibles unsuited to breaking skin nonetheless suffice to sustain the very embodiment of &quot;live and drink&quot;." />
+        <part Name="Cursed" />
+        <part Name="HDBrownie_AIDrinkLouse" />
+        <part Name="HDBrownie_HungerOnEquip" EveryNTurns="10" />
+    </object>
+
+    <object Name="HDBrownie_Louse Bite" Inherits="Bite" />
+
+    <object Name="HDBrownie_Louse Book" Inherits="Book">
+        <part Name="Book" ID="HDBrownie_Louse Book" />
+        <tag Name="ExcludeFromDynamicEncounters" />
+    </object>
+</objects>
