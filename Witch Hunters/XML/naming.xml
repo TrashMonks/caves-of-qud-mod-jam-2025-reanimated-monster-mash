@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<naming>
+
+  <namestyles>
+  
+    <namestyle Name="AricMJM_WitchHunter">
+      <scopes>
+        <scope Name="Main" Type="Title" Special="Hero" Faction="Templar" Tag="WitchHunter" Priority="300" Combine="false" />
+      </scopes>
+      <templates>
+        <template Name="Witch-Hunter General of Oudin" />
+      </templates>
+    </namestyle>
+	
+	
+	</namestyles>
+	
+</naming>

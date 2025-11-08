@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map
+  Width="80"
+  Height="25">
+  <cell
+    X="38"
+    Y="9">
+    <object Name="AricMJM_Naphtaali_Esper"></object>
+  </cell>
+</Map>

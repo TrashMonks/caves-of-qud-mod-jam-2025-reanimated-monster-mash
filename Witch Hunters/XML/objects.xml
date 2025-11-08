@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+  <object Name="AricMJM_MolecularAcidPuddle" Inherits="Water">
+    <part Name="LiquidVolume" MaxVolume="-1" Volume="500" InitialLiquid="molecular acid-1000" />
+    <part Name="Physics" FreezeTemperature="-9999" BrittleTemperature="-9999" FlameTemperature="350" VaporTemperature="9999" />
+  </object>
+  
+  <!-- Witch Hunters -->
+  
+  <!-- Reward -->
+  
+  	<object Name="AricMJM_Minyan_Mask" Inherits="BaseMask">
+		<part Name="Armor" Ego="2" AV="0" DV="2" WornOn="Face" />
+		<part Name="AddsRep" Faction="Naphtaali" Value="200" />
+		<part Name="Render" DisplayName="Naphtaali Minyan Mask" Tile="AricMJM_MinyanMask.png" DetailColor="R" ColorString="&amp;w" />
+		<part Name="Description" Short="Strips of wood were lovingly layered with vinesap to create this mask, which shows acceptance into the Napthaali tribe. Over the years worn by it's previous owner, some of their latent psychic prescience has inpregnated the wood."/>
+		<part Name="Commerce" Value="8" />
+		<part Name="ModImprovedClairvoyance"/>
+		<part Name="GasMask" Power="4" />
+		
+	</object>
+  
+  
+  
+  <!-- Witch hunter gear -->
+
+	<object Name="AricMJM_Handcannon" Inherits= "Borderlands Revolver">
+	
+		<part Name="Render" DisplayName="Hand Cannon" Tile="arichandcannon.png" ColorString="&amp;y" />
+		<part Name="Physics" UsesTwoSlots="true" Weight="5" />
+		<part Name="Commerce" Value="150" />
+		<part Name="MissileWeapon" AnimationDelay="0" Skill="Pistol" ShotsPerAction="1" AmmoPerAction="1" ShotsPerAnimation="1" WeaponAccuracy="3" RangeIncrement="6" />
+		<part Name="MagazineAmmoLoader" ProjectileObject="AricProjectileHandcannonShell" AmmoPart="AmmoSlug" MaxAmmo="6" />
+		<part Name="Description" Short="Engraved with the tales of legendary warriors of Oudin, these handcannon are the chosen weapon of the Templar Witch Hunters, warriors who are made to become that which they hate, to better combat them." />
+		<part Name="Metal" />
+		<part Name="TinkerItem" Bits="005" CanDisassemble="false" CanBuild="false" />
+		<tag Name="ExcludeFromDynamicEncounters" />
+		
+		<tag Name="Tier" Value="5" />
+		<tag Name="TurretName" Value="handcannon turret" />
+	
+	</object>
+	
+	<object Name="AricProjectileHandcannonShell" Inherits="BaseLeadSlugProjectile">
+		<part Name="Projectile" BasePenetration="7" BaseDamage="1d10" />
+	</object>
+	
+	<object Name="AricMJM_Hunter_Sword" Inherits="Long Sword5th">
+		<part Name="Render" DisplayName="Witch Hunter's {{K|fullerite}} greatsword" Tile="items/sw_longblade_4.bmp" ColorString="&amp;K" />
+		<part Name="Description" Short="A red hot, razored edge of matte and starless alloy lengthens from point to welded shaft of steel. The Witch Hunters of Oudin eschew the shields of their kin, trusting to all out offence to slay their quarry." />
+		<part Name="EnergyCellSocket" ChanceSlotted="100" SlottedType="Chem Cell" />
+		<part Name="ModFlaming"/>
+	</object>
+	
+	<object Name="AricMJM_Witchblade" Inherits="AricMJM_Hunter_Sword">
+		<part Name="Render" DisplayName="{{K|fullerite}} witchblade" Tile="items/sw_longblade_4.bmp" ColorString="&amp;K" />
+		<part Name="Description" Short="A red hot, razored edge of matte and starless alloy lengthens from shimmering point to welded shaft of steel.In the black depths of the Oudin Witchforge, enslaved Espers labour to create these weapons that will then be turned upon their kin." />
+		<part Name="ModPsionic"/>
+		<part Name="AIStopShootingImmuneTargets" />
+	</object>
+	
+	<object Name="AricMJM_Hunter_Hat" Inherits="Wide-brimmed Hat">
+		<part Name="Armor" AV="0" Ego="2" DV="2" WornOn="Head" />
+		<part Name="Render" DisplayName="Witch Hunter's capotain" Tile="AricMJM_Atlas_mask_qud_game.png" ColorString="&amp;K"  DetailColor="y"/>
+		<part Name="Description" Short="A twisted mask of hatred stares out from beaneath a wide brim."/>
+		<part Name="ModTerrifyingVisage"/>
+		<part Name="AricMJM_ModImprovedMenacingStare"/>
+	</object>
+	 
+	<object Name="AricMJM_Mindblank_Tonic" Inherits="Tonic">
+    <part Name="Render" DisplayName="{{white|mindblank}} injector" />
+    <part Name="AricMJM_MindBlank_Tonic_Applicator" />
+    <part Name="AITonicUse" />
+    <part Name="RulesDescription" Text="Duration: 41-50 rounds
+Your mental armour is increased by 6.
+Your Ego is reduced by 6."
+AltForGenotype="True Kin" GenotypeAlt="Duration: 41-50 rounds
+You gain a mental shield.
+You are unaffected by psychic attacks
+"
+ />
+    <part Name="TinkerItem" Bits="07" Ingredient="Psychal Gland"/>
+    <tag Name="Gift" Value="*noinherit" />
+    <tag Name="Tier" Value="7" />
+    <tag Name="TechTier" Value="7" />
+    <tag Name="DynamicObjectsTable:Tonics_Rare" />
+  </object>
+  
+  	<object Name="AricMJM_UnknownSmallEmeraldTube" Inherits="UnknownMed">
+		<part Name="Render" DisplayName="{{g|emerald}} tube" ColorString="&amp;G" />		
+		<tag Name="ExaminerUnknownMeds" />
+	</object>
+
+  
+  <!-- Witch hunter legendary gear -->
+  	<object Name="AricMJM_Legendary_Hunter_Hat" Inherits="AricMJM_Hunter_Hat">
+		<part Name="Armor" AV="2" Ego="3" DV="3" WornOn="Head" />
+		<part Name="Render" DisplayName="Witch Hunter General's capotain"/>
+	</object>
+	
+	<object Name="AricMJM_Hunter_Captain_Sword" Inherits="Long Sword7th">
+		<part Name="Render" DisplayName="Witch Hunter's {{K|flawless {{crysteel|crysteel}} great sword}}"/>
+		<part Name="Description" Short="A red hot, razored edge of emerald lengthens from point to finely engraved ivory handle. The Witch Hunters of Oudin eschew the shields of their kin, trusting to all out offence to slay their quarry." />
+		<part Name="EnergyCellSocket" ChanceSlotted="100" SlottedType="Nuclear Cell" />
+		<part Name="ModFlaming"/>
+	</object>
+	
+	<object Name="AricMJM_Captain_Witchblade" Inherits="AricMJM_Hunter_Captain_Sword">
+		<part Name="Render" DisplayName="{{K|flawless {{crysteel|crysteel}} witchblade"/>
+		<part Name="Description" Short="A red hot, razored edge of emerald lengthens from shimmering point to finely engraved ivory handle. In the black depths of the Oudin Witchforge, enslaved Espers labour to create these weapons that will be turned upon their kin." />
+		<part Name="ModPsionic"/>
+		<part Name="AIStopShootingImmuneTargets" />
+	</object>
+	
+		<object Name="AricMJM_Captain_Handcannon" Inherits= "Borderlands Revolver">
+	
+		<part Name="Render" DisplayName="Hangfire hand cannon" Tile="arichandcannon.png" DetailColor="r" ColorString="&amp;y" />
+		<part Name="Physics" UsesTwoSlots="true" Weight="5" />
+		<part Name="Commerce" Value="600" />
+		<part Name="MissileWeapon" AnimationDelay="0" Skill="Pistol" ShotsPerAction="1" AmmoPerAction="1" ShotsPerAnimation="1" WeaponAccuracy="1" RangeIncrement="6" />
+		<part Name="MagazineAmmoLoader" ProjectileObject="AricProjectileCaptainHandcannonShell" AmmoPart="AmmoSlug" MaxAmmo="6" />
+		<part Name="Description" Short="Engraved with the tales of legendary warriors of Oudin, a barrel of cold steel coats each shot in a volatile compound. Used only by the most ruthless hunters, who enjoy wounding their prey, only to extinguish their flicker of hope moments later with a devastating internal blast." />
+		<part Name="RulesDescription" Text="This weapon is a hand cannon, a pistol that requires two hands to wield.
+On successful penetration, bullets fired from this weapon lodge in their targets, which explode upon reload." />
+		<part Name="Metal" />
+		<part Name="TinkerItem" Bits="005" CanDisassemble="false" CanBuild="false" />
+		<tag Name="ExcludeFromDynamicEncounters" />
+		
+		<part Name="AricMJM_ExplosiveReload"/>
+		<tag Name="Tier" Value="5" />
+		<tag Name="TurretName" Value="advanced handcannon turret" />
+	
+	</object>
+	
+	<object Name="AricProjectileCaptainHandcannonShell" Inherits="BaseLeadSlugProjectile">
+		<part Name="Projectile" BasePenetration="9" BaseDamage="2d8" />
+	</object>
+  
+  
+</objects>

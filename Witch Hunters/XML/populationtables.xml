@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<populations>
+
+<!-- Illithids -->
+
+
+	
+    <population Name="AricMJM_Illithids" Style="pickeach" >
+        <object Blueprint="AricMJM_Intellect_Devourer" Number="1-4"/>
+        <object Blueprint="AricMJM_Illithid" Number="1-2"/>
+    </population>
+
+	<population Name="MoonStairZoneGlobals-Creatures" Load="Merge">
+
+			<table Name="AricMJM_Illithids" Chance="1" />
+			
+
+	</population>
+
+	<population Name="LairOwners_MoonStair" Load="Merge">
+		<group Name="Options" Style="pickone" Load="Merge">
+			<object Weight="10" Blueprint="AricMJM_Illithid"/>
+		</group>
+	</population>  
+	
+
+	
+	<population Name="BaroqueRuinsZoneGlobals-Creatures" Load="Merge">
+		
+		<table Name="AricMJM_Illithids" Chance="1" />
+			
+  </population>
+
+
+
+<!-- Xenomorphs -->
+
+	<population Name="MoonStairZoneGlobals-Creatures" Load="Merge">
+
+			<object Blueprint="AricMJM_Xenomorph" Chance="1" Number="1-3" />
+			
+
+	</population>
+	
+	<population Name="LairOwners_MoonStair" Load="Merge">
+		<group Name="Options" Style="pickone" Load="Merge">
+			<object Weight="5" Blueprint="AricMJM_Xenomorph"/>
+		</group>
+	</population>  
+
+
+
+<!-- Witch hunters -->
+
+  <population Name="Templar" Load="Merge">
+    <group Name="Creatures" Style="pickone" Load="Merge">
+      <table Name="AricMJM_Nested_Witch_Hunter"/>
+
+    </group>
+  </population>
+  
+   <population Name="AricMJM_Nested_Witch_Hunter">
+    <group Name="Creatures" Style="pickone">
+      <object Blueprint="AricMJM_Witch_Hunter"/>
+	  <table Name="Templar"/>
+
+    </group>
+  </population>
+  
+  <population Name="AricMJM_Witch_Hunter_Party">
+	
+	<group Name="Creatures" Style="pickeach">
+	  
+		<object Blueprint="AricMJM_Witch_Hunter" Number="1-3"/>
+
+    </group>
+		
+  </population>
+  
+    <population Name="AricMJM_Witch_Hunter_Tent">
+	
+	<group Name="Creatures" Style="pickeach">
+	  
+		<object Blueprint="AricMJM_Witch_Hunter" Number="1"/>
+
+    </group>
+		
+  </population>
+  
+      <population Name="AricMJM_Witch_Hunter_Camp">
+	
+	<group Name="Creatures" Style="pickeach">
+	  
+		<object Blueprint="Templar Squire" Number="3-5"/>
+
+    </group>
+		
+  </population>
+  
+      <population Name="AricMJM_Witch_Hunter_General">
+	
+	<group Name="Creatures" Style="pickeach">
+	  
+		<object Blueprint="AricMJM_Witch_Hunter_General" Number="1"/>
+
+    </group>
+		
+  </population>
+  
+  <population Name="GoatfolkQlippothParty" Load="Merge">
+    <table Chance="5" Name="AricMJM_Witch_Hunter_Party" />
+  </population>
+  
+   <population Name="FactionEncounterPartyObjects_Seekers" Load="Merge">
+    <group Name="Items" Style="pickeach" Load="Merge">
+      
+	  <object Chance="5" Blueprint="AricMJM_Witch_Hunter" Number="1" />
+
+    </group>
+  </population>
+  
+  
+
+</populations>
