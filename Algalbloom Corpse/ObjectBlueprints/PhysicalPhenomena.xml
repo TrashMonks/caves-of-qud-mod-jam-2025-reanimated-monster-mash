@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <objects>
-  <object Name="AlgaeRotPool" Inherits="Water">
+  <object Name="Luz_AlgaeRotPool" Inherits="Water">
     <part Name="LiquidVolume" MaxVolume="-1" Volume="500" StartVolume="1d250+250" InitialLiquid="algae-700,putrid-300" />
   </object>
 </objects>

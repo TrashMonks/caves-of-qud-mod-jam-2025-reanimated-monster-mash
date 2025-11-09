@@ -4,8 +4,8 @@
     <part Name="Description" Short="A shambling mound of algal rot lies in wait, eager to feast on a new corpse." />
     <part Name="Render" DisplayName="{{g-g-G-g-K-g-g-G-G-K sequence|Algalbloom Corpse}}" Tile="Luz_Algalbloom Corpse.png" ColorString="&amp;Y" DetailColor="R" />
     <part Name="Brain" Hostile="true" />
-    <part Name="Corpse" CorpseChance="90" CorpseBlueprint="Algae Corpse" />
-    <part Name="LiquidBurst" EelChance="0" Liquid="AlgaeRotPool" />
+    <part Name="Corpse" CorpseChance="90" CorpseBlueprint="Luz_Algae Corpse" />
+    <part Name="LiquidBurst" EelChance="0" Liquid="Luz_AlgaeRotPool" />
 
     <stat Name="Hitpoints" sValue="72" />
     <stat Name="Level" sValue="32" />
@@ -39,9 +39,9 @@
     <mutation Name="ColdBlooded" />
     <mutation Name="Myopia" />
 
-    <inventoryobject Blueprint="Rotting_Algae_Clump" Number="2" />
+    <inventoryobject Blueprint="Luz_Rotting_Algae_Clump" Number="2" />
 
-    <tag Name="InventoryPopulationTable" Value="Algalbloom Corpse Table" />
+    <tag Name="InventoryPopulationTable" Value="Luz_Algalbloom Corpse Table" />
 
     <tag Name="BleedLiquid" Value="algae-700,putrid-300" />
     <tag Name="Role" Value="Brute" />
@@ -49,7 +49,7 @@
     <tag Name="DynamicObjectsTable:LakeHinnom_Creatures" />
   </object>
 
-  <object Name="Algae Corpse" Inherits="Humanoid Corpse">
+  <object Name="Luz_Algae Corpse" Inherits="Humanoid Corpse">
     <part Name="Render" DisplayName="rotted corpse" />
     <part Name="Physics" Weight="60" />
     <tag Name="Tier" Value="3" />

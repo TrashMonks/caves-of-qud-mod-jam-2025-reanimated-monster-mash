@@ -1,5 +1,5 @@
 <objects>
-  <object Name="Rotting_Algae_Clump" Inherits="NaturalWeapon">
+  <object Name="Luz_Rotting_Algae_Clump" Inherits="NaturalWeapon">
     <part Name="Render" DisplayName="{{g-g-G-g-K-g-g-G-G-K sequence|rotting algae clump}}" Tile="Creatures/natural-weapon-pseudopod.bmp" ColorString="&amp;g" />
     <part Name="MeleeWeapon" MaxStrengthBonus="9999" BaseDamage="2d2" Skill="Cudgel" Stat="Strength" Slot="Hand" />
   </object>

@@ -1,5 +1,5 @@
 <populations>
-  <population Name="Algalboom Corpse Table">
+  <population Name="Luz_Algalboom Corpse Table">
     <group Name="Algalboom Corpse Table" Style="pickeach">
       <group Name="Weapon" Style="pickone">
         <object Blueprint="High-Voltage Arc Winder " Weight="8" />
