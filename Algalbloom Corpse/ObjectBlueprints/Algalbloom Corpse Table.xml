@@ -2,7 +2,7 @@
   <population Name="Luz_Algalbloom Corpse Table">
     <group Name="Algalboom Corpse Table" Style="pickeach">
       <group Name="Weapon" Style="pickone">
-        <object Blueprint="High-Voltage Arc Winder " Weight="8" />
+        <object Blueprint="High-Voltage Arc Winder" Weight="8" />
         <object Blueprint="Spaser Pistol" Weight="1" />
         <object Blueprint="Laser Pistol" Weight="12" />
         <object Blueprint="Semi-Automatic Pistol" Weight="10" />
@@ -12,12 +12,12 @@
         <object Blueprint="Battle Axe6" Weight="10" />
         <object Blueprint="Cudgel7" Weight="8" />
         <object Blueprint="Cudgel6" Weight="10" />
-        <object Blueprint="Long Sword7 " Weight="9" />
+        <object Blueprint="Long Sword7" Weight="9" />
         <object Blueprint="Sharpened Polyp" Weight="10" />
-        <object Blueprint="Vibro Blade " Weight="5" />
+        <object Blueprint="Vibro Blade" Weight="5" />
         <object Blueprint="Dagger7" Weight="10" />
-        <object Blueprint="Gaslight Chisel " Weight="7" />
-        <object Blueprint="Vibro Dagger " Weight="6" />
+        <object Blueprint="Gaslight Chisel" Weight="7" />
+        <object Blueprint="Vibro Dagger" Weight="6" />
       </group>
       <group Name="Gear" Style="pickone">
         <object Blueprint="VISAGE" Weight="1" />
@@ -32,7 +32,7 @@
       </group>
       <group Name="Cybernetics" Style="pickone">
         <object Blueprint="Crusty Loaf" Weight="12" />
-        <object Blueprint="Bubble Level " Weight="10" />
+        <object Blueprint="Bubble Level" Weight="10" />
         <object Blueprint="Advanced Toolkit" Weight="8" />
         <object Blueprint="Pentaceps" Weight="1" />
         <object Blueprint="StabilizerArmLocks" Weight="1" />
