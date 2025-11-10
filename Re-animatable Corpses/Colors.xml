@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<colors>
+  <shaders>
+    <shader Name="UD_FleshGolems_reanimated" Type="distribution" Colors="r-r-w" ShowInPicker="true" />
+    <shader Name="UD_FleshGolems_ragged" Type="distribution" Colors="r-r-r-w-W-K" ShowInPicker="true" />
+    <shader Name="UD_FleshGolems_meat" Type="sequence" Colors="r-w-y-m-w-r-w" ShowInPicker="true" />
+  </shaders>
+</colors>

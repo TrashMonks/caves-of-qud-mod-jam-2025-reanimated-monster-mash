@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<naming>
+  <namestyles>
+    
+    <namestyle Name="UD_FleshGolems Reanimated Hero Honorific">
+      <scopes>
+        <scope Name="Main" Type="Honorific" Special="Hero" Tag="Reanimated" Priority="300" Combine="true" Chance="25" />
+      </scopes>
+      <templates>
+        <template Name="*Descriptor*" />
+      </templates>
+    </namestyle>
+
+    <namestyle Name="UD_FleshGolems Reanimated Hero Epithet">
+      <scopes>
+        <scope Name="Main" Type="Epithet" Special="Hero" Tag="Reanimated" Priority="300" Combine="true" SkipIfHasHonorific="true" />
+      </scopes>
+      <templates>
+        <template Name="the *Descriptor*" />
+      </templates>
+    </namestyle>
+
+    <namestyle Name="UD_FleshGolems Reanimated Hero Title">
+      <scopes>
+        <scope Name="Main" Type="Title" Special="Hero" Tag="Reanimated" Priority="300" Combine="true" Chance="50" />
+      </scopes>
+      <templates>
+        <template Name="legendary *CreatureType*" Weight="6" />
+        <template Name="renowned *CreatureType*" />
+      </templates>
+    </namestyle>
+
+    <namestyle Name="UD_FleshGolems Reanimated Hero Extra Title">
+      <scopes>
+        <scope Name="Main" Type="ExtraTitle" Special="Hero" Tag="Reanimated" Priority="300" Combine="true" Chance="50" />
+      </scopes>
+      <templates>
+        <template Name="friend to *Clientele*" />
+      </templates>
+    </namestyle>
+    
+  </namestyles>
+</naming>

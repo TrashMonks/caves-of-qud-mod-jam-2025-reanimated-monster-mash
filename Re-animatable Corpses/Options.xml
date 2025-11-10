@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<options>
+  <!-- Option_UD_FleshGolems_ 
+  
+  Mod Options
+  -->
+  <option
+        ID="Option_UD_FleshGolems_SpecialReanimatedBuilderBaseChanceOneIn"
+        DisplayText="Set base odds (chance, 1 in) that an entity will spawn as a shambling {{UD_FleshGolems_reanimated|Reanimated}} creature."
+        Category="Mod: Re-animatable Corpses"
+        Type="Slider"
+        Min="0" Max="100"
+        Increment="1"
+        Default="0" >
+    <helptext>
+      The base odds that the {{UD_FleshGolems_reanimated|Reanimated}} builder will be applied to {{Y|every}} reanimatable entity.
+
+      This option works {{G|immediately}}.
+
+      When this otion is set to 100, there is a 1 in 100 chance that the builder will be applied to an entity when it is created.
+
+      If this option is set to 1, {{Y|every entity}} that can spawn reanimated will spawn renaimated.
+
+      Set this option to {{W|0}} to {{w|disable}} the builder override (default rate for reanimated entities is 1 in 8000).
+
+      The default is {{W|0}}.
+    </helptext>
+  </option>
+  <option
+        ID="Option_UD_FleshGolems_SpecialReanimatedBuilderChanceOneInMulti"
+        DisplayText="Set odds (chance, 1 in) multiplier that an entity will spawn as a shambling {{UD_FleshGolems_reanimated|Reanimated}} creature."
+        Category="Mod: Re-animatable Corpses"
+        Type="Slider"
+        Min="1" Max="100"
+        Increment="1"
+        Default="1" >
+    <helptext>
+      The odds multiplier that the {{UD_FleshGolems_reanimated|Reanimated}} builder will be applied to {{Y|every}} reanimatable entity.
+
+      This option works {{G|immediately}}.
+
+      This option multiplies the base odds, so if the base odd are 100, and this option is set to 100, there is a 1 in 10,000 chance that an entity will be reanimated as it spawns.
+
+      The default rate (set by this mod) for reanimated entities is 1 in 8000 and is rolled entirely separately, so consider that 1 in 8000 twice is twice as likely when choosing this option.
+
+      Set this option to {{W|1}} to {{w|disable}} multiplying the odds.
+
+      The default is {{W|1}}.
+    </helptext>
+  </option>
+  
+  <option
+        ID="Option_UD_FleshGolems_SpecialCorpseAnimatedBuilderBaseChanceOneIn"
+        DisplayText="Set base odds (chance, 1 in) that a corpse will reanimate as a shallow simulacrum of its former self."
+        Category="Mod: Re-animatable Corpses"
+        Type="Slider"
+        Min="0" Max="100"
+        Increment="1"
+        Default="0" >
+    <helptext>
+      The base odds that the {{nanoneuro|Animated}} builder will be applied to {{Y|every}} corpse.
+
+      This option works {{G|immediately}}.
+
+      When this otion is set to 100, there is a 1 in 100 chance that the builder will be applied to a corpse when it is created.
+
+      If this option is set to 1, {{Y|every corpse}} that can spawn reanimated will spawn renaimated.
+
+      Set this option to {{W|0}} to {{w|disable}} the builder override (default rate for animated corpses is 1 in 3000).
+
+      The default is {{W|0}}.
+    </helptext>
+  </option>
+  <option
+        ID="Option_UD_FleshGolems_SpecialCorpseAnimatedBuilderChanceOneInMulti"
+        DisplayText="Set odds (chance, 1 in) multiplier that a corpse will reanimate as a shallow simulacrum of its former self."
+        Category="Mod: Re-animatable Corpses"
+        Type="Slider"
+        Min="1" Max="100"
+        Increment="1"
+        Default="1" >
+    <helptext>
+      The odds multiplier that the {{nanoneuro|Animated}} builder will be applied to {{Y|every}} corpse.
+
+      This option works {{G|immediately}}.
+
+      This option multiplies the base odds, so if the base odd are 100, and this option is set to 100, there is a 1 in 10,000 chance that a corpse will be animated as it spawns.
+
+      The default rate (set by this mod) for animated corpses is 1 in 3000 and is rolled entirely separately, so consider that 1 in 3000 twice is twice as likely when choosing this option.
+
+      Set this option to {{W|1}} to {{w|disable}} multiplying the odds.
+
+      The default is {{W|0}}.
+    </helptext>
+  </option>
+  
+</options>

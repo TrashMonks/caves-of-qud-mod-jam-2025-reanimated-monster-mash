@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<conversations>
+  <conversation ID="UD_FleshGolems NewlyReanimatedBeings">
+    
+    <node ID="choices">
+      <choice ID="JoinPartyChoice" IfSourceOfSuffering="true">
+        <text>Come along now... {{r|friend}}.</text>
+        <part Name="WaterRitualJoinParty" />
+      </choice>
+      <choice ID="GoEnd" Target="End">
+        <text IfSourceOfSuffering="true">Uh... Sorry?</text>
+        <text IfSourceOfSuffering="false">Unlive and drink...</text>
+      </choice>
+    </node>
+    
+    <node ID="Start">
+      <text IfSourceOfSuffering="false">
+        Hrgh.. urgh.. ghuh?~
+        Unlive..... and drink???~
+      </text>
+      <text>
+        Wh- why??~
+        {{emote|*wilhelm scream*}}
+      </text>
+      <choice UseID="JoinPartyChoice" />
+      <choice UseID="GoEnd" />
+    </node>
+    
+  </conversation>
+  
+</conversations>

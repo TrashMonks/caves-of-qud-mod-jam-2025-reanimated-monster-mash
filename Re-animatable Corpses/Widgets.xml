@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+  <object Name="UD_FleshGolems_MadMonger_LabSurface" Inherits="Widget">
+    <part Name="UD_FleshGolems_MadMongerSurface" />
+  </object>
+</objects>

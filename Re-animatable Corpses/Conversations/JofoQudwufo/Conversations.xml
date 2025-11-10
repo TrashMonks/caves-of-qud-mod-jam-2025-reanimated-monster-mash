@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<conversations>  
+  <conversation ID="UD_FleshGolems Jofo Qudwufo">
+    <node ID="choices">
+      <!-- 
+      
+      This is what the player "says" to go to the "Target" "node ID" 
+      (the availability of a choice can be conditional, too)
+      
+      -->
+      <choice ID="GoEnd" Target="End">
+        <text IfTestState="UD_FleshGolems_Jofo_TimesGreeted"
+              IfStateGreaterThanState="UD_FleshGolems_Jofo_TimesGreeted,UD_FleshGolems_Jofo_TimesOfferedHelp" Priority="3">
+          Let's keep looking, =refname=.
+        </text>
+        <text IfTestState="UD_FleshGolems_AskedJofo_HelpFindMadMonger" Priority="2">Let's look for the Mad 'Monger, =refname=.</text>
+        <text IfTestState="UD_FleshGolems_AskedJofo_WhereMadMonger" Priority="1">Live and drink, =refname=.</text>
+        <text>Live and drink.</text>
+      </choice>
+      
+      <choice ID="GoStart" Target="PostGreeting" IfNotCurrentNodeID="Greeting,PostGreeting">
+        <text>There was something else...</text>
+        <part Name="Tag">{{K|[start over]}}</part>
+      </choice>
+      
+      <choice ID="AskWhoMadMonger" Target="ReactWhoMadMonger" IfNotLastChoice="AskWhoMadMonger"
+              SetBooleanState="UD_FleshGolems_AskedJofo_WhoMadMonger,true">
+        <text IfNotHaveState="UD_FleshGolems_AskedJofo_WhoMadMonger">The Mad 'Monger?</text>
+        <text IfTestState="UD_FleshGolems_AskedJofo_WhoMadMonger">Remind me who the Mad 'Monger is?</text>
+      </choice>
+      
+      <choice ID="AskHeMadeYou" Target="ReactHeMadeYou" IfNotLastChoice="AskHeMadeYou"
+              IfTestState="UD_FleshGolems_AskedJofo_WhoMadMonger"
+              SetBooleanState="UD_FleshGolems_AskedJofo_HeMadeYou,true">
+        <text IfNotHaveState="UD_FleshGolems_AskedJofo_HeMadeYou">The Mad 'Monger {{Y|made}} you??</text>
+        <text IfTestState="UD_FleshGolems_AskedJofo_HeMadeYou">Did the Mad 'Monger {{Y|really}} make you?</text>
+      </choice>
+      
+      <choice ID="AskWhereMadMonger" Target="ReactWhereMadMonger" IfNotLastChoice="AskWhereMadMonger"
+              IfTestState="UD_FleshGolems_AskedJofo_HeMadeYou"
+              SetBooleanState="UD_FleshGolems_AskedJofo_WhereMadMonger,true">
+        <text IfNotHaveState="UD_FleshGolems_AskedJofo_WhereMadMonger">Where is this supposedly Mad 'Monger?</text>
+        <text IfTestState="UD_FleshGolems_AskedJofo_WhereMadMonger">Where is the Mad 'Monger, again?</text>
+      </choice>
+      
+      <choice ID="AskHelpFindMadMonger" Target="ReactHelpFindMadMonger" IfNotLastChoice="AskHelpFindMadMonger"
+              IfTestState="UD_FleshGolems_AskedJofo_WhereMadMonger"
+              SetBooleanState="UD_FleshGolems_AskedJofo_HelpFindMadMonger,true">
+        <text IfNotHaveState="UD_FleshGolems_AskedJofo_HelpFindMadMonger">Would you like help finding him?</text>
+        <text IfTestState="UD_FleshGolems_AskedJofo_HelpFindMadMonger">I'll help you find the Mad 'Monger.</text>
+      </choice>
+
+      <!--
+      
+      this is an example of a choice that changes the game state
+       - when we've complimented the MadMong, the game records that we've done so and the text of the choice changes to reflect that
+      
+      <choice ID="GoLookingFly" Target="ReactLookingFly"
+              SetBooleanState="UD_FleshGolems_Complimented_MadMong,true">
+        <text IfNotHaveState="UD_FleshGolems_Complimented_MadMong">Looking fly, there, MadMong! Anyone ever tell you that?</text>
+        <text IfTestState="UD_FleshGolems_Complimented_MadMong">Looking fly, as always, MadMong!</text>
+      </choice>
+      
+      
+      this is an example of a choice that is only available when some other condition is met
+       - if the game has a record that we've complimented the MadMong, then we get an additional choice to ask them if we're being ignored
+       - the text of the choice can also be conditionally controlled like above
+      
+      <choice ID="GoDidYouHearMe" Target="ReactDidYouHearMe" IfTestState="UD_FleshGolems_Complimented_MadMong">
+        <text>MadMong, are you ignoring me?</text>
+      </choice>
+      
+      -->
+    </node>
+
+    <node ID="AlwaysHaveChoices">
+      <choice UseID="AskWhoMadMonger" />
+      <choice UseID="AskHeMadeYou" />
+      <choice UseID="AskWhereMadMonger" />
+      <choice UseID="AskHelpFindMadMonger" />
+      <choice UseID="GoStart" />
+      <choice UseID="GoEnd" />
+    </node>
+    
+    <!-- Actual convo starts here -->
+    <start ID="Greeting" Inherits="AlwaysHaveChoices"
+           SetBooleanState="UD_FleshGolems_Jofo_EverSpoken"
+           ModIntState="UD_FleshGolems_Jofo_TimesGreeted,1">
+      <text Priority="1">
+        Reh, reh! Am Jofo Qudwufo, ref-{{emote|*retch*}} ...renemit snaphjaf! Yoo... yoo not-{{emote|*hock*}} eh.. hmm...
+        
+        See yoo... Fruf! Seen seen?? {{emote|*snap-snap*}} d... Mad 'Monger?!
+      </text>
+    </start> 
+    
+    <start ID="PostGreeting" Inherits="AlwaysHaveChoices"
+           ModIntState="UD_FleshGolems_Jofo_TimesGreeted,1">
+      <text Priority="1">
+        Reh, reh! Am Jofo Qudwufo, ref-{{emote|*retch*}} ...renemit snaphjaf! Yoo... yoo not-{{emote|*hock*}} eh.. hmm... 
+        
+        See yoo... Fruf! Seen seen?? {{emote|*snap-snap*}} d... Mad 'Monger?!
+      </text>
+    </start>
+    
+    <node ID="ReactWhoMadMonger" Inherits="AlwaysHaveChoices">
+      <text>
+        Rarp, fraf! Yoo not heer-raf {{emote|*sputter*}}-uh Mad 'Monger!? Ra-{{emote|*hack*}} rah Mad... {{emote|*wheeze*}}... 'Monger mabe... er... Raff...
+        
+        ... Mong- mabed... me?
+      </text>
+    </node>
+    
+    <node ID="ReactHeMadeYou" Inherits="AlwaysHaveChoices">
+      <text>
+        Yip yip! Yeh, raff! Mabed Jofo! Yah!
+
+        {{emote|*wobbles excitedly*}}
+      </text>
+    </node>
+    
+    <node ID="ReactWhereMadMonger" Inherits="AlwaysHaveChoices">
+      <text>
+        {{emote|*looks as confused as a lightly rotted corpse can look*}}
+
+        Fra-{{emote|*snap-snap*}} rahf!! Mad... err... 'Monger is?? Is... ssss-{{emote|*wheeze*}}... uh.. Graa-feff!
+
+        {{emote|*shrugs or slumps, you can't really tell*}}
+      </text>
+    </node>
+    
+    <node ID="ReactHelpFindMadMonger" Inherits="AlwaysHaveChoices"
+          MatchIntState="UD_FleshGolems_Jofo_TimesOfferedHelp,UD_FleshGolems_Jofo_TimesGreeted">
+      <text>
+        Rarooh!!
+
+        Yih yih yih-{{emote|*cough*}}! {{emote|*cough*}} {{emote|*cough*}} ... {{emote|*wheeze*}} ... Greff-ref!!
+        
+        {{emote|*starts side-stepping circles around you*}}
+      </text>
+    </node>
+  </conversation>
+</conversations>

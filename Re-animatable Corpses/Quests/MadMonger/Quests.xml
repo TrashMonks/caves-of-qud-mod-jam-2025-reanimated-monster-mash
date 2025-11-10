@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<quests>
+
+  <quest Name="You Raise Me Up" Level="20" System="UD_FleshGolems_YouRaiseMeUpQuestSystem"
+         ID="UD_FleshGolems You Raise Me Up"
+         Factions="Newly Sentient Beings" Reputation="250"
+         Accomplishment="Conspiring with a &quot;scientist&quot; most mad, you broke &quot;important&quot; scientfic discovery into the nature of life and death."
+         Hagiograph="Blessed be, for eternity, the name =name=, who revolutionized sience as it was known to all denizens of Qud! With the aid of =player.possessive= loyal servant, =name= discovered the secrets of life and death, an achievement thought impossible even by the Saads of old!"
+         HagiographCategory="DoesSomethingRad"
+         Gospel="While wandering in the jungle near Bethesda Susa, =name= came upon a man of inquiry and together they pondered the secrets of life and death. From then on, =name= kept a different outlook on what it means to be alive on =player.possessive= person.">
+
+    <step Name="I'm dead serious!" XP="1500"
+         ID="UD_FleshGolems I'm dead serious!">
+      <text>Find 3 questionable materials (for Science)</text>
+      <!-- Handled by UD_FleshGolems_CorpseQuestSystem -->
+    </step>
+
+    <step Name="Don't be nervous!" XP="1000" Hidden="true"
+         ID="UD_FleshGolems Don't be nervous!">
+      <text>Bring a phial of thinking liquid to the Mad 'Monger.</text>
+      <!-- Need 1 Brain Brine -->
+    </step>
+
+    <step Name="A real fixer-upper!" XP="1000" Hidden="true"
+         ID="UD_FleshGolems A real fixer-upper!">
+      <text>Repair the Mad 'Monger's broken equipment.</text>
+      <!-- Fix the 2 broken Electrothings and the broken Medical Bed -->
+    </step>
+
+    <!-- Mad Monger places himself onto the med bed with the corpses and the brain brine -->
+    
+    <step Name="You must construct additional pylons!" XP="1000" Hidden="true"
+         ID="UD_FleshGolems You must construct additional pylons!">
+      <text>Any sufficient amount of power will do, though.</text>
+      <!-- bring enough nuclear cells or higher to achieve a mecha-core worth of power or be capable of massive electrical damage -->
+    </step>
+
+    <step Name="Flip the switch!" XP="3250" Hidden="true"
+         ID="UD_FleshGolems Flip the switch!">
+      <text>Let the sparks fly.</text>
+      <!-- either flip the nearby switch deal enough electrical damage in one go to break both Electrothings and the Medical Bed -->
+    </step>
+
+  </quest>
+  
+</quests>

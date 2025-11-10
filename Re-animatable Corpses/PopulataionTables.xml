@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<populations>
+  
+  <population Name="UD_FleshGolems Mad Monger CorpseOrTorso">
+    <group Name="" Style="pickone" >
+      <object Weight="32" Blueprint="UD_FleshGolems Corpse WithCybernetics TK" />
+      <object Weight="24" Blueprint="UD_FleshGolems Corpse WithCybernetics" />
+      <object Weight="16" Blueprint="UD_FleshGolems Torso WithCybernetics TK" />
+      <object Weight="8" Blueprint="UD_FleshGolems Torso WithCybernetics" />
+      <table Weight="1" Name="UD_FleshGolems Mad Monger CorpseOrTorso 2" />
+    </group>
+  </population>
+  
+  <population Name="UD_FleshGolems Mad Monger CorpseOrTorso 2">
+    <group Name="" Style="pickone" >
+      <table Weight="1" Name="UD_FleshGolems Mad Monger CorpseOrTorso 1" />
+      <object Weight="32" Blueprint="UD_FleshGolems Corpse WithCybernetics TK 2" />
+      <object Weight="24" Blueprint="UD_FleshGolems Corpse WithCybernetics 2" />
+      <object Weight="16" Blueprint="UD_FleshGolems Torso WithCybernetics TK 2" />
+      <object Weight="8" Blueprint="UD_FleshGolems Torso WithCybernetics 2" />
+      <table Weight="1" Name="UD_FleshGolems Mad Monger CorpseOrTorso 3" />
+    </group>
+  </population>
+  
+  <population Name="UD_FleshGolems Mad Monger CorpseOrTorso 3">
+    <group Name="" Style="pickone" >
+      <table Weight="1" Name="UD_FleshGolems Mad Monger CorpseOrTorso 2" />
+      <object Weight="32" Blueprint="UD_FleshGolems Corpse WithCybernetics TK 3" />
+      <object Weight="24" Blueprint="UD_FleshGolems Corpse WithCybernetics 3" />
+      <object Weight="16" Blueprint="UD_FleshGolems Torso WithCybernetics TK 3" />
+      <object Weight="8" Blueprint="UD_FleshGolems Torso WithCybernetics 3" />
+    </group>
+  </population>
+  
+  <population Name="UD_FleshGolems Mad Monger Tier Random">
+    <group Name="" Style="pickone" >
+      <object Weight="2" Blueprint="UD_FleshGolems GenericLimb WithCybernetics TK FromRandomTier" />
+      <object Weight="1" Blueprint="UD_FleshGolems GenericLimb WithCybernetics FromRandomTier" />
+    </group>
+  </population>
+  
+  <population Name="UD_FleshGolems Mad Monger Tier 1">
+    <group Name="" Style="pickone" >
+      <object Weight="48" Blueprint="UD_FleshGolems GenericLimb WithCybernetics TK Cybernetics1" />
+      <object Weight="24" Blueprint="UD_FleshGolems GenericLimb WithCybernetics Cybernetics1" />
+      <table Weight="1" Name="UD_FleshGolems Mad Monger Tier 2" />
+    </group>
+  </population>
+  
+  <population Name="UD_FleshGolems Mad Monger Tier 2">
+    <group Name="" Style="pickone" >
+      <object Weight="48" Blueprint="UD_FleshGolems GenericLimb WithCybernetics TK Cybernetics2" />
+      <object Weight="24" Blueprint="UD_FleshGolems GenericLimb WithCybernetics Cybernetics2" />
+      <table Weight="1" Name="UD_FleshGolems Mad Monger Tier 3" />
+    </group>
+  </population>
+  
+  <population Name="UD_FleshGolems Mad Monger Tier 3">
+    <group Name="" Style="pickone" >
+      <object Weight="48" Blueprint="UD_FleshGolems GenericLimb WithCybernetics TK Cybernetics3" />
+      <object Weight="24" Blueprint="UD_FleshGolems GenericLimb WithCybernetics Cybernetics3" />
+      <table Weight="1" Name="UD_FleshGolems Mad Monger Tier 4" />
+    </group>
+  </population>
+  
+  <population Name="UD_FleshGolems Mad Monger Tier 4">
+    <group Name="" Style="pickone" >
+      <object Weight="48" Blueprint="UD_FleshGolems GenericLimb WithCybernetics TK Cybernetics4" />
+      <object Weight="24" Blueprint="UD_FleshGolems GenericLimb WithCybernetics Cybernetics4" />
+      <table Weight="1" Name="UD_FleshGolems Mad Monger Tier 5" />
+    </group>
+  </population>
+  
+  <population Name="UD_FleshGolems Mad Monger Tier 5">
+    <group Name="" Style="pickone" >
+      <object Weight="48" Blueprint="UD_FleshGolems GenericLimb WithCybernetics TK Cybernetics5" />
+      <object Weight="24" Blueprint="UD_FleshGolems GenericLimb WithCybernetics Cybernetics5" />
+      <table Weight="1" Name="UD_FleshGolems Mad Monger Tier 6" />
+    </group>
+  </population>
+  
+  <population Name="UD_FleshGolems Mad Monger Tier 6">
+    <group Name="" Style="pickone" >
+      <object Weight="48" Blueprint="UD_FleshGolems GenericLimb WithCybernetics TK Cybernetics6" />
+      <object Weight="24" Blueprint="UD_FleshGolems GenericLimb WithCybernetics Cybernetics6" />
+      <table Weight="1" Name="UD_FleshGolems Mad Monger Tier 7" />
+    </group>
+  </population>
+  
+  <population Name="UD_FleshGolems Mad Monger Tier 7">
+    <group Name="" Style="pickone" >
+      <object Weight="48" Blueprint="UD_FleshGolems GenericLimb WithCybernetics TK Cybernetics7" />
+      <object Weight="24" Blueprint="UD_FleshGolems GenericLimb WithCybernetics Cybernetics7" />
+      <table Weight="1" Name="UD_FleshGolems Mad Monger Tier 8" />
+    </group>
+  </population>
+  
+  <population Name="UD_FleshGolems Mad Monger Tier 8">
+    <group Name="" Style="pickone" >
+      <object Weight="2" Blueprint="UD_FleshGolems GenericLimb WithCybernetics TK Cybernetics8" />
+      <object Weight="1" Blueprint="UD_FleshGolems GenericLimb WithCybernetics Cybernetics8" />
+    </group>
+  </population>
+
+  <population Name="UD_FleshGolems Mad Monger Stock Table">
+    <group Name="" Style="pickeach" >
+      <table Name="GutsmongerInventory" Number="1" />
+      <table Name="UD_FleshGolems Mad Monger Tier {zonetier}" Number="4-5" />
+      <table Name="UD_FleshGolems Mad Monger Tier Random" Number="4-5" />
+      <table Name="UD_FleshGolems Mad Monger Tier 7" Chance="10,5,1" Number="0-2" />
+      <table Name="UD_FleshGolems Mad Monger Tier 8" Chance="5,1" Number="0-2" />
+      <table Name="UD_FleshGolems Mad Monger CorpseOrTorso" Chance="100,75,25,5,5" Number="0-2" />
+      <table Name="UD_FleshGolems Mad Monger CorpseOrTorso 2" Chance="15,5,1" Number="0-2" />
+      <table Name="UD_FleshGolems Mad Monger CorpseOrTorso 3" Chance="5,1" Number="0-2" />
+    </group>
+  </population>
+  
+  <!--
+  
+  Quest Tables
+  
+  -->
+
+  <population Name="UD_FleshGolems_Corpse_BaseRewards">
+    <group Name="Rewards" Style="pickeach">
+      <object Blueprint="CyberneticsCreditWedge3" />
+      <object Blueprint="NectarTonic" />
+      <object Blueprint="UbernostrumTonic" />
+      <object Blueprint="Pocketed Lab Coat" />
+      <table Name="UD_FleshGolems Mad Monger CorpseOrTorso 3" />
+      <table Name="UD_FleshGolems Mad Monger CorpseOrTorso 3" />
+      <table Name="UD_FleshGolems Mad Monger Tier 7" />
+      <table Name="UD_FleshGolems Mad Monger Tier 7" />
+      <table Name="UD_FleshGolems Mad Monger Tier 8" />
+      <table Name="UD_FleshGolems Mad Monger Tier 8" />
+      <table Name="Cybernetics5" />
+      <table Name="Cybernetics6" />
+    </group>
+  </population>
+  
+</populations>

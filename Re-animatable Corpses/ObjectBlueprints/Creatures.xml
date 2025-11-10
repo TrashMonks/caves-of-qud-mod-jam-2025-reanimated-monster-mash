@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+  
+  <object Name="Creature" Load="Merge">
+    <builder Name="UD_FleshGolems_Reanimated" ChanceOneIn="8000" />
+    <builder Name="UD_FleshGolems_OptionallyReanimated" ChanceOneIn="1" />
+    <tag Name="UD_FleshGolems_NonRobot" />
+  </object>
+  <object Name="ActiveFungus" Load="Merge">
+    <builder Name="UD_FleshGolems_Reanimated" ChanceOneIn="8000" />
+    <builder Name="UD_FleshGolems_OptionallyReanimated" ChanceOneIn="1" />
+  </object>
+  <object Name="Robot" Load="Merge">
+    <removetag Name="UD_FleshGolems_NonRobot" />
+  </object>
+  
+  <object Name="UD_FleshGolems Late Jofo Qudwufo" Inherits="Snapjaw">
+    <part Name="Render" DisplayName="Jofo Qudwufo" />
+    <part Name="Brain" Wanders="false" />
+    <xtagGrammar Proper="true" />
+    <tag Name="CorpseBlueprint" Value="Snapjaw Corpse" />
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+    <stat Name="Hitpoints" sValue="17d3+4" />
+    <mutation Name="Regeneration" Level="10" />
+    <tag Name="PronounSet" Value="xe/xem/xyr/xyrs/xemself" />
+    <property Name="Story" Value="UD_FleshGolems Jofo Qudwufo" />
+    <part Name="ConversationScript" ConversationID="UD_FleshGolems Jofo Qudwufo" />
+  </object>
+  <object Name="UD_FleshGolems Jofo Qudwufo" Inherits="Snapjaw Corpse">
+    <part Name="UD_FleshGolems_CorpseReanimationHelper" AlwaysAnimate="true" />
+    <part Name="Render" DetailColor="w" TileColor="&amp;r"
+          DisplayName="the corpse of Jofo Qudwufo" />
+    <property Name="CreatureName" Value="Jofo Qudwufo" />
+    <property Name="UD_FleshGolems_CreatureProperName" Value="Jofo Qudwufo" />
+    <property Name="UD_FleshGolems_PastLife_Blueprint" Value="UD_FleshGolems Late Jofo Qudwufo" />
+    <property Name="SourceBlueprint" Value="UD_FleshGolems Late Jofo Qudwufo" />
+    <part Name="Brain" Hostile="false" />
+    <stat Name="Energy" ShortName="EN" Min="-100000" Max="100000" Value="0" />
+    <tag Name="UD_FleshGolems_NoReanimatedNamePrefix" Value="1" />
+    <tag Name="CorpseBlueprint" Value="Snapjaw Corpse" />
+    <tag Name="UD_FleshGolems_ReanimatedConversationID" Value="UD_FleshGolems Jofo Qudwufo" />
+    <tag Name="UD_FleshGolems_ReanimatedEpithets" Value=", {{UD_FleshGolems_reanimated|reanimated}} snapjaw" />
+    <tag Name="PetResponse" Value="=subject.possessive= matted fur is slick with the grime of death.,Your hand squelches against =subject.possessive= disturbingly infirm scalp.,=subject.subjective= =subject.verb:stare:afterpronoun= seemingly through you but is nonetheless happy with the attention (probably; it's hard to tell...),What can only be described as a faint hacking cough can be heard from deep with =subject.possessive= mass." />
+    <part Name="Pettable" UseFactionForFeelingFloor="Player" />
+    <part Name="UD_FleshGolems_HasCyberneticsButcherableCybernetic" UseImplantedAdjectiveIfImplanted="false"
+          Cybernetics="BiologicalIndexer,PalladiumElectrodeposits,RapidReleaseFingerFlexors" />
+    <tag Name="UD_FleshGolems_Reanimated_PartExclusions" Value="Pettable" />
+    <tag Name="Pet"/>
+    <tag Name="PreferChatToPet"/>
+    <tag Name="StartingPet"/>
+    <tag Name="UD_FleshGolems_SkipLevelsOnReanimate" Value="1" />
+    <tag Name="PronounSet" Value="xe/xem/xyr/xyrs/xemself" />
+    <property Name="Story" Value="UD_FleshGolems Jofo Qudwufo" />
+    <!--(Add this dynamically by completing the quest)-->
+    <tag Name="Kernelmethod_BetterPetSelector_Description" Value="A mound of wet fur and rotting flesh, uncontent with remaining still." />
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+  </object>
+  
+  <object Name="UD_FleshGolems Mad Monger" Inherits="Gutsmonger">
+    <part Name="Render" DisplayName="'Monger" DetailColor="R" TileColor="&amp;W" />
+    <part Name="Description" Short="A frantic slip of a =subject.personTerm= =subject.verb:flitter= agitatedly between the several foci of =subject.possessive= attention. Were it not for =subject.possessive= palid countenance, one might have assumed the vigor of youth kept =subject.objective= so spry, though =subject.possessive= poorly state appears, perhaps a bit... unnatural. =subject.Subjective= =subject.verb:wear:afterpronoun= =subject.possessive= affect of general disgust in much the same way as =subject.subjective= =subject.verb:wear:afterpronoun= =subject.possessive= lab coat: seemingly out of habit, and perhaps a misplaced sense of self-import." />
+    <part Name="Honorifics" Primary="the Mad" />
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Mad Monger Corpse" CorpseChance="100" />
+    <part Name="GenericInventoryRestocker" Table="UD_FleshGolems Mad Monger Stock Table" Chance="85" />
+    <part Name="CyberneticsHasImplants" Implants="BiologicalIndexer@face,PalladiumElectrodeposits@head,RapidReleaseFingerFlexors@hands" />
+    <xtagGrammar Proper="true" />
+    <part Name="ConversationScript" ConversationID="UD_FleshGolems Mad Monger" />
+    <removepart Name="HasGuards" />
+    <tag Name="Gender" Value="male" />
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+    <intproperty Name="CyberneticRejectionSyndromeModifier" Value="100" />
+    <inventoryobject Blueprint="CyberneticsCreditWedge3" Number="1-2" IntProperties="WontSell:1" />
+    <inventoryobject Blueprint="Di-Thermo Beam" Number="2" IntProperties="AlwaysEquipAsWeapon:1" />
+    <inventoryobject Blueprint="Pocketed Lab Coat" Number="1" IntProperties="AlwaysEquipAsArmor:1" />
+    <inventoryobject Blueprint="Nuclear Cell" Number="2" IntProperties="WontSell:1" />
+    <property Name="WontSell" Value="Di-Thermo Beam,Pocketed Lab Coat" />
+  </object>
+  
+  <object Name="UD_FleshGolems Mad Monger Corpse" Inherits="Human Corpse">
+    <!--part Name="ConversationScript" ConversationID="UD_FleshGolems Mad Monger Corpse" /-->
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+  </object>
+  
+  <object Name="UD_FleshGolems Mad Monger True Kin Corpse" Inherits="Human Corpse">
+    <!-- part Name="ConversationScript" ConversationID="UD_FleshGolems Mad Monger True Corpse" /-->
+    <tag Name="Genotype" Value="True Kin" />
+    <tag Name="NonMutant" />
+    <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+  </object>
+  
+  <!--
+  
+    Bestowing corpses!
+  
+  -->
+  <object Name="Robot" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="Robot Corpse" CorpseChance="0" />
+  </object>
+  
+  <object Name="ActivePlant" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Plant Corpse" CorpseChance="0" />
+  </object>
+  <object Name="Fracti" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Cactus Corpse" CorpseChance="0" />
+  </object>
+  <object Name="MutatedBush" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Bush Corpse" CorpseChance="0" />
+  </object>
+  <object Name="MutatedFlower" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Flower Corpse" CorpseChance="0" />
+  </object>
+  <object Name="MutatedSucculent" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Cactus Corpse" CorpseChance="0" />
+  </object>
+  <object Name="MutatedVine" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Vine Corpse" CorpseChance="0" />
+  </object>
+  <object Name="MutatedTree" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Tree Corpse" CorpseChance="0" />
+  </object>
+  <object Name="ActiveFungus" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Fungus Corpse" CorpseChance="0" />
+  </object>
+  
+  <object Name="SapientMutatedBush" Load="Merge">
+    <part Name="Corpse" CorpseChance="20" />
+  </object>
+  <object Name="SapientMutatedSucculent" Load="Merge">
+    <part Name="Corpse" CorpseChance="20" />
+  </object>
+  <object Name="SapientMutatedFlower" Load="Merge">
+    <part Name="Corpse" CorpseChance="20" />
+  </object>
+  <object Name="SapientMutatedVine" Load="Merge">
+    <part Name="Corpse" CorpseChance="20" />
+  </object>
+  <object Name="SapientMutatedTree" Load="Merge">
+    <part Name="Corpse" CorpseChance="20" />
+  </object>
+  
+  <object Name="SapientMutatedFungus" Load="Merge">
+    <part Name="Corpse" CorpseChance="20" />
+  </object>
+
+  <!-- Flesh Golem natural weapons -->
+  <object Name="UD_FleshGolems Ragged Weapon" Inherits="NaturalWeapon">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} weapon"
+          TileColor="&amp;r" DetailColor="w" ColorString="&amp;r"/>
+    <part Name="RandomColors" DetailColor="w,K,R" />
+    <part Name="MeleeWeapon" Slot="" HitBonus="10" PenBonus="0" MaxStrengthBonus="999" Stat="Strength" />
+    <part Name="UD_FleshGolems_SetDefaultBehaviorBlueprintWhenDefaultBehavior" />
+    <tag Name="BaseObject" Value="*noinherit" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Cudgel" Inherits="UD_FleshGolems Ragged Weapon">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} cudgel" />
+    <part Name="MeleeWeapon" BaseDamage="4d6" Skill="Cudgel" />
+    <tag Name="BaseObject" Value="*noinherit" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Axe" Inherits="UD_FleshGolems Ragged Weapon">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} axe" />
+    <part Name="MeleeWeapon" BaseDamage="1d8+8" Skill="Axe" />
+    <tag Name="BaseObject" Value="*noinherit" />
+  </object>
+  <object Name="UD_FleshGolems Ragged LongBlades" Inherits="UD_FleshGolems Ragged Weapon">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} long blade" />
+    <part Name="MeleeWeapon" BaseDamage="2d12" Skill="LongBlades" />
+    <tag Name="BaseObject" Value="*noinherit" />
+  </object>
+  <object Name="UD_FleshGolems Ragged ShortBlades" Inherits="UD_FleshGolems Ragged Weapon">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} dagger" />
+    <part Name="MeleeWeapon" BaseDamage="1d12+5" Skill="ShortBlades" />
+    <tag Name="BaseObject" Value="*noinherit" />
+  </object>
+
+  <!-- Flesh Golem natural weapons - hand -->
+  <object Name="UD_FleshGolems Ragged Hand Cudgel" Inherits="UD_FleshGolems Ragged Cudgel">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} mitt" Tile="Creatures/natural-weapon-fist.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Hand" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Hand Axe" Inherits="UD_FleshGolems Ragged Axe">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} spade" Tile="Creatures/natural-weapon-drill.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Hand" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Hand LongBlades" Inherits="UD_FleshGolems Ragged LongBlades">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} blade" Tile="Items/sw_longblade_10.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Hand" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Hand ShortBlades" Inherits="UD_FleshGolems Ragged ShortBlades">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} point" Tile="Creatures/natural-weapon-finned-tail.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Hand" />
+  </object>
+  <!-- Flesh Golem natural weapons - face -->
+  <object Name="UD_FleshGolems Ragged Face Cudgel" Inherits="UD_FleshGolems Ragged Cudgel">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} molars" />
+    <part Name="MeleeWeapon" Slot="Face" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Face Axe" Inherits="UD_FleshGolems Ragged Axe">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} trines" />
+    <part Name="MeleeWeapon" Slot="Face" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Face LongBlades" Inherits="UD_FleshGolems Ragged LongBlades">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} tusks" />
+    <part Name="MeleeWeapon" Slot="Face" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Face ShortBlades" Inherits="UD_FleshGolems Ragged ShortBlades">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} fangs" />
+    <part Name="MeleeWeapon" Slot="Face" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <!-- Flesh Golem natural weapons - head -->
+  <object Name="UD_FleshGolems Ragged Head Cudgel" Inherits="UD_FleshGolems Ragged Cudgel">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} bulb" />
+    <part Name="MeleeWeapon" Slot="Head" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Head Axe" Inherits="UD_FleshGolems Ragged Axe">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} ridge" />
+    <part Name="MeleeWeapon" Slot="Head" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Head LongBlades" Inherits="UD_FleshGolems Ragged LongBlades">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} prow" />
+    <part Name="MeleeWeapon" Slot="Head" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Head ShortBlades" Inherits="UD_FleshGolems Ragged ShortBlades">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} horn" />
+    <part Name="MeleeWeapon" Slot="Head" />
+  </object>
+  <!-- Flesh Golem natural weapons - foot -->
+  <object Name="UD_FleshGolems Ragged Foot Cudgel" Inherits="UD_FleshGolems Ragged Cudgel">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} corm" />
+    <part Name="MeleeWeapon" Slot="Foot" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Foot Axe" Inherits="UD_FleshGolems Ragged Axe">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} spade" />
+    <part Name="MeleeWeapon" Slot="Foot" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Foot LongBlades" Inherits="UD_FleshGolems Ragged LongBlades">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} blade" />
+    <part Name="MeleeWeapon" Slot="Foot" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Foot ShortBlades" Inherits="UD_FleshGolems Ragged ShortBlades">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} point" />
+    <part Name="MeleeWeapon" Slot="Foot" />
+  </object>
+  <!-- Flesh Golem natural weapons - arm -->
+  <object Name="UD_FleshGolems Ragged Arm Cudgel" Inherits="UD_FleshGolems Ragged Cudgel">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} discs" />
+    <part Name="MeleeWeapon" Slot="Arm" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Arm Axe" Inherits="UD_FleshGolems Ragged Axe">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} ridges" />
+    <part Name="MeleeWeapon" Slot="Arm" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Arm LongBlade" Inherits="UD_FleshGolems Ragged LongBlades">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} scales" />
+    <part Name="MeleeWeapon" Slot="Arm" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Arm ShortBlade" Inherits="UD_FleshGolems Ragged ShortBlades">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} thorns" Tile="Creatures/natural-weapon-thorns.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Arm" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <!-- Flesh Golem natural weapons - body -->
+  <object Name="UD_FleshGolems Ragged Body Cudgel" Inherits="UD_FleshGolems Ragged Cudgel">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} bands" Tile="Creatures/natural-weapon-bands.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Body" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Body Axe" Inherits="UD_FleshGolems Ragged Axe">
+    <part Name="Render" DisplayName="ridged {{UD_FleshGolems_ragged|ragged}} bands" Tile="Creatures/natural-weapon-bands.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Body" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Body LongBlades" Inherits="UD_FleshGolems Ragged LongBlades">
+    <part Name="Render" DisplayName="bladed {{UD_FleshGolems_ragged|ragged}} bands" Tile="Creatures/natural-weapon-bands.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Body" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Body ShortBlades" Inherits="UD_FleshGolems Ragged ShortBlades">
+    <part Name="Render" DisplayName="pointed {{UD_FleshGolems_ragged|ragged}} bands" Tile="Creatures/natural-weapon-bands.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Body" />
+    <tag Name="Gender" Value="plural" />
+  </object>
+  <!-- Flesh Golem natural weapons - tail -->
+  <object Name="UD_FleshGolems Ragged Tail Cudgel" Inherits="UD_FleshGolems Ragged Cudgel">
+    <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} tail" Tile="Creatures/natural-weapon-tail.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Tail" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Tail Axe" Inherits="UD_FleshGolems Ragged Axe">
+    <part Name="Render" DisplayName="ridged {{UD_FleshGolems_ragged|ragged}} tail" Tile="Creatures/natural-weapon-finned-tail.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Tail" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Tail LongBlades" Inherits="UD_FleshGolems Ragged LongBlades">
+    <part Name="Render" DisplayName="bladed {{UD_FleshGolems_ragged|ragged}} tail" Tile="Creatures/natural-weapon-finned-tail.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Tail" />
+  </object>
+  <object Name="UD_FleshGolems Ragged Tail ShortBlades" Inherits="UD_FleshGolems Ragged ShortBlades">
+    <part Name="Render" DisplayName="pointed {{UD_FleshGolems_ragged|ragged}} tail" Tile="Creatures/natural-weapon-finned-tail.bmp" ColorString="&amp;r" />
+    <part Name="MeleeWeapon" Slot="Tail" />
+  </object>
+  
+</objects>
