@@ -32,6 +32,7 @@ namespace XRL.World.WorldBuilders
       The.ZoneManager.ClearZoneBuilders(zoneID);
       The.ZoneManager.AddZonePostBuilder(zoneID, "ClearAll");
       The.ZoneManager.AddZonePostBuilder(zoneID, "MapBuilder", "FileName", (object)"Maps/Ranch.rpm");
+      The.ZoneManager.AddZonePostBuilder(zoneID, "PulldownLocation", "x", 74, "y", 0);
       // The.ZoneManager.AddZonePostBuilder(zone, "Music", "Track", (object)"MoghrayiRemembrance");
 
       // Create secret
