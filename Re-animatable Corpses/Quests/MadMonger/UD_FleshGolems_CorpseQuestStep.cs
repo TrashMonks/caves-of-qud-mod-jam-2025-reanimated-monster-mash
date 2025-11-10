@@ -183,7 +183,7 @@ namespace XRL.World.QuestManagers
                     return entries
                         .GetRandomElementCosmetic()
                         .Replace(ReplaceFind, FindVerbs.GetRandomElementCosmetic())
-                        .Replace(ReplaceType, Corpse.Value);
+                        .Replace(ReplaceType, Corpse.Value.Replace(" Corpse", ""));
 
                 case CorpseTaxonomy.Faction:
                     entries.AddRange(FactionCorpseQuestText);
