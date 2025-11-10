@@ -634,12 +634,12 @@ namespace XRL.World.Parts
         {
             return PastLife == null
                 || (corpse != null
-                    && PastLife?.DeathAddress is (string deathZone, Location2D deathLocation)
-                    && deathZone == corpse.CurrentZone?.ZoneID
-                    && deathLocation != corpse.CurrentCell.Location
+                    && PastLife?.DeathAddress is UD_FleshGolems_PastLife.UD_FleshGolems_DeathAddress deathAddress
+                    && deathAddress.DeathZone == corpse.CurrentZone?.ZoneID
+                    && deathAddress.GetLocation() != corpse.CurrentCell.Location
                     && corpse.Physics is Physics corpsePhysics
                     && corpsePhysics.ProcessTargetedMove(
-                        TargetCell: corpse.CurrentZone.GetCell(deathLocation),
+                        TargetCell: corpse.CurrentZone.GetCell(deathAddress.GetLocation()),
                         Type: "DirectMove",
                         PreEvent: "BeforeDirectMove",
                         PostEvent: "AfterDirectMove",

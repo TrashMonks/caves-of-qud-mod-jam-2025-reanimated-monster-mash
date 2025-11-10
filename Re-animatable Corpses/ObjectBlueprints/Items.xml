@@ -16,7 +16,7 @@
       PoeticVerbs="squirming,wriggling,squelching"
       PoeticAdjectives="wet,moist,meaty"
       PoeticnNoises="gurgles,slurps,squelches" />
-    <tag Name="AnimatedSkills" Value="CookingAndGathering,CookingAndGathering_Butchery,Persuasion_Intimidate,Multiweapon_Fighting,ShortBlades,Axes,Cudgels,LongBlades" />
+    <tag Name="AnimatedSkills" Value="CookingAndGathering,CookingAndGathering_Butchery,Persuasion_Intimidate,Multiweapon_Fighting,ShortBlades,Axe,Cudgel,LongBlades" />
     <tag Name="UD_FleshGolems LimbType" Value="*"/>
     <tag Name="UD_FleshGolems CyberneticsSlot" Value="*"/>
   </object>

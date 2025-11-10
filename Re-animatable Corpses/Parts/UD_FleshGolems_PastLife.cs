@@ -22,6 +22,36 @@ namespace XRL.World.Parts
     [Serializable]
     public class UD_FleshGolems_PastLife : IScribedPart
     {
+        [Serializable]
+        public class UD_FleshGolems_DeathAddress : IComposite
+        {
+            public string DeathZone;
+            public int X;
+            public int Y;
+
+            private UD_FleshGolems_DeathAddress()
+            {
+                DeathZone = null;
+                X = 0;
+                Y = 0;
+            }
+
+            public UD_FleshGolems_DeathAddress(string DeathZone, int X, int Y)
+                : this()
+            {
+                this.DeathZone = DeathZone;
+                this.X = X;
+                this.Y = Y;
+            }
+
+            public UD_FleshGolems_DeathAddress(string DeathZone, Location2D DeathLocation)
+                : this(DeathZone, DeathLocation.X, DeathLocation.Y)
+            {
+            }
+
+            public Location2D GetLocation() => new(X, Y);
+        }
+        
         public bool Init { get; protected set; }
         public bool IsCorpse => (GameObjectFactory.Factory.GetBlueprintIfExists(Blueprint)?.InheritsFrom("Corpse")).GetValueOrDefault();
 
@@ -34,8 +64,7 @@ namespace XRL.World.Parts
         public Render PastRender;
         public string Description;
 
-        [NonSerialized]
-        public (string DeathZone, Location2D DeathLocation) DeathAddress;
+        public UD_FleshGolems_DeathAddress DeathAddress;
 
         [NonSerialized]
         public Brain Brain;
@@ -85,7 +114,7 @@ namespace XRL.World.Parts
             PastRender = null;
             Description = null;
 
-            DeathAddress = (null, null);
+            DeathAddress = null;
 
             Brain = null;
             GenderName = null;
@@ -140,7 +169,11 @@ namespace XRL.World.Parts
                     PastRender = PastLife?.Render?.DeepCopy(ParentObject) as Render;
                     Description = PastLife?.GetPart<Description>()?._Short;
 
-                    DeathAddress = (PastLife?.CurrentZone?.ZoneID, PastLife?.CurrentCell?.Location);
+                    if (PastLife?.CurrentCell is Cell deathCell
+                        && deathCell.ParentZone is Zone deathZone)
+                    {
+                        DeathAddress = new(deathZone.ZoneID, deathCell.Location);
+                    }
 
                     if (PastLife?.Brain is Brain pastBrain)
                     {
@@ -422,10 +455,6 @@ namespace XRL.World.Parts
         {
             base.Write(Basis, Writer);
 
-            Writer.WriteOptimized(DeathAddress.DeathZone);
-            Writer.WriteOptimized(DeathAddress.DeathLocation.X);
-            Writer.WriteOptimized(DeathAddress.DeathLocation.Y);
-
             Brain ??= new();
             Save(Brain, Writer);
 
@@ -441,8 +470,6 @@ namespace XRL.World.Parts
         public override void Read(GameObject Basis, SerializationReader Reader)
         {
             base.Read(Basis, Reader);
-
-            DeathAddress = new(Reader.ReadOptimizedString(), new(Reader.ReadOptimizedInt32(), Reader.ReadOptimizedInt32()));
 
             Brain = Load(Basis, Reader) as Brain;
 
