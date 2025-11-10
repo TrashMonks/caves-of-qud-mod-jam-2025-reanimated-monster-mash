@@ -5,9 +5,9 @@
     - Author: Author(s) of mod
     - DisplayName: Wish name
     - Commands: Comma-delimited set of wish commands to run in sequence
-      - goto:<direct location> - teleports to that location (defaults DisplayName/Icon)
+      - RMMgotopulldown:<direct location> - teleports to that location (defaults DisplayName/Icon)
       - <blueprint name> - summons that blueprint (defaults DisplayName/Icon)
-      - revealandgoto:<map note id (e.g., $stopsvalinn)> - reveals that location and teleports
+      - RMMrevealandgotopulldown:<map note id (e.g., $stopsvalinn)> - reveals that location and teleports
     - Icon: Path to tile
     - ColorPair: Two-character string of fg/detail colors
   -->
@@ -36,18 +36,18 @@
   <wish ModName="Puppet Stalks" Author="Balthichou and Patatifique" Commands="Brothers_Puppets_Puffer" />
   <wish ModName="Puppet Stalks" Author="Balthichou and Patatifique" DisplayName="Spawn dybbuks" Commands="Brothers_Puppets_ZombieSnapjaw,Brothers_Puppets_ZombieHuman,Brothers_Puppets_ZombieGoatfolk" />
   <!-- Puppet Stalks: prepare for quest -->
-  <wish ModName="Puppet Stalks" Author="Balthichou and Patatifique" DisplayName="Go to Nodd" Commands="goto:JoppaWorld.48.16.1.2.10" Icon="terrain/dybbukvillage.png" ColorPair="wm" />
+  <wish ModName="Puppet Stalks" Author="Balthichou and Patatifique" DisplayName="Go to Nodd" Commands="RMMgotopulldown:JoppaWorld.48.16.1.2.10" Icon="terrain/dybbukvillage.png" ColorPair="wm" />
 
   <wish ModName="Re-animatable Corpses" Author="UnderDoug and Lone Aristocrat" Commands="Neuro Animator" />
-  <wish ModName="Re-animatable Corpses" Author="UnderDoug and Lone Aristocrat" DisplayName="Go to the lab of the Mad 'Monger" Commands="revealandgoto:$UD_FleshGolems_MadMonger" Icon="Terrain/sw_joppa.bmp" ColorPair="Wr" />
+  <wish ModName="Re-animatable Corpses" Author="UnderDoug and Lone Aristocrat" DisplayName="Go to the lab of the Mad 'Monger" Commands="RMMrevealandgotopulldown:$UD_FleshGolems_MadMonger" Icon="Terrain/sw_joppa.bmp" ColorPair="Wr" />
   <!-- Re-animatable Corpses: spawn corpses? -->
 
   <wish ModName="The Inheritor Bee" Author="ixjuvin" DisplayName="Spawn bees" Commands="ix_inheritorbees_worker,ix_inheritorbees_drone,ix_inheritorbees_queen" />
   <!-- The Inheritor Bee: go to flower fields -->
 
-  <wish ModName="The Most Forgettable Bird in the World" Author="Gearlink" DisplayName="Go to abandoned ranch" Commands="revealandgoto:$Gearlink_FORGETTABLE_ranch" Icon="Terrain/sw_canyon.bmp" ColorPair="wk" />
+  <wish ModName="The Most Forgettable Bird in the World" Author="Gearlink" DisplayName="Go to abandoned ranch" Commands="RMMrevealandgotopulldown:$Gearlink_FORGETTABLE_ranch" Icon="Terrain/sw_canyon.bmp" ColorPair="wk" />
 
-  <wish ModName="The Rat King" Author="Hazzary453" DisplayName="Go to The Rat Den" Commands="goto:JoppaWorld.13.19.1.1.10" Icon="Terrain/sw_ruins6.bmp" ColorPair="ww" />
+  <wish ModName="The Rat King" Author="Hazzary453" DisplayName="Go to The Rat Den" Commands="RMMgotopulldown:JoppaWorld.13.19.1.1.10" Icon="Terrain/sw_ruins6.bmp" ColorPair="ww" />
 
   <wish ModName="Witch Hunters" Author="Aric Ironhand" DisplayName="Spawn Templar witch hunter, mind flayer, and xenomorph" Commands="AricMJM_Witch_Hunter,AricMJM_Illithid,AricMJM_Xenomorph" />
   <!-- Witch Hunters: go to yd freehold conversation pit -->

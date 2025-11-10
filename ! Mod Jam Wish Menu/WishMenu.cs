@@ -84,6 +84,28 @@ namespace XRL.World.Parts
             }
             return base.HandleEvent(E);
         }
+
+        [WishCommand("RMMrevealandgotopulldown")]
+        public static void RevealAndGotoPullDown(string rest)
+        {
+            var note = Qud.API.JournalAPI.GetMapNote(rest);
+            if (note != null)
+            {
+                if (!note.Revealed)
+                {
+                    Qud.API.JournalAPI.RevealMapNote(note);
+                }
+                GoToPullDown(note.ZoneID);
+            }
+        }
+
+        [WishCommand("RMMgotopulldown")]
+        public static void GoToPullDown(string location)
+        {
+          var z = The.ZoneManager.GetZone(location);
+          var target = z.GetPullDownLocation(The.Player);
+          The.Player.TeleportTo(target);
+        }
     }
 }
 
