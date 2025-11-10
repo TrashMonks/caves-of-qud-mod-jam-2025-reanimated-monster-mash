@@ -12,14 +12,43 @@
     - ColorPair: Two-character string of fg/detail colors
   -->
   <!-- utility wishes -->
-  <wish DisplayName="Toggle Godmode" Commands="idkfa" Icon="Mutations/light_manipulation.bmp" ColorPair="wW"/>
-  <wish DisplayName="Calm creatures" Commands="calm" Icon="Mutations/narcolepsy.bmp" ColorPair="wW"/>
-  <wish DisplayName="Swap bodies" Commands="swap" Icon="Mutations/domination.bmp" ColorPair="wW"/>
-  <wish DisplayName="Beguile creature" Commands="beguile" Icon="Mutations/beguiling.bmp" ColorPair="wW"/>
-  <wish DisplayName="Set all faction rep to 2000" Commands="allloved" Icon="Mutations/two-hearted.bmp" ColorPair="wW"/>
-  <wish DisplayName="Gear up" Commands="stage6" Icon="Items/sw_longblade_1.bmp" ColorPair="wW"/>
-  <!-- wishes that grant items -->
-  <!-- wishes that spawn creatures -->
-  <!-- wishes that teleport to a location -->
-  <!-- wishes that do more complicated stuff -->
+  <wish DisplayName="Toggle Godmode" Commands="idkfa" Icon="Mutations/light_manipulation.bmp" ColorPair="wW" />
+  <wish DisplayName="Calm creatures" Commands="calm" Icon="Mutations/narcolepsy.bmp" ColorPair="wW" />
+  <wish DisplayName="Swap bodies" Commands="swap" Icon="Mutations/domination.bmp" ColorPair="wW" />
+  <wish DisplayName="Beguile creature" Commands="beguile" Icon="Mutations/beguiling.bmp" ColorPair="wW" />
+  <wish DisplayName="Set all faction rep to 2000" Commands="allloved" Icon="Mutations/two-hearted.bmp" ColorPair="wW" />
+  <wish DisplayName="Gear up" Commands="stage6" Icon="Items/sw_longblade_1.bmp" ColorPair="wW" />
+  <!-- jam wishes -->
+  <wish ModName="Algalbloom Corpse" Author="Luz" Commands="Luz_Algalbloom Corpse" />
+
+  <wish ModName="Blade Limned" Author="Nightcap Neal" DisplayName="Spawn blade limned oozes" Commands="NightcapNeal_BladeLimned_Carbide,NightcapNeal_BladeLimned_Crysteel,NightcapNeal_BladeLimned_Zetachrome" />
+
+  <wish ModName="croccassassins" Author="gnarf" Commands="Croccasins" />
+
+  <wish ModName="Kabalie" Author="Monosophy" Commands="Monosophy_Kabalie_OverloadedGargoyle" />
+  <!-- Kabalie: go to baroque ruins -->
+
+  <wish ModName="Louse Guests" Author="suno lili So" Commands="HDBrownie_Table Louse,Table" />
+  <wish ModName="Louse Guests" Author="suno lili So" Commands="HDBrownie_Drink Louse,FullWaterskin" />
+  <wish ModName="Louse Guests" Author="suno lili So" DisplayName="Contract glotrot" Commands="glotrotonset" Icon="Items/sw_severed_tongue.bmp" ColorPair="rK" />
+  <wish ModName="Louse Guests" Author="suno lili So" DisplayName="Cure glotrot" Commands="cureglotrot" Icon="Abilities/sw_skill_nostrums.png" ColorPair="yR" />
+
+  <wish ModName="Puppet Stalks" Author="Balthichou and Patatifique" Commands="Brothers_Puppets_Puffer" />
+  <wish ModName="Puppet Stalks" Author="Balthichou and Patatifique" DisplayName="Spawn dybbuks" Commands="Brothers_Puppets_ZombieSnapjaw,Brothers_Puppets_ZombieHuman,Brothers_Puppets_ZombieGoatfolk" />
+  <!-- Puppet Stalks: prepare for quest -->
+  <wish ModName="Puppet Stalks" Author="Balthichou and Patatifique" DisplayName="Go to Nodd" Commands="goto:JoppaWorld.48.16.1.2.10" Icon="terrain/dybbukvillage.png" ColorPair="wm" />
+
+  <wish ModName="Re-animatable Corpses" Author="UnderDoug and Lone Aristocrat" Commands="Neuro Animator" />
+  <wish ModName="Re-animatable Corpses" Author="UnderDoug and Lone Aristocrat" DisplayName="Go to the lab of the Mad 'Monger" Commands="revealandgoto:$UD_FleshGolems_MadMonger" Icon="Terrain/sw_joppa.bmp" ColorPair="Wr" />
+  <!-- Re-animatable Corpses: spawn corpses? -->
+
+  <wish ModName="The Inheritor Bee" Author="ixjuvin" DisplayName="Spawn bees" Commands="ix_inheritorbees_worker,ix_inheritorbees_drone,ix_inheritorbees_queen" />
+  <!-- The Inheritor Bee: go to flower fields -->
+
+  <wish ModName="The Most Forgettable Bird in the World" Author="Gearlink" DisplayName="Go to abandoned ranch" Commands="revealandgoto:$Gearlink_FORGETTABLE_ranch" Icon="Terrain/sw_canyon.bmp" ColorPair="wk" />
+
+  <wish ModName="The Rat King" Author="Hazzary453" DisplayName="Go to The Rat Den" Commands="goto:JoppaWorld.13.19.1.1.10" Icon="Terrain/sw_ruins6.bmp" ColorPair="ww" />
+
+  <wish ModName="Witch Hunters" Author="Aric Ironhand" DisplayName="Spawn Templar witch hunter, mind flayer, and xenomorph" Commands="AricMJM_Witch_Hunter,AricMJM_Illithid,AricMJM_Xenomorph" />
+  <!-- Witch Hunters: go to yd freehold conversation pit -->
 </reanimatedmonstermashwishcommands>
