@@ -17,7 +17,7 @@
 		<node ID="Who">
 			<text>
 				Barathrumite... member of the expedition sent here. We didn't know... couldn't know...</text>
-		<choice GotoID="Late" IfHaveActiveQuest="Brothers_Puppets_Save Who You Can Save" IfFinishedQuestStep="Brothers_Puppets_Save Who You Can Save~Talk to Hortensa">The Barathrumite expedition? Hortensa sends me. What happened here?</choice>
+		<choice GotoID="Late" IfHaveActiveQuest="Brothers_ZombieQuest" IfFinishedQuestStep="Brothers_ZombieQuest~Briefing">The Barathrumite expedition? Hortensa sends me. What happened here?</choice>
 		<choice GotoID="Late">Did not know what?</choice>	
 		</node>
 	
@@ -61,7 +61,7 @@
 			<text>
 				Before you go, Hortensa was looking for you earlier! Wonder what she wants now, quetzal!
 			</text>
-		<choice GotoID="End" StartQuest="Brothers_Puppets_Save Who You Can Save">I will convene with her and let you know, Q Girl.</choice>
+		<choice GotoID="End" StartQuest="Brothers_ZombieQuest">I will convene with her and let you know, Q Girl.</choice>
 		</node>
 	
 	</conversation>
@@ -69,8 +69,8 @@
 	<conversation ID="Hortensa" Load="Merge">
 		
 		<start ID="Greetings" Load="Merge">
-		<choice GotoID="Looking" IfHaveActiveQuest="Brothers_Puppets_Save Who You Can Save" IfNotFinishedQuestStep="Brothers_Puppets_Save Who You Can Save~Talk to Hortensa" Priority="1">Q Girl said you were looking for me?</choice>
-		<choice GotoID="Nodd" IfHaveActiveQuest="Brothers_Puppets_Save Who You Can Save" IfFinishedQuestStep="Brothers_Puppets_Save Who You Can Save~Talk to Hortensa" Priority="1">About the Barathrumite expedition to Nodd...</choice>
+		<choice GotoID="Looking" IfHaveActiveQuest="Brothers_ZombieQuest" IfNotFinishedQuestStep="Brothers_ZombieQuest~Briefing" Priority="1">Q Girl said you were looking for me?</choice>
+		<choice GotoID="Nodd" IfHaveActiveQuest="Brothers_ZombieQuest" IfFinishedQuestStep="Brothers_ZombieQuest~Briefing" Priority="1">About the Barathrumite expedition to Nodd...</choice>
 		</start>
 
 		<node ID="Looking">
@@ -83,7 +83,7 @@
 	
 		<node ID="Work">
 			<text>
-			Work indeed,=name=. Some weeks ago, an expedition of tinkers went to the village of Nodd on the edges of the Rainbow Wood, where some form of new fungal infection had been spotted. They ought to be back by now, but as you can see, there is no sign of them.
+			Work indeed, =name=. Some weeks ago, an expedition of tinkers went to the village of Nodd on the edges of the Rainbow Wood, where some form of new fungal infection had been spotted. They ought to be back by now, but as you can see, there is no sign of them.
 			</text>
 		<choice GotoID="Happened">Do you reckon something happened to them?</choice>
 		<choice GotoID="Investigate">Do you want me investigate the matter?</choice>
@@ -93,21 +93,21 @@
 			<text>
 			I shudder to think of it, cub, but that may very well be the case. Would you check on them, please? I will hold some hope in my heart, but should the worst have arrived, I trust you to recover their expedition logs.
 			</text>
-		<choice GotoID="End" CompleteQuestStep="Brothers_Puppets_Save Who You Can Save~Talk to Hortensa">I will see what I can do, Hortensa. In the meantime, live and drink.</choice>
+		<choice GotoID="End" CompleteQuestStep="Brothers_ZombieQuest~Briefing">I will see what I can do, Hortensa. In the meantime, live and drink.</choice>
 		</node>
 
 		<node ID="Investigate">
 			<text>
 			Is my worry that obvious? But yes, if that is not too much to ask, cub. Should their fate be as dire as I fear, would you recover their expedition logs?
 			</text>
-		<choice GotoID="End" CompleteQuestStep="Brothers_Puppets_Save Who You Can Save~Talk to Hortensa">I will see what I can do, Hortensa. In the meantime, live and drink.</choice>
+		<choice GotoID="End" CompleteQuestStep="Briefing~Brothers_ZombieQuest">I will see what I can do, Hortensa. In the meantime, live and drink.</choice>
 		</node>
 		
 		<node ID="Nodd">
 			<text>
 			Yes, =player.offspringTerm=?
 			</text>
-			<choice GotoID="Fate" IfFinishedQuestStep="Brothers_Puppets_Save Who You Can Save~Determine the Fate of the the Barathrumite Expedition">They succumbed to a new kind of fungal infection.</choice>
+			<choice GotoID="Fate" IfFinishedQuestStep="Brothers_ZombieQuest~Travel">They succumbed to a new kind of fungal infection.</choice>
 			<choice GotoID="End">I will make my way there quickly. Live and drink, Hortensa.</choice>
 		</node>
 
@@ -127,11 +127,11 @@
 			
 			You have my thanks, =name=. I will see what we can learn from this. In the meantime, please take my old hazard suit. It should help you in case of any more run-ins with fungi.
 			</text>
-			<choice GotoID="End" CompleteQuestStep="Brothers_Puppets_Save Who You Can Save~Report Back to Hortensa">
+			<choice GotoID="End" CompleteQuestStep="Brothers_ZombieQuest~Debrief">
 				<text>Thank you Hortensa. Live and drink.</text>
 			    <part Name="ReceiveItem" Blueprints="Brothers_Puppets_Hazmat" />
 			</choice>
-			<choice GotoID="End" CompleteQuestStep="Brothers_Puppets_Save Who You Can Save~Report Back to Hortensa">
+			<choice GotoID="End" CompleteQuestStep="Brothers_ZombieQuest~Debrief">
 				<text>That would have been useful earlier. Live and drink, Hortensa.</text>
 			    <part Name="ReceiveItem" Blueprints="Brothers_Puppets_Hazmat" />
 			</choice>	

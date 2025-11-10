@@ -35,7 +35,7 @@
 		<tag Name="ExcludeFromDynamicEncounters" />
 		<tag Name="NoSparkingQuest" />
 		<stag Name="Scrap" />
-		<part Name="QuestStepFinisher" Trigger="Taken" Quest="Brothers_Puppets_Save Who You Can Save" Step="Retrieve the Expedition Logs" />
+		<part Name="QuestStepFinisher" Trigger="Taken" Quest="Brothers_ZombieQuest" Step="Logs" />
 	</object>
 
 </objects>

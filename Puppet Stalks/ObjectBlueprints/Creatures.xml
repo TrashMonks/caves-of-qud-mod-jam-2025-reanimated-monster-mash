@@ -59,7 +59,6 @@
 	<!--Special quest Zombie Variant-->
 
 	<object Name="Brothers_Puppets_NoddDybbuk" Inherits="Brothers_Puppets_ZombieUrshiib">
-		<part Name="QuestStepFinisher" Trigger="Seen" Quest="Brothers_Puppets_Save Who You Can Save" Step="Determine the Fate of the the Barathrumite Expedition" />
 		<inventoryobject Blueprint="Brothers_Puppets_Logs" Number="1" />
 		<tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
 	</object>

@@ -8,7 +8,7 @@
 
   -->
 	<object Name="Finish_SaveWhoYouCanSave_TraveltoNodd" Inherits="Widget">
-		<part Name="QuestStepFinisher" Trigger="Created" Quest="Brothers_Puppets_Save Who You Can Save" Step="Travel to Nodd" />
+		<part Name="QuestStepFinisher" Trigger="Created" Quest="Brothers_ZombieQuest" Step="Travel" />
 	</object>
 
 
