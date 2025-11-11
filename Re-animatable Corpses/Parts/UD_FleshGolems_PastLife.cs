@@ -225,7 +225,19 @@ namespace XRL.World.Parts
                     }
                     ConversationScriptID = PastLife?.GetPart<ConversationScript>()?.ConversationID;
 
-                    Stats = new(PastLife?.Statistics);
+                    Stats = new();
+                    if (PastLife != null && PastLife.Statistics.IsNullOrEmpty())
+                    {
+                        foreach ((string statName, Statistic stat) in PastLife?.Statistics)
+                        {
+                            Statistic newStat = new(stat);
+                            if (statName == "Hitpoints")
+                            {
+                                newStat.Penalty = 0;
+                            }
+                            Stats.Add(statName, newStat);
+                        }
+                    }
                     Species = PastLife?.GetSpecies();
                     Genotype = PastLife?.GetGenotype();
                     Subtype = PastLife?.GetSubtype();
