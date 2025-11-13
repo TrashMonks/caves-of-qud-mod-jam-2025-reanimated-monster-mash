@@ -18,6 +18,8 @@
   <wish DisplayName="Beguile creature" Commands="beguile" Icon="Mutations/beguiling.bmp" ColorPair="wW" />
   <wish DisplayName="Set all faction rep to 2000" Commands="allloved" Icon="Mutations/two-hearted.bmp" ColorPair="wW" />
   <wish DisplayName="Gear up" Commands="stage6" Icon="Items/sw_longblade_1.bmp" ColorPair="wW" />
+  <wish DisplayName="Go to Joppa" Commands="RMMgotopulldown:JoppaWorld.11.22.1.1.10" Icon="Terrain/sw_joppa.bmp" ColorPair="wy" />
+
   <!-- jam wishes -->
   <wish ModName="Algalbloom Corpse" Author="Luz" Commands="Luz_Algalbloom Corpse" />
 
@@ -46,8 +48,10 @@
   <!-- The Inheritor Bee: go to flower fields -->
 
   <wish ModName="The Most Forgettable Bird in the World" Author="Gearlink" DisplayName="Go to abandoned ranch" Commands="RMMrevealandgotopulldown:$Gearlink_FORGETTABLE_ranch" Icon="Terrain/sw_canyon.bmp" ColorPair="wk" />
+  <wish ModName="The Most Forgettable Bird in the World" Author="Gearlink" DisplayName="Spawn Prismacaws" Commands="Gearlink_FORGETTABLE_LesserPrismacaw,Gearlink_FORGETTABLE_LesserPrismacaw,Gearlink_FORGETTABLE_GreaterPrismacaw" />
 
   <wish ModName="The Rat King" Author="Hazzary453" DisplayName="Go to The Rat Den" Commands="RMMgotopulldown:JoppaWorld.13.19.1.1.10" Icon="Terrain/sw_ruins6.bmp" ColorPair="ww" />
+  <wish ModName="The Rat King" Author="Hazzary453" DisplayName="Spawn rats" Commands="Hazzary453_TRK_Rat,Hazzary453_TRK_Rat,Hazzary453_TRK_Rat_King" />
 
   <wish ModName="Witch Hunters" Author="Aric Ironhand" DisplayName="Go to the Yd Freehold Salon" Commands="RMMgotopulldown:JoppaWorld.67.17.1.1.11" Icon="Terrain/terrainpalladiumreef_3l.bmp" ColorPair="Wc" />
   <wish ModName="Witch Hunters" Author="Aric Ironhand" DisplayName="Go to Camp of the Witch Hunter General" Commands="RMMrevealandgotopulldown:$Aric_MJM_WHEncampment" Icon="AricMJM_Atlas_VanHelsing.png" ColorPair="My" />
