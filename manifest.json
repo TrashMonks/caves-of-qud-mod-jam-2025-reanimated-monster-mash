@@ -1,6 +1,8 @@
 {
   "ID": "CavesOfQudModJam2025",
   "Title": "reanimated Monster Mash-Up",
+  "Description": "Compilation mod pack for the {{Y|Caves of Qud Modding Jam: reanimated Monster Mash}}, which ran at the start of November 2025. See all the entries at {{C|https://itch.io/jam/caves-of-qud-modding-jam-4/entries}}!\n\nUse the in-game wish menu (Debug > Wish Menu) for easy wishing for the pack's contents.\n\n{{W|Warning:}} Do not run this pack simultaneous with any of the mods contained within.\n\n{{y|You imbued a hideous specimen with life, again. Why?}}",
+  "Tags": "monsters,mod pack",
   "Author": "Mod Jam Participants and Organizers",
   "Previewimage": "preview.png"
 }
