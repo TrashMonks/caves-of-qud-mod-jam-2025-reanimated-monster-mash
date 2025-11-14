@@ -290,7 +290,7 @@ namespace XRL.World.Parts
                     var parts = new List<BodyPart>();
                     drinker.Body.ForeachPart(p =>
                     {
-                        if (p.Type == "Face" && (p.Equipped == null || p.Equipped.CanBeUnequipped(SemiForced: true)) && !p.Equipped.HasPartDescendedFrom<HDBrownie_BaseAILouse>())
+                        if (p.Type == "Face" && (p.Equipped == null || (p.Equipped.CanBeUnequipped(SemiForced: true) && !p.Equipped.HasPartDescendedFrom<HDBrownie_BaseAILouse>())))
                         {
                             parts.Add(p);
                         }
