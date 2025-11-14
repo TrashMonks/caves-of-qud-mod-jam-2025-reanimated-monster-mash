@@ -14,6 +14,7 @@ This version of the pack is for the 1.0.4 release (build 210.X) of Caves of Qud.
 ## Installation
 * [itch.io entry](https://librarianmage.itch.io/reanimated-monster-mash-up)
 * [GitHub download](https://github.com/TrashMonks/caves-of-qud-mod-jam-2024-pets-and-presets/archive/refs/heads/main.zip)
+* [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3605335757)
 
 Please refer to the Caves of Qud Wiki for [mod installation instructions](https://wiki.cavesofqud.com/wiki/Modding:Installing_a_mod).
 
