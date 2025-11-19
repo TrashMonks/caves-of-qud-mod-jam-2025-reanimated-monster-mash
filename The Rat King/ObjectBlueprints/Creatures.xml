@@ -19,7 +19,7 @@
     	<stat Name="Willpower" Value="26" />
     	<stat Name="Ego" Value="28" />
 
-    	<inventoryobject Blueprint="Hazzary453_TRK_Rat_Bite" Number="1" />
+    	<inventoryobject Blueprint="Hazzary453_TRK_Rat_King_Bite" Number="1" />
     	<mutation Name="HeightenedAgility" Level="8" />
     	<mutation Name="AdrenalControl2" Level="6" />
     	<mutation Name="ThickFur" />
@@ -82,5 +82,11 @@
 	<object Name="Hazzary453_TRK_Rat_Bite" Inherits="Adiyy_Bite">
 		<part Name="Render" DisplayName="Gnawing Bite" />
 		<part Name="MeleeWeapon" BaseDamage="1d4" Slot="Head" />
+		<removepart Name="MonochromePoisonOnDamage" />
+	</object>
+
+	<object Name="Hazzary453_TRK_Rat_King_Bite" Inherits="Adiyy_Bite">
+		<part Name="Render" DisplayName="Gnawing Bite" />
+		<part Name="MeleeWeapon" BaseDamage="3d4" Slot="Head" />
 	</object>
 </objects>	

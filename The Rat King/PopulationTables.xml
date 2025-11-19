@@ -1,75 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <populations>
 	<population Name="SaltMarshZoneGlobals" Load="Merge">
-		<object Chance="25" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="10" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="SaltMarshPerSector" Load="Merge">
-		<object Chance="25" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="10" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="DesertCanyonZoneGlobals-Reachable" Load="Merge">
-		<object Chance="25" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="10" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="DesertCanyonPerSector" Load="Merge">
-		<object Chance="25" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="10" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="HillsZoneGlobals-Reachable" Load="Merge">
-		<object Chance="25" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="10" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="HillsPerSector" Load="Merge">
-		<object Chance="25" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="10" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="MountainsZoneGlobals-Reachable" Load="Merge">
-		<object Chance="25" Number="3d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="15" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="MountainsPerSector" Load="Merge">
-		<object Chance="25" Number="3d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="15" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="WatervineCreatures" Load="Merge">
-		<object Chance="25" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="10" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="DesertCanyonCreatures" Load="Merge">
-		<object Chance="25" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="15" Number="1d6" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="HillCreatures" Load="Merge">
-		<object Chance="25" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="15" Number="1d6" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="MountainCreatures" Load="Merge">
-		<object Chance="25" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="15" Number="1d6" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="Tier1RuinsCreatures" Load="Merge">
-		<object Chance="35" Number="2d6" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="25" Number="2d6" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="RedrockSnapjawCaveRoomCreatures" Load="Merge">
-		<object Chance="25" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="15" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="Redrock2PerSector-Creatures" Load="Merge">
-		<object Chance="25" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="10" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="Redrock3PerSector-Creatures" Load="Merge">
-		<object Chance="25" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="10" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="Waterlogged Tunnel Connection" Load="Merge">
-		<object Chance="35" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="15" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="Waterlogged Tunnel" Load="Merge">
-		<object Chance="35" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="15" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="Waterlogged Tunnel Bottom" Load="Merge">
@@ -77,23 +77,23 @@
 	</population>
 
 	<population Name="Joppa Tunnel Connection" Load="Merge">
-		<object Chance="55" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="25" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="Joppa Tunnel" Load="Merge">
-		<object Chance="75" Number="1d6" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="25" Number="1d6" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="Rustwells 1" Load="Merge">
-		<object Chance="45" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="15" Number="1d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="Rustwells 2" Load="Merge">
-		<object Chance="55" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="25" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 	<population Name="Rustwells 3" Load="Merge">
-		<object Chance="65" Number="3d4" Blueprint="Hazzary453_TRK_Rat" />
+		<object Chance="25" Number="2d4" Blueprint="Hazzary453_TRK_Rat" />
 	</population>
 
 </populations>
