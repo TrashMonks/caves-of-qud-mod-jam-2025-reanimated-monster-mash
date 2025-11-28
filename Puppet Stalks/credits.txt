@@ -1,7 +1,0 @@
-2025 Monster Jam: Puppet Stalks
-
-- Concept and Design: Balthichou & Patatifique
-- C# Coding: Patatifique
-- Spritework: Balthichou
-- Writing: Balthichou
-- XML Formatting: Balthichou & Patatifique

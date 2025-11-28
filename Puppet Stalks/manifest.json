@@ -1,7 +1,7 @@
 {
     "id": "Brothers_2025MonsterJam",
-    "title": "2025 Monster Jam: Puppet Stalks",
-    "description": "Adds a new kind of fungal infection to the game, focused on reanimating creatures.",
+    "title": "Puppet Stalks",
+    "description": "Adds a new kind of fungal infection to the game, focused on reanimating creatures. Created for the 2025 reanimated Monster Mash modding jam!",
     "version": "1.0",
     "author": "{{tarnished|Balthichou}} and {{lovesickness|Patatifique}}",
     "tags": "Creature",

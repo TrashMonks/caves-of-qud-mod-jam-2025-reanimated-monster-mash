@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <objects>
 	<object Name="Brothers_TerrainNodd" Inherits="Terrain">
-		<part Name="Render" DisplayName="ruins of Nodd" Tile="terrain/dybbukvillage.png" DetailColor="m" RenderString="127" ColorString="&amp;w" />
+		<part Name="Render" DisplayName="ruins of Nodd" Tile="Terrain/puppetstalks/dybbukvillage.png" DetailColor="m" RenderString="127" ColorString="&amp;w" />
 		<part Name="Description" Short="The corpse of a settlement lays broken and bare as new life thrives between ribs of exposed brinestalk." />
 		<tag Name="NoBiomes" Value="1" />
 		<xtagGrammar Proper="true" massNoun="false" iArticle="the" />

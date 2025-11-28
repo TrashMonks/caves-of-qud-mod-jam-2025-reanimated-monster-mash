@@ -4,7 +4,7 @@
 
 	<object Name="Brothers_PuppetInfection" Inherits="FungalInfection">
 		<part Name="Physics" Weight="2" />
-		<part Name="Render" DisplayName="{{w|puppet stalks}}" Tile="Items/puppetstalks.png" ColorString="&amp;w" DetailColor="M" />
+		<part Name="Render" DisplayName="{{w|puppet stalks}}" Tile="Items/puppetstalks/puppetstalks.png" ColorString="&amp;w" DetailColor="M" />
 		<part Name="Brothers_PuppetInfection" ColorString="w" />
 		<part Name="Description" Short="Ascomata rise in swaying spires from furrowed skin, sampling open air. Prospective descendance is arrayed in spores, poised to take over decomissioned synapses." />
 		<tag Name="Gender" Value="plural" />
@@ -13,7 +13,7 @@
 
 	<object Name="Brothers_Puppets_Hazmat" Inherits="BaseArmor">
 		<part Name="Armor" AV="4" DV="-2" Elec="10" Cold="10" Heat="10" Acid="18" WornOn="Body" />
-		<part Name="Render" DisplayName="{{plastifer|plastifer}} hazard suit" ColorString="&amp;W" DetailColor="K" Tile="Items/hazmat.png" />
+		<part Name="Render" DisplayName="{{plastifer|plastifer}} hazard suit" ColorString="&amp;W" DetailColor="K" Tile="Items/puppetstalks/hazmat.png" />
 		<part Name="Commerce" Value="950" />
 		<part Name="Description" Short="Gas-caught foam was stiffened into a membrane of rubber seals, forming a portable sanctuary of tepid air. The muffled world awaits beyond marble polymer, dust and spores breaking against the laminate shores." />
 		<part Name="GasMask" Power="8" />
