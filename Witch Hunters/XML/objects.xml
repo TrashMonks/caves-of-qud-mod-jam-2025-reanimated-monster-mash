@@ -17,6 +17,7 @@
 		<part Name="Commerce" Value="8" />
 		<part Name="ModImprovedClairvoyance"/>
 		<part Name="GasMask" Power="4" />
+		<tag Name="ExcludeFromDynamicEncounters"/>
 		
 	</object>
   
@@ -35,6 +36,7 @@
 		<part Name="Metal" />
 		<part Name="TinkerItem" Bits="005" CanDisassemble="false" CanBuild="false" />
 		<tag Name="ExcludeFromDynamicEncounters" />
+		<part Name="RulesDescription" Text="This weapon is a hand cannon, a pistol that requires two hands to wield."/>
 		
 		<tag Name="Tier" Value="5" />
 		<tag Name="TurretName" Value="handcannon turret" />
@@ -57,6 +59,7 @@
 		<part Name="Description" Short="A red hot, razored edge of matte and starless alloy lengthens from shimmering point to welded shaft of steel.In the black depths of the Oudin Witchforge, enslaved Espers labour to create these weapons that will then be turned upon their kin." />
 		<part Name="ModPsionic"/>
 		<part Name="AIStopShootingImmuneTargets" />
+		<tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
 	</object>
 	
 	<object Name="AricMJM_Hunter_Hat" Inherits="Wide-brimmed Hat">
@@ -65,6 +68,7 @@
 		<part Name="Description" Short="A twisted mask of hatred stares out from beaneath a wide brim."/>
 		<part Name="ModTerrifyingVisage"/>
 		<part Name="AricMJM_ModImprovedMenacingStare"/>
+		<tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
 	</object>
 	 
 	<object Name="AricMJM_Mindblank_Tonic" Inherits="Tonic">
@@ -96,6 +100,7 @@ You are unaffected by psychic attacks
   	<object Name="AricMJM_Legendary_Hunter_Hat" Inherits="AricMJM_Hunter_Hat">
 		<part Name="Armor" AV="2" Ego="3" DV="3" WornOn="Head" />
 		<part Name="Render" DisplayName="Witch Hunter General's capotain"/>
+		<tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
 	</object>
 	
 	<object Name="AricMJM_Hunter_Captain_Sword" Inherits="Long Sword7th">
@@ -103,6 +108,7 @@ You are unaffected by psychic attacks
 		<part Name="Description" Short="A red hot, razored edge of emerald lengthens from point to finely engraved ivory handle. The Witch Hunters of Oudin eschew the shields of their kin, trusting to all out offence to slay their quarry." />
 		<part Name="EnergyCellSocket" ChanceSlotted="100" SlottedType="Nuclear Cell" />
 		<part Name="ModFlaming"/>
+		<tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
 	</object>
 	
 	<object Name="AricMJM_Captain_Witchblade" Inherits="AricMJM_Hunter_Captain_Sword">
@@ -110,6 +116,7 @@ You are unaffected by psychic attacks
 		<part Name="Description" Short="A red hot, razored edge of emerald lengthens from shimmering point to finely engraved ivory handle. In the black depths of the Oudin Witchforge, enslaved Espers labour to create these weapons that will be turned upon their kin." />
 		<part Name="ModPsionic"/>
 		<part Name="AIStopShootingImmuneTargets" />
+		<tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
 	</object>
 	
 		<object Name="AricMJM_Captain_Handcannon" Inherits= "Borderlands Revolver">

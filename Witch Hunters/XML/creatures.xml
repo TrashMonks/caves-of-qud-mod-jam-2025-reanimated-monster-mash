@@ -181,7 +181,7 @@
 	<object Name="AricMJM_Witch_Hunter" Inherits="Templar">
 	
 		<part Name="Render" ColorString="&amp;Y" TileColor="&amp;K" RenderString="t" Tile="AricMJM_Atlas_VanHelsing.png" DetailColor="y" DisplayName="Templar witch hunter" />
-		<part Name="Description" Short="Burned. Twisted. Suffering all manner of gentic abnormality that the Templar traditionally fear. In search of the power of their enemy, these warriors become that which they hate. And now, Qud shall burn." />
+		<part Name="Description" Short="Burned. Twisted. Suffering all manner of genetic abnormality that the Templar traditionally fear. In search of the power of their enemy, these warriors become that which they hate. And now, Qud shall burn." />
 		<stat Name="Level" Value="30" />
 		<stat Name="Hitpoints" Value="120" />
 		<stat Name="Strength" Boost="2" />
@@ -222,6 +222,8 @@
 		<stat Name="ElectricResistance" Value="25" />
 		<tag Name="Tier" Value="5" />
 		<removetag Name="InventoryPopulationTable" />
+		<tag Name="Humanoid" Value="*delete" />
+		<intproperty Name="Humanoid" Value="0" />
 	</object>
 	
 	<object Name="AricMJM_Witch_Hunter_General" Inherits="AricMJM_Witch_Hunter">
@@ -264,7 +266,7 @@
 		<tag Name="Tier" Value="7" />
 		<tag Name="ExcludeFromDynamicEncounters"/>
 		<tag Name="NamingTag" Value="WitchHunter" />
-		<part Name="FinishQuestStepWhenSlain" Quest="AricMJM_Hunting the Hunter" Step="Slay the Witch-Hunter General"  GameState="Aric_WHCaptain_Slain"/>
+		<part Name="FinishQuestStepWhenSlain" Quest="Hunting the Hunter" Step="Slay the Witch-Hunter General"  GameState="Aric_WHCaptain_Slain"/>
 		<removetag Name="InventoryPopulationTable" />
 	</object>
 	
