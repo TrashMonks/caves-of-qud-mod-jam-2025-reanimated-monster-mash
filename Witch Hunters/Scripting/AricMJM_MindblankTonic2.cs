@@ -216,7 +216,6 @@ namespace XRL.World.Effects
 
         private void ApplyChanges()
         {
-            AddPlayerMessage("I am within the Apply changes function");
 
             if (Object.IsTrueKin())
             {
@@ -228,15 +227,12 @@ namespace XRL.World.Effects
             {
                 StatShifter.SetStatShift(Object, "MA", 6);
                 StatShifter.SetStatShift(Object, "Ego", -6);
-                
             }
 
         }
 
         private void UnapplyChanges()
-        { 
-            AddPlayerMessage("I am within the unapply changes function");
-        
+        {
             if (Object.IsTrueKin())
             {
 

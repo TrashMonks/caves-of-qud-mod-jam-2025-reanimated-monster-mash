@@ -218,7 +218,7 @@
 			<choice Target="End"> Live and drink, Qolohish.</choice>
 		</node>
 		
-		<node ID="Start" IfHaveQuest="AricMJM_WitchHunterQuest">
+		<node ID="Start" IfHaveQuest="AricMJM_WitchHunterQuest" IfNotFinishedQuest="AricMJM_WitchHunterQuest">
 			<text>Friend, do you bring news of my hunter's fate?</text>
 			
 			<choice Target="AricMJM_YourStory">Tell me again of how you came to be here. </choice>
