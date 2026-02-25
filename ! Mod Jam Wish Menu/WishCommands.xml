@@ -38,7 +38,7 @@
   <wish ModName="Puppet Stalks" Author="Balthichou and Patatifique" Commands="Brothers_Puppets_Puffer" />
   <wish ModName="Puppet Stalks" Author="Balthichou and Patatifique" DisplayName="Spawn dybbuks" Commands="Brothers_Puppets_ZombieSnapjaw,Brothers_Puppets_ZombieHuman,Brothers_Puppets_ZombieGoatfolk" />
   <!-- Puppet Stalks: prepare for quest -->
-  <wish ModName="Puppet Stalks" Author="Balthichou and Patatifique" DisplayName="Go to Nodd" Commands="RMMgotopulldown:JoppaWorld.48.16.1.2.10" Icon="terrain/dybbukvillage.png" ColorPair="wm" />
+  <wish ModName="Puppet Stalks" Author="Balthichou and Patatifique" DisplayName="Go to Nodd" Commands="RMMgotopulldown:JoppaWorld.48.16.1.2.10" Icon="terrain/puppetstalks/dybbukvillage.png" ColorPair="wm" />
 
   <wish ModName="Re-animatable Corpses" Author="UnderDoug and Lone Aristocrat" Commands="Neuro Animator" />
   <wish ModName="Re-animatable Corpses" Author="UnderDoug and Lone Aristocrat" DisplayName="Go to the lab of the Mad 'Monger" Commands="RMMrevealandgotopulldown:$UD_FleshGolems_MadMonger" Icon="Terrain/sw_joppa.bmp" ColorPair="Wr" />
