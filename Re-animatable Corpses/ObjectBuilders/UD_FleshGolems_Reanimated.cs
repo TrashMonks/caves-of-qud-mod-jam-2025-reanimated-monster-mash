@@ -201,7 +201,14 @@ namespace XRL.World.ObjectBuilders
                             };
                     }
                     else
-                        energyStat = new(energyStatName, -100000, 100000, 0, corpse);
+                        energyStat = new()
+                        {
+                            Name = energyStatName,
+                            Min = -100000,
+                            Max = 100000,
+                            BaseValue = 0,
+                            Owner = corpse,
+                        };
 
                     corpse.Statistics.TryAdd(energyStatName, energyStat);
                 }

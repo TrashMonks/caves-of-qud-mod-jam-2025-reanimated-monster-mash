@@ -256,7 +256,7 @@ namespace XRL.World.Parts
             Parameters = new();
             return !ParameterString.IsNullOrEmpty()
                 && !Lookup.IsNullOrEmpty()
-                && !(Parameters = ParameterString.CachedCommaExpansion()).IsNullOrEmpty()
+                && !(Parameters = ParameterString.CachedCommaExpansion().ToList()).IsNullOrEmpty()
                 && Parameters.Count > 0
                 && Parameters.Any(s => s.EqualsAny(Lookup));
         }
@@ -960,7 +960,7 @@ namespace XRL.World.Parts
                                 frankenCorpse.ModIntProperty(cyberneticsLicenses, cyberneticsCost);
                                 frankenCorpse.ModIntProperty(cyberneticsLicensesFree, cyberneticsCost);
 
-                                List<string> slotsList = slotsString.CachedCommaExpansion();
+                                List<string> slotsList = slotsString.CachedCommaExpansion().ToList();
                                 slotsList.ShuffleInPlace();
                                 foreach (string slot in slotsList)
                                 {
