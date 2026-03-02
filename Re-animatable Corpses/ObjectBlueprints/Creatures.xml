@@ -62,7 +62,7 @@
     <part Name="Description" Short="A frantic slip of a =subject.personTerm= =subject.verb:flitter= agitatedly between the several foci of =subject.possessive= attention. Were it not for =subject.possessive= palid countenance, one might have assumed the vigor of youth kept =subject.objective= so spry, though =subject.possessive= poorly state appears, perhaps a bit... unnatural. =subject.Subjective= =subject.verb:wear:afterpronoun= =subject.possessive= affect of general disgust in much the same way as =subject.subjective= =subject.verb:wear:afterpronoun= =subject.possessive= lab coat: seemingly out of habit, and perhaps a misplaced sense of self-import." />
     <part Name="Honorifics" Primary="the Mad" />
     <xtagGrammar Proper="true" />
-    <intproperty Name="ProperNoun" Value="1" />
+    <xtagGrammar Name="Proper" Value="true" />
     <removebuilder Name="UD_FleshGolems_Reanimated" />
     <removebuilder Name="UD_FleshGolems_OptionallyReanimated" />
     <mutation Name="Myopia" />
