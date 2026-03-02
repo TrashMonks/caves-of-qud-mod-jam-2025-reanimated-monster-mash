@@ -37,12 +37,6 @@ namespace UD_FleshGolems
             || Entity.HasPlayerBlueprint()
             || Entity.IsPlayer();
 
-        public static bool EqualIncludingBothNull<T>(this T Operand1, T Operand2)
-            => (Utils.EitherNull(Operand1, Operand2, out bool areEqual)
-                  && areEqual)
-            || (Operand1 != null
-                && Operand1.Equals(Operand2));
-
         public static bool EqualsAny<T>(this T Value, params T[] args)
             => !args.IsNullOrEmpty()
             && args.Contains(Value);
