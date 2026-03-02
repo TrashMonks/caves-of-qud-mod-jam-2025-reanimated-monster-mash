@@ -68,9 +68,9 @@ namespace XRL.World.Parts
             return Implantee.ForceApplyEffect(new CyberneticRejectionSyndrome(cost));
         }
         public bool ProcessCybernetic(GameObject InstalledCybernetic)
-            => ProcessCybernetic(ParentObject, InstalledCybernetic);
+            => ProcessCybernetic(ParentObject, InstalledCybernetic, CostStackMultiplier);
 
-        public static bool UnprocessCybernetic(GameObject Implantee, GameObject InstalledCybernetic)
+        public static bool UnprocessCybernetic(GameObject Implantee, GameObject InstalledCybernetic, double CostStackMultiplier = 1.0)
         {
             string cRS_Key = CyberneticsBaseItem.GetCyberneticRejectionSyndromeKey(Implantee);
             if (InstalledCybernetic.GetIntProperty(cRS_Key) < 1)
@@ -87,7 +87,7 @@ namespace XRL.World.Parts
             return true;
         }
         public bool UnprocessCybernetic(GameObject InstalledCybernetic)
-            => UnprocessCybernetic(ParentObject, InstalledCybernetic);
+            => UnprocessCybernetic(ParentObject, InstalledCybernetic, CostStackMultiplier);
 
         public override bool AllowStaticRegistration() => true;
 
