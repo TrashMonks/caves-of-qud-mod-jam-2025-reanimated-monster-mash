@@ -23,11 +23,36 @@ namespace XRL.World.Effects
 
         [SerializeField]
         private int _FrameOffset;
-        private int FrameOffset => GetFrameOffset();
+        private int FrameOffset
+        {
+            get
+            {
+                if (_FrameOffset <= int.MinValue)
+                    return (Object != null && int.TryParse(Object.ID, out int result))
+                        ? _FrameOffset = (result % FrameOffsetMod) + 1
+                        : Stat.RollCached("1d" + FrameOffsetMod);
+                    
+                return _FrameOffset;
+            }
+        }
 
         [SerializeField]
         private bool? _FlipRenderColors;
-        private bool FlipRenderColors => GetFlipRenderColors();
+        private bool FlipRenderColors
+        {
+            get
+            {
+                if (_FlipRenderColors != null)
+                return _FlipRenderColors.GetValueOrDefault();
+
+                if (Object != null && int.TryParse(Object.ID, out int result))
+                {
+                    _FlipRenderColors = (result % 2) == 0;
+                    return _FlipRenderColors.GetValueOrDefault();
+                }
+                return Stat.RollCached("1d2") == 1;
+            }
+        }
 
         private bool _ColorLatch;
         private bool ColorLatch
@@ -126,16 +151,6 @@ namespace XRL.World.Effects
             this.ChanceToSpatter = ChanceToSpatter;
 
             this.Duration = Duration;
-        }
-
-        public int GetFrameOffset()
-        {
-            if (_FrameOffset > int.MinValue)
-                return _FrameOffset;
-
-            return (Object != null && int.TryParse(Object.ID, out int result))
-                ? _FrameOffset = (result % FrameOffsetMod) + 1
-                : Stat.RollCached("1d" + FrameOffsetMod);
         }
 
         public bool GetFlipRenderColors()
