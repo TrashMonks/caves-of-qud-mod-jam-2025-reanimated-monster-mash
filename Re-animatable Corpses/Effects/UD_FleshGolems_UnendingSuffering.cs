@@ -330,12 +330,7 @@ namespace XRL.World.Effects
                     if (renderdObject.LiquidVolume is LiquidVolume liquidVolumeInCell
                         && liquidVolumeInCell.IsOpenVolume())
                     {
-                        LiquidVolume bloodVolumeForCell = new()
-                        {
-                            InitialLiquid = bleedLiquid,
-                            Volume = 2
-                        };
-                        liquidVolumeInCell.MixWith(bloodVolumeForCell, null, null, null);
+                        liquidVolumeInCell.MixWith(new LiquidVolume(bleedLiquid, 2), null, null, null);
                         inLiquid = true;
                     }
                     else
