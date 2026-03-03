@@ -153,19 +153,6 @@ namespace XRL.World.Effects
             this.Duration = Duration;
         }
 
-        public bool GetFlipRenderColors()
-        {
-            if (_FlipRenderColors != null)
-                return _FlipRenderColors.GetValueOrDefault();
-
-            if (Object != null && int.TryParse(Object.ID, out int result))
-            {
-                _FlipRenderColors = (result % 2) == 0;
-                return _FlipRenderColors.GetValueOrDefault();
-            }
-            return Stat.RollCached("1d2") == 1;
-        }
-
         public void Initialize(int Tier, int TimesReanimated = 1)
         {
             Tier = Capabilities.Tier.Constrain(Stat.Random(Tier - 1, Tier + 1));
