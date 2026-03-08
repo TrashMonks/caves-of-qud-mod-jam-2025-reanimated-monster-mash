@@ -54,7 +54,7 @@ namespace XRL.World.Effects
         {
             set
             {
-                if (_ColorLatch != value && value)
+                if (!_ColorLatch && value)
                 {
                     ColorToggle = !ColorToggle;
                 }
