@@ -47,12 +47,16 @@ namespace XRL.World.Parts
                         foreach (GameObjectBlueprint tileMappingsBlueprint in tileMappingBlueprints)
                         {
                             if (!tileMappingsBlueprint.Tags.IsNullOrEmpty())
+                            {
                                 foreach ((string name, string value) in tileMappingsBlueprint.Tags)
+                                {
                                     if (name.StartsWith(REANIMATED_ALT_TILE_PROPTAG))
                                     {
                                         UnityEngine.Debug.Log(name + "|" + value);
                                         _TileMappings[name] = value;
                                     }
+                                }
+                            }
 
                             if (!tileMappingsBlueprint.Props.IsNullOrEmpty())
                                 foreach ((string name, string value) in tileMappingsBlueprint.Props)
