@@ -304,7 +304,7 @@ namespace XRL.World.Effects
             bool inLiquid = false;
             string bleedLiquid = Object.GetBleedLiquid();
 
-            foreach (GameObject renderdObject in suferrerCell.GetObjectsWithPartReadonly("Render"))
+            foreach (GameObject renderdObject in Object.CurrentCell.GetObjectsWithPartReadonly("Render"))
                 if (permyriadChanceToSmear.in10000())
                 {
                     if (renderdObject.LiquidVolume is LiquidVolume liquidVolumeInCell
@@ -324,7 +324,7 @@ namespace XRL.World.Effects
                 if (bloodySplashObject.LiquidVolume is LiquidVolume bloodSplashVolume)
                 {
                     bloodSplashVolume.InitialLiquid = bleedLiquid;
-                    suferrerCell.AddObject(bloodySplashObject);
+                    Object.CurrentCell.AddObject(bloodySplashObject);
                     if (tookDamage)
                         DidX("spatter", "viscous gunk everywhere", "!");
                 }
