@@ -1368,7 +1368,7 @@ namespace XRL.World.Parts
                     }
 
                     string chosenTile = null;
-                    foreach ((string _, TileMappingKeyword keyword) in TileMappingKeywordValues)
+                    foreach (TileMappingKeyword keyword in Enum.GetValues(typeof(TileMappingKeyword)))
                     {
                         if (prospectiveTiles.IsNullOrEmpty()
                             || !prospectiveTiles.ContainsKey(keyword)
