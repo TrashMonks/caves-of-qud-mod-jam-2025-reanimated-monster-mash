@@ -196,7 +196,7 @@ namespace XRL.World.ObjectBuilders
                     corpse.Statistics ??= new();
                     string energyStatName = "Energy";
                     Statistic energyStat = null;
-                    if (GameObjectFactory.Factory.GetBlueprintIfExists(nameof(Entity)) is var baseEntityBlueprint)
+                    if (GameObjectFactory.Factory.GetBlueprintIfExists(nameof(Entity)) is GameObjectBlueprint baseEntityBlueprint)
                     {
                         if (!baseEntityBlueprint.Stats.IsNullOrEmpty()
                             && baseEntityBlueprint.Stats.ContainsKey(energyStatName))

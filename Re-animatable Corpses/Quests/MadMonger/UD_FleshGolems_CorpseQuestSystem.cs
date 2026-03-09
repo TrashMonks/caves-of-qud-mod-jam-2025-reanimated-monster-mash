@@ -706,7 +706,7 @@ namespace XRL.World.QuestManagers
         public static void DebugQuestCorpses_Wish()
         {
             if (The.Game.HasQuest("UD_FleshGolems You Raise Me Up")
-                && The.Game.GetSystem<UD_FleshGolems_CorpseQuestSystem>() is var corpseQuestSystem
+                && The.Game.GetSystem<UD_FleshGolems_CorpseQuestSystem>() is UD_FleshGolems_CorpseQuestSystem corpseQuestSystem
                 && !corpseQuestSystem.Steps.IsNullOrEmpty())
             {
                 debugLog(nameof(corpseQuestSystem.ParentQuest), corpseQuestSystem.ParentQuest.ID);

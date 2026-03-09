@@ -43,7 +43,7 @@ namespace XRL.World.Parts
                 if (_TileMappings.IsNullOrEmpty())
                 {
                     _TileMappings = new();
-                    if (GameObjectFactory.Factory.GetBlueprintsInheritingFrom("UD_FleshGolems_BaseTileMappings", false) is var tileMappingBlueprints)
+                    if (GameObjectFactory.Factory.GetBlueprintsInheritingFrom("UD_FleshGolems_BaseTileMappings", false) is List<GameObjectBlueprint> tileMappingBlueprints)
                         foreach (GameObjectBlueprint tileMappingsBlueprint in tileMappingBlueprints)
                         {
                             if (!tileMappingsBlueprint.Tags.IsNullOrEmpty())

@@ -201,7 +201,7 @@ namespace XRL.World.Effects
 
             SufferColor = MeatSufferColor;
             if (Object.TryGetPart(out UD_FleshGolems_PastLife pastLife)
-                && GameObjectFactory.Factory.GetBlueprintIfExists(pastLife.Blueprint) is var pastLifeBlueprint)
+                && GameObjectFactory.Factory.GetBlueprintIfExists(pastLife.Blueprint) is GameObjectBlueprint pastLifeBlueprint)
             {
                 if (pastLifeBlueprint.InheritsFrom("Robot"))
                 {
