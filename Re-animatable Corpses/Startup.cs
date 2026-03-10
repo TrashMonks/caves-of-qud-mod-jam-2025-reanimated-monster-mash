@@ -31,18 +31,7 @@ namespace UD_FleshGolems
         public static string PlayerID
         {
             get => _PlayerID = The.Player?.ID ?? _PlayerID;
-            set
-            {
-                if (int.TryParse(value, out int intValue))
-                {
-                    _PlayerID = intValue.ToString();
-                    if (The.Player != null)
-                    {
-                        The.Player.ID = _PlayerID;
-                        The.Player.BaseID = intValue;
-                    }
-                }
-            }
+            set => _PlayerID = value;
         }
     }
 }
