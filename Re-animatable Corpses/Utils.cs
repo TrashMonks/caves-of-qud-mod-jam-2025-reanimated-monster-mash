@@ -55,33 +55,6 @@ namespace UD_FleshGolems
             return output;
         }
 
-        [VariableReplacer]
-        public static string ud_weird(DelegateContext Context)
-        {
-            string output = null;
-            if (!Context.Parameters.IsNullOrEmpty())
-            {
-                if (Context.Parameters.Count > 1)
-                {
-                    output = "{{" + Context.Parameters[0] + "|";
-                    for (int i = 1; i < Context.Parameters.Count; i++)
-                    {
-                        if (i > 1)
-                        {
-                            output += " ";
-                        }
-                        output += TextFilters.Weird(Context.Parameters[i]);
-                    }
-                    output += "}}";
-                }
-                else
-                {
-                    return TextFilters.Weird(Context.Parameters[0]);
-                }
-            }
-            return output;
-        }
-
         public static bool EitherNull<T1, T2>(T1 x, T2 y, out bool AreEqual)
         {
             AreEqual = (x is null) == (y is null);
@@ -105,9 +78,8 @@ namespace UD_FleshGolems
         }
 
         public static int CapDamageTo1HPRemaining(GameObject Creature, int DamageAmount)
-            => (Creature == null
-                || Creature.GetStat("Hitpoints") is not Statistic hitpoints)
-            ? 0
-            : Math.Max(0, Math.Min(hitpoints.Value - 1, DamageAmount));
+            => Creature?.GetStat("Hitpoints") is Statistic hitpoints
+            ? Math.Clamp(hitpoints.Value - 1, 0, DamageAmount)
+            : 0;
     }
 }
