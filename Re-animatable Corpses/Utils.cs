@@ -26,7 +26,7 @@ namespace UD_FleshGolems
                 .Coalesce("Humanoid");
 
             return (builder.info?.fireBootEvent(QudGameBootModule.BOOTEVENT_BOOTPLAYEROBJECTBLUEPRINT, The.Game, body))
-                ?.Coalesce(body);
+                .Coalesce(body);
         }
 
         [VariableReplacer]
