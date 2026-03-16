@@ -45,17 +45,16 @@ namespace UD_FleshGolems
         }
 
         public static string AppendTick(string String, bool WithSpaceAfter = true)
-        {
-            return String + "[" + TICK + "]" + (WithSpaceAfter ? " " : "");
-        }
+            => String + "[" + TICK + "]" + (WithSpaceAfter ? " " : "");
+
         public static string AppendCross(string String, bool WithSpaceAfter = true)
-        {
-            return String + "[" + CROSS + "]" + (WithSpaceAfter ? " " : "");
-        }
+            => String + "[" + CROSS + "]" + (WithSpaceAfter ? " " : "");
+
         public static string AppendYehNah(string String, bool Yeh, bool WithSpaceAfter = true)
-        {
-            return String + "[" + (Yeh ? TICK : CROSS) + "]" + (WithSpaceAfter ? " " : "");
-        }
+            => Yeh
+            ? AppendTick(String, WithSpaceAfter)
+            : AppendCross(String, WithSpaceAfter)
+            ;
 
         public static int CapDamageTo1HPRemaining(GameObject Creature, int DamageAmount)
             => Creature?.GetStat("Hitpoints") is Statistic hitpoints
