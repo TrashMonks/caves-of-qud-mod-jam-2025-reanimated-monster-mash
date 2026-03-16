@@ -37,10 +37,6 @@ namespace UD_FleshGolems
             || Entity.HasPlayerBlueprint()
             || Entity.IsPlayer();
 
-        public static bool EqualsAny<T>(this T Value, params T[] args)
-            => !args.IsNullOrEmpty()
-            && args.Contains(Value);
-
         public static string ThisManyTimes(this string @string, int Times = 1)
         {
             if (Times < 1)

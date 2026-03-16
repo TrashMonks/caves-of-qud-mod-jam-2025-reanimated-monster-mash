@@ -271,7 +271,7 @@ namespace XRL.World.Parts
                 && !Lookup.IsNullOrEmpty()
                 && !(Parameters = ParameterString.CachedCommaExpansion().ToList()).IsNullOrEmpty()
                 && Parameters.Count > 0
-                && Parameters.Any(s => s.EqualsAny(Lookup));
+                && Parameters.Any(s => Lookup.Contains(s));
         }
         public static bool ParseTileMappings(TileMappingKeyword Keyword, out List<string> TileList, params string[] Lookup)
         {
