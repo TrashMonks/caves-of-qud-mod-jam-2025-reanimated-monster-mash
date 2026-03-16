@@ -265,14 +265,13 @@ namespace XRL.World.Parts
         }
 
         public static bool TileMappingTagExistsAndContainsLookup(string ParameterString, out List<string> Parameters, params string[] Lookup)
-        {
-            Parameters = new();
-            return !ParameterString.IsNullOrEmpty()
-                && !Lookup.IsNullOrEmpty()
-                && !(Parameters = ParameterString.CachedCommaExpansion().ToList()).IsNullOrEmpty()
-                && Parameters.Count > 0
-                && Parameters.Any(s => Lookup.Contains(s));
-        }
+            => (Parameters = ParameterString
+                    ?.CachedCommaExpansion()
+                    ?.ToList())
+                ?.Any(s => (Lookup?.Contains(s)) is true) is true
+            && !Lookup.IsNullOrEmpty()
+            ;
+
         public static bool ParseTileMappings(TileMappingKeyword Keyword, out List<string> TileList, params string[] Lookup)
         {
             TileList = new();
