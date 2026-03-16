@@ -180,28 +180,28 @@
     <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} weapon"
           TileColor="&amp;r" DetailColor="w" ColorString="&amp;r"/>
     <part Name="RandomColors" DetailColor="w,K,R" />
-    <part Name="MeleeWeapon" Slot="" HitBonus="10" PenBonus="0" MaxStrengthBonus="999" Stat="Strength" />
+    <part Name="MeleeWeapon" Slot="" HitBonus="2" PenBonus="0" MaxStrengthBonus="999" Stat="Strength" />
     <part Name="UD_FleshGolems_SetDefaultBehaviorBlueprintWhenDefaultBehavior" />
     <tag Name="BaseObject" Value="*noinherit" />
   </object>
   <object Name="UD_FleshGolems Ragged Cudgel" Inherits="UD_FleshGolems Ragged Weapon">
     <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} cudgel" />
-    <part Name="MeleeWeapon" BaseDamage="4d6" Skill="Cudgel" />
+    <part Name="MeleeWeapon" BaseDamage="4d3" Skill="Cudgel" />
     <tag Name="BaseObject" Value="*noinherit" />
   </object>
   <object Name="UD_FleshGolems Ragged Axe" Inherits="UD_FleshGolems Ragged Weapon">
     <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} axe" />
-    <part Name="MeleeWeapon" BaseDamage="1d8+8" Skill="Axe" />
+    <part Name="MeleeWeapon" BaseDamage="1d6+6" Skill="Axe" />
     <tag Name="BaseObject" Value="*noinherit" />
   </object>
   <object Name="UD_FleshGolems Ragged LongBlades" Inherits="UD_FleshGolems Ragged Weapon">
     <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} long blade" />
-    <part Name="MeleeWeapon" BaseDamage="2d12" Skill="LongBlades" />
+    <part Name="MeleeWeapon" BaseDamage="2d6" Skill="LongBlades" />
     <tag Name="BaseObject" Value="*noinherit" />
   </object>
   <object Name="UD_FleshGolems Ragged ShortBlades" Inherits="UD_FleshGolems Ragged Weapon">
     <part Name="Render" DisplayName="{{UD_FleshGolems_ragged|ragged}} dagger" />
-    <part Name="MeleeWeapon" BaseDamage="1d12+5" Skill="ShortBlades" />
+    <part Name="MeleeWeapon" BaseDamage="1d8+4" Skill="ShortBlades" />
     <tag Name="BaseObject" Value="*noinherit" />
   </object>
 
