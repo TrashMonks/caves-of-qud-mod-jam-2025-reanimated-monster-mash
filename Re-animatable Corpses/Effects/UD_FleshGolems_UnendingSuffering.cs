@@ -22,16 +22,16 @@ namespace XRL.World.Effects
         public const string ENDLESSLY_SUFFERING = "{{UD_FleshGolems_reanimated|endlessly suffering}}";
 
         [SerializeField]
-        private int _FrameOffset;
+        private int? _FrameOffset;
         private int FrameOffset
         {
             get
             {
-                if (_FrameOffset > int.MinValue)
-                    return _FrameOffset;
+                if (_FrameOffset != null)
+                    return _FrameOffset.Value;
 
                 return (Object != null && int.TryParse(Object.ID, out int result))
-                    ? _FrameOffset = (result % FrameOffsetMod) + 1
+                    ? (_FrameOffset = (result % FrameOffsetMod) + 1).Value
                     : Stat.RollCached("1d" + FrameOffsetMod);
             }
         }
@@ -59,10 +59,9 @@ namespace XRL.World.Effects
         {
             set
             {
-                if (_ColorLatch != value && value)
-                {
+                if (!_ColorLatch && value)
                     ColorToggle = !ColorToggle;
-                }
+
                 _ColorLatch = value;
             }
         }
@@ -101,7 +100,7 @@ namespace XRL.World.Effects
 
         public UD_FleshGolems_UnendingSuffering()
         {
-            _FrameOffset = int.MinValue;
+            _FrameOffset = null;
             _FlipRenderColors = null;
 
             _ColorLatch = false;
@@ -157,17 +156,13 @@ namespace XRL.World.Effects
         {
             Tier = Capabilities.Tier.Constrain(Stat.Random(Tier - 1, Tier + 1));
 
-            if (Tier >= 7)
-                Damage = "3-4";
-            else
-            if (Tier >= 5)
-                Damage = "2-3";
-            else
-            if (Tier >= 3)
-                Damage = "1-2";
-            else
-            if (Tier >= 1)
-                Damage = "1d3-2";
+            Damage = Tier switch
+            {
+                >= 7 => "3-4",
+                >= 5 => "2-3",
+                >= 3 => "1-2",
+                _ => "1d3-2"
+            };
 
             ChanceToDamage = 3 * (1 + Math.Max(1, Tier));
 
@@ -213,19 +208,13 @@ namespace XRL.World.Effects
                 && GameObjectFactory.Factory.GetBlueprintIfExists(pastLife.Blueprint) is var pastLifeBlueprint)
             {
                 if (pastLifeBlueprint.InheritsFrom("Robot"))
-                {
                     SufferColor = RobotSufferColor;
-                }
                 else
                 if (pastLifeBlueprint.InheritsFromAny("Plant", "BasePlant", "MutatedPlant", "BaseSlynth"))
-                {
                     SufferColor = PlantSufferColor;
-                }
                 else
                 if (pastLifeBlueprint.InheritsFromAny("Fungus", "ActiveFungus", "MutatedFungus"))
-                {
                     SufferColor = FungusSufferColor;
-                }
             }
             StartMessage(Object);
 
@@ -257,12 +246,11 @@ namespace XRL.World.Effects
 
         public void Suffer()
         {
-            if (Object == null
-                || Object.CurrentCell == null)
+            if (Object?.CurrentCell is not Cell suferrerCell)
                 return;
 
             int permyriadChanceToDamage = ChanceToDamage * 100;
-            if (Object.CurrentCell.OnWorldMap() || Options.GreatlyReduceSuffering)
+            if (suferrerCell.OnWorldMap() || Options.GreatlyReduceSuffering)
                 permyriadChanceToDamage = (int)Math.Max(1, permyriadChanceToDamage * 0.01);
 
             int permyriadChanceToSmear = ChanceToSmear * 100;
@@ -308,8 +296,7 @@ namespace XRL.World.Effects
                     AutoAct.Setting = oldAutoActSetting;
             }
 
-            if (Object.CurrentCell is not Cell suferrerCell
-                || suferrerCell.OnWorldMap())
+            if (suferrerCell.OnWorldMap())
                 return;
 
             bool inLiquid = false;
