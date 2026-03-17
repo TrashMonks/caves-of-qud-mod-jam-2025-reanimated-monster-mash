@@ -1107,7 +1107,8 @@ namespace XRL.World.Parts
                         }
                     }
 
-                    if (frankenCorpse.TryGetPart(out Leveler frankenLeveler))
+                    if (!frankenCorpse.IsPlayerDuringWorldGen()
+                        && frankenCorpse.TryGetPart(out Leveler frankenLeveler))
                     {
                         if (int.TryParse(frankenCorpse.GetPropertyOrTag("UD_FleshGolems_SkipLevelsOnReanimate", "0"), out int SkipLevelsOnReanimate)
                             && SkipLevelsOnReanimate < 1)
