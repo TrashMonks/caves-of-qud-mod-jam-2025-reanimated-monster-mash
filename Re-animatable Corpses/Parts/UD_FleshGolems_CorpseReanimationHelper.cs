@@ -52,7 +52,7 @@ namespace XRL.World.Parts
                                 {
                                     if (name.StartsWith(REANIMATED_ALT_TILE_PROPTAG))
                                     {
-                                        UnityEngine.Debug.Log(name + "|" + value);
+                                        // UnityEngine.Debug.Log(name + "|" + value);
                                         _TileMappings[name] = value;
                                     }
                                 }
@@ -64,7 +64,7 @@ namespace XRL.World.Parts
                                 {
                                     if (name.StartsWith(REANIMATED_ALT_TILE_PROPTAG))
                                     {
-                                        UnityEngine.Debug.Log(name + "|" + value);
+                                        // UnityEngine.Debug.Log(name + "|" + value);
                                         _TileMappings[name] = value;
                                     }
                                 }
@@ -1437,6 +1437,8 @@ namespace XRL.World.Parts
                             }
                         }
                     }
+
+                    frankenBody?.UpdateBodyParts();
                 }
 
                 if (!UD_FleshGolems_Reanimated.HasWorldGenerated || excludedFromDynamicEncounters)
@@ -1447,7 +1449,8 @@ namespace XRL.World.Parts
                     }
                 }
 
-                if (!frankenCorpse.IsPlayer() && frankenCorpse?.CurrentCell is Cell frankenCell)
+                if (!frankenCorpse.IsPlayer()
+                    && frankenCorpse?.CurrentCell is Cell frankenCell)
                 {
                     bool isItemThatNotSelf(GameObject GO)
                     {
