@@ -24,6 +24,33 @@ namespace XRL.World.Parts
     [Serializable]
     public class UD_FleshGolems_DestinedForReanimation : IScribedPart
     {
+        [Serializable]
+        public class FlippableRenderable : Renderable
+        {
+            public bool HFlip;
+            public FlippableRenderable(IRenderable Source) : base(Source) { }
+            public FlippableRenderable(IRenderable Source, bool HFlip) : this(Source) => this.HFlip = HFlip;
+            public override bool getHFlip() => HFlip;
+        }
+
+        public static readonly Dictionary<string, string> DeathCategoryVerbs = new()
+        {
+            { "cooked", "were " },                   // Heat damage w/ NoBurn (only steam)
+            { "immolated", "were " },                // Heat damage w/o NoBurn
+            { "plasma-burned to death", "were " },   // Plasma damage
+            { "frozen to death", "were " },          // Cold damage
+            { "electrocuted", "were " },             // Electric damage
+            { "thirst", "died of " },                // Thirst
+            { "died of poison", "" },               // Poison damage { "bled to death", "" }, // Bleeding damage
+            { "failed", "" },                       // Metabolic damage (hulk honey)
+            { "died of asphyxiation", "" },         // Asphyxiation damage (osseous ash)
+            { "psychically extinguished", "were " }, // Psionic damage
+            { "drained to extinction", "were " },    // Drain damage (syphon vim)
+            { "pricked to death", "were " },         // Thorns damage
+            { "bitten to death", "were " },          // Bite damage (any bite)
+            { "killed", "were " },                   // Killed
+        };
+
         public GameObject Corpse;
 
         public bool BuiltToBeReanimated;
@@ -32,7 +59,7 @@ namespace XRL.World.Parts
 
         private List<int> FailedToRegisterEvents;
 
-        public static bool HaveFakedDeath = false;
+        public static bool HaveFakedPlayerDeath = false;
 
         public bool PlayerWantsFakeDie;
 
@@ -88,28 +115,31 @@ namespace XRL.World.Parts
                 Reason: Reason,
                 ThirdPersonReason: ThirdPersonReason);
 
-            string deathMessage = "You died.\n\nYou were " + (Reason ?? The.Game.DeathReason) + ".";
-            string deathCategory = The.Game.DeathCategory;
-            Dictionary<string, Renderable> deathIcons = CheckpointingSystem.deathIcons;
-            string deathMessageTitle = "";
-            if (deathMessage.Contains("."))
-            {
-                int titleSubstring = deathMessage.IndexOf('.') + 1;
-                int messageSubstring = deathMessage.IndexOf('.') + 2;
-                deathMessageTitle = deathMessage[..titleSubstring];
-                deathMessage = deathMessage[messageSubstring..];
-            }
+            string deathMessageTitle = "You died.";
+            string deathCategory = Reason ?? The.Game.DeathReason;
+            string deathMessage = $"=subject.Subjective= {DeathCategoryVerbs.GetValueOrDefault(deathCategory)}{deathCategory}.";
             Renderable deathIcon = null;
-            if (!Reason.IsNullOrEmpty()
-                && deathIcons.ContainsKey(Reason))
-            {
-                deathMessage = deathMessage.Replace("You died.", "");
-                deathIcon = deathIcons[Reason];
-            }
+
+            Dictionary<string, Renderable> deathIcons = CheckpointingSystem.deathIcons;
+
+            if (UI.Options.GetOptionBool("Books_EloquentDeath_EnableEloquentDeathMessage"))
+                deathMessageTitle = "You became a cord in time's silly carpet.";
+
+            if (!deathCategory.IsNullOrEmpty() && deathIcons.ContainsKey(deathCategory))
+                deathIcon = deathIcons[deathCategory];
+
             deathIcon ??= GameObjectFactory.Factory.GetBlueprintIfExists("Crowsong")?.GetRenderable();
+
             if (DoFakeMessage
                 && Dying.IsPlayerDuringWorldGen())
             {
+                deathMessage = deathMessage
+                    ?.StartReplace()
+                    ?.AddObject(Dying)
+                    ?.AddObject(Killer)
+                    ?.ToString()
+                    ?.Capitalize();
+
                 Popup.ShowSpace(
                     Message: deathMessage,
                     Title: deathMessageTitle,
@@ -119,12 +149,30 @@ namespace XRL.World.Parts
                     ShowContextFrame: deathIcon != null,
                     PopupID: "DeathMessage");
 
+                string andYetMsg = "... and yet...";
+                string msgSpaces = "=ud_nbsp:12="
+                    .StartReplace()
+                    .ToString();
+                string notRelentMsg = "...=subject.refname= =subject.verb:don't:afterpronoun= {{UD_FleshGolems_reanimated|relent}}..."
+                    .StartReplace()
+                    .AddObject(Dying)
+                    .ToString();
+
+                string fullMsg = andYetMsg + "\n\n" + msgSpaces + notRelentMsg;
+
+                CorpseIcon ??= new FlippableRenderable(Dying.RenderForUI(), Dying.IsPlayerDuringWorldGen());
+
                 Popup.ShowSpace(
-                    Message: "... and yet...\n\n=ud_nbsp:12=...You don't {{UD_FleshGolems_reanimated|relent}}.".StartReplace().ToString(),
-                    AfterRender: deathIcon != null ? CorpseIcon : null,
+                    Message: fullMsg,
+                    AfterRender: CorpseIcon,
                     LogMessage: true,
                     ShowContextFrame: deathIcon != null,
-                    PopupID: "DeathMessage");
+                    PopupID: "UndeathMessage");
+
+                Popup.ShowSpace(
+                    Message: "... some time passes... ",
+                    LogMessage: true,
+                    PopupID: "TimePassMessage");
             }
 
             string deathReason = Reason ?? The.Game.DeathReason ?? deathCategory;
@@ -239,13 +287,7 @@ namespace XRL.World.Parts
                             projectile = GameObject.CreateSample(EncountersAPI.GetAnItemBlueprint(GO => GO.HasPart(ammoPart)));
                     }
                 }
-                var reasonExclusions = new List<string>
-                {
-                    "exit",
-                    "quit",
-                    "CROWSONG"
-                };
-                string reason = CheckpointingSystem.deathIcons.Keys.Where(s => !reasonExclusions.Contains(s)).GetRandomElement();
+                string reason = DeathCategoryVerbs.Keys.GetRandomElement();
                 bool accidental = Stat.RollCached("1d2") == 1;
 
                 bool deathFaked = FakeDeath(
@@ -359,14 +401,14 @@ namespace XRL.World.Parts
         {
             if (ParentObject is not GameObject player
                 || !PlayerWantsFakeDie
-                || HaveFakedDeath
+                || HaveFakedPlayerDeath
                 || !player.IsPlayerDuringWorldGen())
                 return false;
 
             bool success = UD_FleshGolems_Reanimated.ReplaceEntityWithCorpse(
                 Entity: player,
                 FakeDeath: PlayerWantsFakeDie,
-                FakedDeath: out HaveFakedDeath,
+                FakedDeath: out HaveFakedPlayerDeath,
                 DeathEvent: null,
                 Corpse: Corpse);
 
@@ -442,7 +484,7 @@ namespace XRL.World.Parts
                 && ParentObject is GameObject entity
                 && (entity.IsPlayer()
                     || entity.IsPlayerDuringWorldGen())
-                && !HaveFakedDeath
+                && !HaveFakedPlayerDeath
                 && (Corpse != null
                     || UD_FleshGolems_Reanimated.TryProduceCorpse(entity, out Corpse)))
                 entity.RegisterPartEvent(this, "GameStart");
@@ -462,11 +504,11 @@ namespace XRL.World.Parts
                 && dying.TryGetPart(out Corpse dyingCorpse)
                 && !dyingCorpse.CorpseBlueprint.IsNullOrEmpty()
                 && dying.IsPlayer()
-                && (!PlayerWantsFakeDie || !HaveFakedDeath)
+                && (!PlayerWantsFakeDie || !HaveFakedPlayerDeath)
                 && UD_FleshGolems_Reanimated.ReplaceEntityWithCorpse(
                     Entity: ParentObject,
                     FakeDeath: PlayerWantsFakeDie,
-                    FakedDeath: out HaveFakedDeath,
+                    FakedDeath: out HaveFakedPlayerDeath,
                     DeathEvent: E,
                     Corpse: Corpse))
                 return false;
@@ -476,7 +518,7 @@ namespace XRL.World.Parts
         public override bool FireEvent(Event E)
         {
             if (E.ID == "GameStart"
-                && !HaveFakedDeath
+                && !HaveFakedPlayerDeath
                 && BuiltToBeReanimated
                 && PlayerWantsFakeDie
                 && !ActuallyDoTheFakeDieAndReanimate())

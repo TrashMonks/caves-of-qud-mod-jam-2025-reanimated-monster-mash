@@ -7,22 +7,18 @@ using ConsoleLib.Console;
 
 using Qud.API;
 
-using XRL;
-using XRL.Core;
+using XRL.Collections;
 using XRL.Names;
 using XRL.UI;
 using XRL.Wish;
-using XRL.World;
 using XRL.World.Anatomy;
 using XRL.World.Capabilities;
-using XRL.World.ObjectBuilders;
 using XRL.World.Parts;
-using XRL.World.Parts.Mutation;
+using XRL.World.WorldBuilders;
 
 using UD_FleshGolems;
-using static UD_FleshGolems.Const;
-using XRL.World.WorldBuilders;
-using XRL.Collections;
+
+using static XRL.World.Parts.UD_FleshGolems_DestinedForReanimation;
 
 namespace XRL.World.ObjectBuilders
 {
@@ -365,7 +361,7 @@ namespace XRL.World.ObjectBuilders
                 destinedForReanimation = Entity.RequirePart<UD_FleshGolems_DestinedForReanimation>();
                 destinedForReanimation.PlayerWantsFakeDie = true;
                 destinedForReanimation.BuiltToBeReanimated = true;
-                UD_FleshGolems_DestinedForReanimation.HaveFakedDeath = false;
+                HaveFakedPlayerDeath = false;
             }
 
             if (Context == "Sample")
@@ -412,9 +408,9 @@ namespace XRL.World.ObjectBuilders
                 return false;
 
             if (DeathEvent == null)
-                return UD_FleshGolems_DestinedForReanimation.FakeRandomDeath(Entity, CorpseIcon: CorpseIcon);
+                return FakeRandomDeath(Entity, CorpseIcon: CorpseIcon);
 
-            return UD_FleshGolems_DestinedForReanimation.FakeDeath(Entity, DeathEvent, DoAchievement: true, CorpseIcon: CorpseIcon);
+            return FakeDeath(Entity, DeathEvent, DoAchievement: true, CorpseIcon: CorpseIcon);
         }
 
         public static bool ReplaceEntityWithCorpse(
@@ -458,7 +454,11 @@ namespace XRL.World.ObjectBuilders
             try
             {
                 if (FakeDeath)
-                    PerformAFakeDeath(Entity, Corpse, DeathEvent, CorpseIcon: new(Corpse.RenderForUI()));
+                    PerformAFakeDeath(
+                        Entity: Entity,
+                        Corpse: Corpse,
+                        DeathEvent: DeathEvent,
+                        CorpseIcon: new FlippableRenderable(Corpse.RenderForUI(), Entity.IsPlayerDuringWorldGen()));
 
                 ReplaceInContextEvent.Send(Entity, Corpse);
 
