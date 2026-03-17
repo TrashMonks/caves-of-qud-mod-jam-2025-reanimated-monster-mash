@@ -70,7 +70,13 @@ namespace XRL.World.ObjectBuilders
                 Body body = Creature.Body;
                 string corpseBlueprintName = null;
                 GameObjectBlueprint corpseBlueprint = null;
-                if (Creature.TryGetPart(out Corpse corpsePart)
+                if (GameObjectFactory.Factory.GetBlueprintIfExists(Creature.GetTag("CorpseBlueprint")) is GameObjectBlueprint corpseBlueprintOverride
+                    && corpseBlueprintOverride.InheritsFrom("Corpse"))
+                {
+                    corpseBlueprintName = corpseBlueprintOverride.Name;
+                }
+                if (corpseBlueprintName.IsNullOrEmpty()
+                    && Creature.TryGetPart(out Corpse corpsePart)
                     && !corpsePart.CorpseBlueprint.IsNullOrEmpty())
                 {
                     corpseBlueprint = GameObjectFactory.Factory.GetBlueprintIfExists(corpsePart?.CorpseBlueprint);

@@ -165,6 +165,28 @@
 
   <!--
   
+  Altering Corpses!
+  
+  -->
+  
+  <object Name="Young Ivory" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Plant Corpse" />
+  </object>
+  
+  <object Name="Lurking Beth" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Plant Corpse" />
+  </object>
+  
+  <object Name="Dreadroot" Load="Merge">
+    <tag Name="CorpseBlueprint" Value="UD_FleshGolems Plant Corpse" />
+  </object>
+  
+  <object Name="FungusPuffer" Load="Merge">
+    <part Name="Corpse" CorpseBlueprint="UD_FleshGolems Fungus Corpse" />
+  </object>
+  
+  <!--
+  
   Bestowing Taxa
   
   -->
