@@ -36,11 +36,11 @@ namespace XRL.World.ObjectBuilders
             nameof(ConvertSpawner),
             nameof(CherubimSpawner),
         };
-        public static List<string> BlueprintsThatNeedDelayedReanimation => new()
+        public static List<string> BlueprintsExemptFromReanimation => new()
         {
             "BaseCherubimSpawn",
         };
-        public static List<string> PropertiesAndTagsIndicatingNeedDelayedReanimation => new()
+        public static List<string> PropertiesAndTagsThatExemptFromReanimation => new()
         {
             "AlternateCreatureType",
         };
@@ -51,13 +51,11 @@ namespace XRL.World.ObjectBuilders
 
         public override void Apply(GameObject Object, string Context = null)
         {
-            Unkill(Object, Context);
+            if (Object != null
+                && !BlueprintsExemptFromReanimation.Any(bp => Object.GetBlueprint().InheritsFrom(bp))
+                && !PropertiesAndTagsThatExemptFromReanimation.Any(p => Object.HasPropertyOrTag(p)))
+                Unkill(Object, Context);
         }
-
-        public static bool CreatureNeedsDelayedReanimation(GameObject Creature)
-            => PartsThatNeedDelayedReanimation.Any(s => Creature.HasPart(s))
-            || BlueprintsThatNeedDelayedReanimation.Any(s => Creature.GetBlueprint().InheritsFrom(s))
-            || PropertiesAndTagsIndicatingNeedDelayedReanimation.Any(s => Creature.HasPropertyOrTag(s));
 
         public static GameObject ProduceCorpse(GameObject Creature,
             bool ForImmediateReanimation = true,
@@ -277,7 +275,7 @@ namespace XRL.World.ObjectBuilders
                     {
                         equippedItem.SetStringProperty(ReanimatedEquipped, bodyPart.Type);
 
-                        Entity.FireEvent(Event.New("CommandUnequipObject", "BodyPart", bodyPart, "SemiForced", 1));
+                        Entity.FireEvent(Event.New("CommandUnequipObject", "BodyPart", bodyPart, "SemiForced", 1).SetSilent(Silent: true));
 
                         entityEquippedLimbItems.Add(new(bodyPart, equippedItem));
                     }
@@ -327,7 +325,7 @@ namespace XRL.World.ObjectBuilders
                         && inventoryItem.GetStringProperty(ReanimatedEquipped) is string bodyPartType
                         && frankenBody.GetUnequippedPart(bodyPartType)?.Where(bodyPartNotHasBeenEquipped).ToList() is List<BodyPart> unequippedParts
                         && unequippedParts.GetRandomElementCosmetic() is BodyPart equippablePart)
-                        any = FrankenCorpse.FireEvent(Event.New("CommandEquipObject", "Object", inventoryItem, "BodyPart", equippablePart)) || any;
+                        any = FrankenCorpse.FireEvent(Event.New("CommandEquipObject", "Object", inventoryItem, "BodyPart", equippablePart).SetSilent(Silent: true)) || any;
                 }
                 catch (Exception x)
                 {
