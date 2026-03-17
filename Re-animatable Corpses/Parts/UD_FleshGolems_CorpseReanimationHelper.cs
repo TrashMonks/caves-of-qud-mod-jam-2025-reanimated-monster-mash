@@ -1352,14 +1352,22 @@ namespace XRL.World.Parts
                             && frankenNaturalGear.GetBlueprint() is GameObjectBlueprint frankenNaturalGearBlueprint
                             && !frankenNaturalGearBlueprint.InheritsFrom("UD_FleshGolems Ragged Weapon"))
                         {
-                            if (frankenNaturalGear.TryGetPart(out MeleeWeapon mw)
-                                && !mw.IsImprovisedWeapon()
-                                && GetRaggedNaturalWeapons(bp => MeleeWeaponSlotAndSkillMatchesBlueprint(bp, mw))?.GetRandomElement()?.Name is string raggedWeaponBlueprintName
-                                && GameObject.CreateUnmodified(raggedWeaponBlueprintName) is GameObject raggedWeaponObject)
+                            if (frankenLimb.VariantTypeModel().DefaultBehavior == frankenNaturalGear.Blueprint
+                                && !frankenNaturalGear.HasPropertyOrTag("TemporaryDefaultBehavior"))
                             {
-                                frankenNaturalGear.Obliterate();
-                                frankenLimb.DefaultBehavior = raggedWeaponObject;
-                                frankenLimb.DefaultBehaviorBlueprint = raggedWeaponBlueprintName;
+                                if (frankenNaturalGear.TryGetPart(out MeleeWeapon mw)
+                                    && !mw.IsImprovisedWeapon()
+                                    && GetRaggedNaturalWeapons(bp => MeleeWeaponSlotAndSkillMatchesBlueprint(bp, mw))?.GetRandomElement()?.Name is string raggedWeaponBlueprintName
+                                    && GameObject.CreateUnmodified(raggedWeaponBlueprintName) is GameObject raggedWeaponObject)
+                                {
+                                    frankenNaturalGear.Obliterate();
+                                    frankenLimb.DefaultBehavior = raggedWeaponObject;
+                                    frankenLimb.DefaultBehaviorBlueprint = raggedWeaponBlueprintName;
+                                }
+                            }
+                            else
+                            {
+                                frankenNaturalGear.Render.DisplayName = "{{UD_FleshGolems_ragged|ragged}} " + frankenNaturalGear.Render.DisplayName;
                             }
                         }
                         else
