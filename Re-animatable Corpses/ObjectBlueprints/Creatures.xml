@@ -178,7 +178,7 @@
   </object>
   
   <object Name="Dreadroot" Load="Merge">
-    <tag Name="CorpseBlueprint" Value="UD_FleshGolems Plant Corpse" />
+    <tag Name="UD_FleshGolems CorpseBlueprint Override" Value="UD_FleshGolems Plant Corpse" />
   </object>
   
   <object Name="FungusPuffer" Load="Merge">
