@@ -41,9 +41,10 @@ namespace XRL.World.Parts
             { "frozen to death", "were " },          // Cold damage
             { "electrocuted", "were " },             // Electric damage
             { "thirst", "died of " },                // Thirst
-            { "died of poison", "" },               // Poison damage { "bled to death", "" }, // Bleeding damage
-            { "failed", "" },                       // Metabolic damage (hulk honey)
-            { "died of asphyxiation", "" },         // Asphyxiation damage (osseous ash)
+            { "died of poison", "" },                // Poison damage
+            { "bled to death", "" },                 // Bleeding damage
+            { "failed", "" },                        // Metabolic damage (hulk honey)
+            { "died of asphyxiation", "" },          // Asphyxiation damage (osseous ash)
             { "psychically extinguished", "were " }, // Psionic damage
             { "drained to extinction", "were " },    // Drain damage (syphon vim)
             { "pricked to death", "were " },         // Thorns damage

@@ -72,7 +72,7 @@ namespace XRL.World.Parts
             return Implantee.ForceApplyEffect(new CyberneticRejectionSyndrome(cost));
         }
         public bool ProcessCybernetic(GameObject InstalledCybernetic)
-            => ProcessCybernetic(ParentObject, InstalledCybernetic);
+            => ProcessCybernetic(ParentObject, InstalledCybernetic, CostStackMultiplier);
 
         public static bool UnprocessCybernetic(
             GameObject Implantee,
