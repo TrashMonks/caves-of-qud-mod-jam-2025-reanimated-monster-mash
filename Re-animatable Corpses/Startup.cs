@@ -14,7 +14,6 @@ namespace UD_FleshGolems
 {
     [HasModSensitiveStaticCache]
     [HasGameBasedStaticCache]
-    [HasCallAfterGameLoaded]
     public static class Startup
     {
         [ModSensitiveStaticCache]
