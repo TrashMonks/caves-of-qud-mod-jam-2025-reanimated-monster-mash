@@ -23,36 +23,21 @@ namespace XRL.World.Effects
 
         [SerializeField]
         private int? _FrameOffset;
-        private int FrameOffset
-        {
-            get
-            {
-                if (_FrameOffset != null)
-                    return _FrameOffset.Value;
-
-                return (Object != null && int.TryParse(Object.ID, out int result))
-                    ? (_FrameOffset = (result % FrameOffsetMod) + 1).Value
-                    : Stat.RollCached("1d" + FrameOffsetMod);
-            }
-        }
+        private int FrameOffset =>
+        (
+            _FrameOffset ??= int.TryParse(Object?.ID, out int result)
+                ? (result % FrameOffsetMod) + 1
+                : null
+        ) ?? Stat.Random(1, FrameOffsetMod);
 
         [SerializeField]
         private bool? _FlipRenderColors;
-        private bool FlipRenderColors
-        {
-            get
-            {
-                if (_FlipRenderColors != null)
-                    return _FlipRenderColors.GetValueOrDefault();
-
-                if (Object != null && int.TryParse(Object.ID, out int result))
-                {
-                    _FlipRenderColors = (result % 2) == 0;
-                    return _FlipRenderColors.GetValueOrDefault();
-                }
-                return Stat.RollCached("1d2") == 1;
-            }
-        }
+        private bool FlipRenderColors => 
+        (
+            _FlipRenderColors ??= int.TryParse(Object?.ID, out int result)
+                ? (result % 2) == 0
+                : null
+        ) ?? Stat.Random(1, 2) == 1;
 
         private bool _ColorLatch;
         private bool ColorLatch
@@ -205,7 +190,7 @@ namespace XRL.World.Effects
 
             SufferColor = MeatSufferColor;
             if (Object.TryGetPart(out UD_FleshGolems_PastLife pastLife)
-                && GameObjectFactory.Factory.GetBlueprintIfExists(pastLife.Blueprint) is var pastLifeBlueprint)
+                && GameObjectFactory.Factory.GetBlueprintIfExists(pastLife.Blueprint) is GameObjectBlueprint pastLifeBlueprint)
             {
                 if (pastLifeBlueprint.InheritsFrom("Robot"))
                     SufferColor = RobotSufferColor;
