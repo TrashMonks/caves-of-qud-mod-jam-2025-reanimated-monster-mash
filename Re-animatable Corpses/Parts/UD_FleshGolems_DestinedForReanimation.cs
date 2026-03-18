@@ -122,9 +122,6 @@ namespace XRL.World.Parts
 
             Dictionary<string, Renderable> deathIcons = CheckpointingSystem.deathIcons;
 
-            if (UI.Options.GetOptionBool("Books_EloquentDeath_EnableEloquentDeathMessage"))
-                deathMessageTitle = "You became a cord in time's silly carpet.";
-
             if (!deathCategory.IsNullOrEmpty() && deathIcons.ContainsKey(deathCategory))
                 deathIcon = deathIcons[deathCategory];
 
