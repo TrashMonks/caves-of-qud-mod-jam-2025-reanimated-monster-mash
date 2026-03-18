@@ -72,8 +72,8 @@ namespace UD_FleshGolems
         {
             Context.Value.Split('`', out var questIDProperty, out var value);
             questIDProperty.Split('~', out var questID, out var propertyName);
-            return The.Game.Quests.TryGetValue(questID, out Quest quest)
-                && quest.GetProperty(propertyName) is var property
+            return The.Game.Quests.TryGetValue(questID, out var quest)
+                && quest.GetProperty(propertyName) is string property
                 && property.EqualsNoCase(value);
         }
 

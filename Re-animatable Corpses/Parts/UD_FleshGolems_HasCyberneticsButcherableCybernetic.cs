@@ -334,7 +334,7 @@ namespace XRL.World.Parts
         }
         public static void BlurValue(GameObject Corpse, int BlurValueAmount)
         {
-            if (Corpse.RequirePart<Commerce>() is var corpseCommerce)
+            if (Corpse.RequirePart<Commerce>() is Commerce corpseCommerce)
             {
                 if (BlurValueAmount > 0)
                 {
@@ -348,7 +348,7 @@ namespace XRL.World.Parts
         }
         public static void BlurValue(GameObject Corpse, double BlurValueMargin)
         {
-            if (Corpse.RequirePart<Commerce>() is var corpseCommerce)
+            if (Corpse.RequirePart<Commerce>() is Commerce corpseCommerce)
             {
                 if (BlurValueMargin > 0.0)
                 {

@@ -523,7 +523,7 @@ namespace XRL.World.Parts
                 && PlayerWantsFakeDie
                 && !ActuallyDoTheFakeDieAndReanimate())
                 if (UD_FleshGolems_Reanimated.PerformAFakeDeath(ParentObject, Corpse, null, Corpse != null ? new(Corpse?.RenderForUI()) : null))
-                    if (ParentObject.GetBlueprint() is var objectBlueprint
+                    if (ParentObject.GetBlueprint() is GameObjectBlueprint objectBlueprint
                         && (objectBlueprint.InheritsFrom("Corpse")
                             || objectBlueprint.Name == "Corpse"))
                         ParentObject.RemovePart(this);
