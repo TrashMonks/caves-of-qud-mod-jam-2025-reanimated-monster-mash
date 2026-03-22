@@ -325,7 +325,13 @@ namespace XRL.World.ObjectBuilders
                         && inventoryItem.GetStringProperty(ReanimatedEquipped) is string bodyPartType
                         && frankenBody.GetUnequippedPart(bodyPartType)?.Where(bodyPartNotHasBeenEquipped).ToList() is List<BodyPart> unequippedParts
                         && unequippedParts.GetRandomElementCosmetic() is BodyPart equippablePart)
-                        any = FrankenCorpse.FireEvent(Event.New("CommandEquipObject", "Object", inventoryItem, "BodyPart", equippablePart).SetSilent(Silent: true)) || any;
+                    {
+                        if (FrankenCorpse.FireEvent(Event.New("CommandEquipObject", "Object", inventoryItem, "BodyPart", equippablePart).SetSilent(Silent: true)))
+                        {
+                            any = true;
+                        }
+                    }
+                        
                 }
                 catch (Exception x)
                 {
