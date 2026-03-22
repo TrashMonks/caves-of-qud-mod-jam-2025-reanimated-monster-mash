@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using ConsoleLib.Console;
 
 using Qud.API;
 
-using XRL.Core;
 using XRL.Rules;
 using XRL.UI;
-using XRL.World.Effects;
 using XRL.World.ObjectBuilders;
 using XRL.World.Capabilities;
 
 using UD_FleshGolems;
 
 using static UD_FleshGolems.Const;
-using XRL.World.Parts.Mutation;
-using System.Linq;
-using XRL.Collections;
 
 namespace XRL.World.Parts
 {
