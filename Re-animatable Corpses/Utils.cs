@@ -3,11 +3,11 @@
 using XRL;
 using XRL.CharacterBuilds;
 using XRL.CharacterBuilds.Qud;
+using XRL.World;
 using XRL.World.Text.Attributes;
 using XRL.World.Text.Delegates;
 
 using static UD_FleshGolems.Const;
-using XRL.World;
 
 namespace UD_FleshGolems
 {
