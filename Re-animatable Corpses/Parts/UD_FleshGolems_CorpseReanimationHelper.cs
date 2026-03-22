@@ -79,18 +79,9 @@ namespace XRL.World.Parts
         [ModSensitiveStaticCache(CreateEmptyInstance = false)]
         private static Dictionary<string, TileMappingKeyword> _TileMappingKeywordValues;
         public static Dictionary<string, TileMappingKeyword> TileMappingKeywordValues
-        {
-            get
-            {
-                if (_TileMappingKeywordValues.IsNullOrEmpty())
-                {
-                    _TileMappingKeywordValues ??= new();
-                    foreach (TileMappingKeyword keyword in Enum.GetValues(typeof(TileMappingKeyword)))
-                        _TileMappingKeywordValues.Add(keyword.ToString(), keyword);
-                }
-                return _TileMappingKeywordValues;
-            }
-        }
+            => _TileMappingKeywordValues ??= Enum.GetValues(typeof(TileMappingKeyword))
+                .OfType<TileMappingKeyword>()
+                .ToDictionary(keyword => keyword.ToString());
 
         public const string REANIMATED_CONVO_ID_TAG = "UD_FleshGolems_ReanimatedConversationID";
         public const string REANIMATED_EPITHETS_TAG = "UD_FleshGolems_ReanimatedEpithets";
