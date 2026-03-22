@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-using XRL.World.Anatomy;
 using XRL.World.Effects;
-
-using static UD_FleshGolems.Const;
 using XRL.World.Parts.Mutation;
 
 namespace XRL.World.Parts
