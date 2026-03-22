@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Genkit;
+﻿using Genkit;
 
 using Qud.API;
 
-using XRL.Language;
-using XRL.Rules;
 using XRL.UI;
 using XRL.Wish;
 using XRL.World.Parts;
-using XRL.World.ZoneBuilders;
 
 namespace XRL.World.WorldBuilders
 {

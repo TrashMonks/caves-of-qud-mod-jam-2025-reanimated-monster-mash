@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-using XRL;
 using XRL.Core;
 using XRL.Rules;
-using XRL.World;
 using XRL.World.Capabilities;
-using XRL.World.Parts;
 using XRL.World.Conversations;
+using XRL.World.Parts;
+using XRL.World.ObjectBuilders;
+
+using UD_FleshGolems;
+using static UD_FleshGolems.Utils;
+using static UD_FleshGolems.Const;
 
 using SerializeField = UnityEngine.SerializeField;
-using XRL.World.ObjectBuilders;
 
 namespace XRL.World.Effects
 {
@@ -21,22 +21,53 @@ namespace XRL.World.Effects
     {
         public const string ENDLESSLY_SUFFERING = "{{UD_FleshGolems_reanimated|endlessly suffering}}";
 
-        public static int BASE_SMEAR_CHANCE => 5;
-        public static int BASE_SPATTER_CHANCE => 2;
+        [SerializeField]
+        private int? _FrameOffset;
+        private int FrameOffset =>
+        (
+            _FrameOffset ??= int.TryParse(Object?.ID, out int result)
+                ? (result % FrameOffsetMod) + 1
+                : null
+        ) ?? Stat.Random(1, FrameOffsetMod);
 
         [SerializeField]
-        private string SourceID;
+        private bool? _FlipRenderColors;
+        private bool FlipRenderColors => 
+        (
+            _FlipRenderColors ??= int.TryParse(Object?.ID, out int result)
+                ? (result % 2) == 0
+                : null
+        ) ?? Stat.Random(1, 2) == 1;
 
-        private GameObject _SourceObject;
-        public GameObject SourceObject
+        private bool _ColorLatch;
+        private bool ColorLatch
         {
-            get => _SourceObject ??= GameObject.FindByID(SourceID);
             set
             {
-                SourceID = value?.ID;
-                _SourceObject = value;
+                if (!_ColorLatch && value)
+                    ColorToggle = !ColorToggle;
+
+                _ColorLatch = value;
             }
         }
+
+        private bool ColorToggle;
+
+        private static int FrameMod => 60;
+        private static int FrameOffsetMod => 24;
+
+        public static string MeatSufferColor => "R";
+        public static string RobotSufferColor => "W";
+        public static string PlantSufferColor => "W";
+        public static string FungusSufferColor => "B";
+
+        public static int BASE_SMEAR_CHANCE => 5;
+        public static int BASE_SPATTER_CHANCE => 2;
+        public static int GracePeriodTurns => 2;
+
+        private int GracePeriod;
+
+        public GameObject SourceObject;
 
         public string Damage;
 
@@ -44,11 +75,24 @@ namespace XRL.World.Effects
         public int ChanceToSmear;
         public int ChanceToSpatter;
 
+        public string SufferColor;
+
         [SerializeField]
         private int CurrentTier;
 
+        [SerializeField]
+        private int CumulativeSuffering;
+
         public UD_FleshGolems_UnendingSuffering()
         {
+            _FrameOffset = null;
+            _FlipRenderColors = null;
+
+            _ColorLatch = false;
+            ColorToggle = false;
+
+            GracePeriod = GracePeriodTurns;
+
             SourceObject = null;
             Damage = "1";
             ChanceToDamage = 10;
@@ -56,9 +100,13 @@ namespace XRL.World.Effects
             ChanceToSpatter = BASE_SPATTER_CHANCE;
 
             DisplayName = ENDLESSLY_SUFFERING;
-            Duration = 1;
+            Duration = DURATION_INDEFINITE;
+
+            SufferColor = MeatSufferColor;
 
             CurrentTier = 0;
+
+            CumulativeSuffering = 0;
         }
 
         public UD_FleshGolems_UnendingSuffering(GameObject Source)
@@ -73,60 +121,50 @@ namespace XRL.World.Effects
             Initialize(Tier);
         }
 
-        public UD_FleshGolems_UnendingSuffering(GameObject Source, int Tier)
+        public UD_FleshGolems_UnendingSuffering(GameObject Source, int Tier, int TimesReanimated = 1)
             : this(Source)
         {
-            Initialize(Tier);
+            Initialize(Tier, TimesReanimated);
         }
 
-        public UD_FleshGolems_UnendingSuffering(string Damage, int Duration, GameObject Source, int ChanceToSmear, int ChanceToSplatter)
+        public UD_FleshGolems_UnendingSuffering(string Damage, int Duration, GameObject Source, int ChanceToSmear, int ChanceToSpatter)
             : this(Source)
         {
             this.Damage = Damage;
             this.ChanceToSmear = ChanceToSmear;
-            this.ChanceToSpatter = ChanceToSplatter;
+            this.ChanceToSpatter = ChanceToSpatter;
 
             this.Duration = Duration;
         }
 
-        public void Initialize(int Tier)
+        public void Initialize(int Tier, int TimesReanimated = 1)
         {
             Tier = Capabilities.Tier.Constrain(Stat.Random(Tier - 1, Tier + 1));
 
-            if (Tier >= 7)
+            Damage = Tier switch
             {
-                Damage = "3-4";
-            }
-            else
-            if (Tier >= 5)
-            {
-                Damage = "2-3";
-            }
-            else
-            if (Tier >= 3)
-            {
-                Damage = "1-2";
-            }
-            else
-            if (Tier >= 1)
-            {
-                Damage = "1d3-2";
-            }
-            ChanceToDamage = 10 * (1 + Math.Max(1, Tier));
+                >= 7 => "3-4",
+                >= 5 => "2-3",
+                >= 3 => "1-2",
+                _ => "1d3-2"
+            };
+
+            ChanceToDamage = 3 * (1 + Math.Max(1, Tier));
+
+            ChanceToDamage *= Math.Max(1, TimesReanimated);
+
             ChanceToSmear *= Tier;
             ChanceToSpatter *= Tier;
 
             if (CurrentTier > 0 && Tier > CurrentTier)
-            {
                 WorsenedMessage(Object);
-            }
+
             CurrentTier = Tier;
         }
 
         public override int GetEffectType()
-        {
-            return TYPE_MENTAL | TYPE_STRUCTURAL | TYPE_NEUROLOGICAL;
-        }
+            => TYPE_MENTAL | TYPE_STRUCTURAL | TYPE_NEUROLOGICAL;
+
         public override string GetDetails()
         {
             string dueToFolly = null;
@@ -134,35 +172,37 @@ namespace XRL.World.Effects
             {
                 dueToFolly += " due to the existential folly of " + SourceObject.GetReferenceDisplayName(Short: true, Stripped: true);
             }
-            return Damage + " damage per turn" + dueToFolly + ".";
+            return ChanceToDamage + "% chance per turn to suffer " + Damage + " damage" + dueToFolly + ".";
         }
         public virtual string DamageAttributes()
-        {
-            return "Bleeding Unavoidable";
-        }
+            => "Bleeding Unavoidable Suffering";
+
         public virtual string DamageMessage()
-        {
-            return "from " + DisplayNameStripped + ".";
-        }
+            => "from " + DisplayNameStripped + ".";
 
         public override bool Apply(GameObject Object)
         {
-            if (!Object.FireEvent(Event.New("Apply" + ClassName, "Effect", this)))
-            {
-                return false;
-            }
-            if (!ApplyEffectEvent.Check(Object, ClassName, this))
-            {
-                return false;
-            }
-
-            StartMessage(Object);
-
             StatShifter.SetStatShift(
                 target: Object,
                 statName: "AcidResistance",
                 amount: 200,
                 true);
+
+            SufferColor = MeatSufferColor;
+            if (Object.TryGetPart(out UD_FleshGolems_PastLife pastLife)
+                && GameObjectFactory.Factory.GetBlueprintIfExists(pastLife.Blueprint) is GameObjectBlueprint pastLifeBlueprint)
+            {
+                if (pastLifeBlueprint.InheritsFrom("Robot"))
+                    SufferColor = RobotSufferColor;
+                else
+                if (pastLifeBlueprint.InheritsFromAny("Plant", "BasePlant", "MutatedPlant", "BaseSlynth"))
+                    SufferColor = PlantSufferColor;
+                else
+                if (pastLifeBlueprint.InheritsFromAny("Fungus", "ActiveFungus", "MutatedFungus"))
+                    SufferColor = FungusSufferColor;
+            }
+            StartMessage(Object);
+
             return base.Apply(Object);
         }
         public override void Remove(GameObject Object)
@@ -191,17 +231,39 @@ namespace XRL.World.Effects
 
         public void Suffer()
         {
-            string deathMessage = "=subject.name's= unending suffering... well, ended =subject.objective=."
-                .StartReplace()
-                .AddObject(Object)
-                .ToString();
+            if (Object?.CurrentCell is not Cell suferrerCell)
+                return;
 
-            int chanceToDamage = !Object.CurrentCell.OnWorldMap() ? ChanceToDamage : (int)Math.Max(1, ChanceToDamage * 0.01);
+            int permyriadChanceToDamage = ChanceToDamage * 100;
+            if (suferrerCell.OnWorldMap() || Options.GreatlyReduceSuffering)
+                permyriadChanceToDamage = (int)Math.Max(1, permyriadChanceToDamage * 0.01);
+
+            int permyriadChanceToSmear = ChanceToSmear * 100;
+            if (Options.GreatlyReduceSuffering)
+                permyriadChanceToSmear = (int)Math.Max(1, permyriadChanceToSmear * 0.01);
+
+            int permyriadChanceToSpatter = ChanceToSpatter * 100;
+            if (Options.GreatlyReduceSuffering)
+                permyriadChanceToSpatter = (int)Math.Max(1, permyriadChanceToSpatter * 0.01);
+
             bool tookDamage = false;
-            if (chanceToDamage.in100())
+            if (permyriadChanceToDamage.in10000())
             {
+                string oldAutoActSetting = AutoAct.Setting;
+                bool isAutoActing = AutoAct.IsActive();
+
+                if (Object.IsPlayerControlled()
+                    && isAutoActing)
+                    AutoAct.Setting = "";
+
+                string deathMessage = "=subject.name's= unending suffering... well, ended =subject.objective=."
+                    .StartReplace()
+                    .AddObject(Object)
+                    .ToString();
+
+                int damage = CapDamageTo1HPRemaining(Object, Damage.RollCached());
                 tookDamage = Object.TakeDamage(
-                    Amount: Damage.RollCached(),
+                    Amount: damage,
                     Attributes: DamageAttributes(),
                     Owner: Object,
                     Message: DamageMessage(),
@@ -210,91 +272,79 @@ namespace XRL.World.Effects
                     Source: Object,
                     Indirect: true,
                     SilentIfNoDamage: true);
+
+                if (tookDamage)
+                    CumulativeSuffering += damage;
+
+                if (Object.IsPlayerControlled()
+                    && isAutoActing)
+                    AutoAct.Setting = oldAutoActSetting;
             }
 
-            if (Object.CurrentCell is not Cell suferrerCell || suferrerCell.OnWorldMap())
-            {
+            if (suferrerCell.OnWorldMap())
                 return;
-            }
+
             bool inLiquid = false;
             string bleedLiquid = Object.GetBleedLiquid();
-            if (ChanceToSmear.in100())
-            {
-                foreach (GameObject renderdObject in suferrerCell.GetObjectsWithPartReadonly("Render"))
+
+            foreach (GameObject renderdObject in suferrerCell.GetObjectsWithPartReadonly("Render"))
+                if (permyriadChanceToSmear.in10000())
                 {
                     if (renderdObject.LiquidVolume is LiquidVolume liquidVolumeInCell
                         && liquidVolumeInCell.IsOpenVolume())
                     {
-                        LiquidVolume bloodVolumeForCell = new()
-                        {
-                            InitialLiquid = bleedLiquid,
-                            Volume = 2
-                        };
-                        liquidVolumeInCell.MixWith(bloodVolumeForCell, null, null, null);
+                        liquidVolumeInCell.MixWith(new(bleedLiquid, 2));
                         inLiquid = true;
                     }
                     else
-                    {
                         renderdObject.MakeBloody(bleedLiquid, Stat.Random(1, 3));
-                    }
                 }
-            }
-            if (!inLiquid && ChanceToSpatter.in100())
+
+            if (!inLiquid
+                && permyriadChanceToSpatter.in10000()
+                && GameObject.Create("BloodSplash") is GameObject bloodySplashObject)
             {
-                if (GameObject.Create("BloodSplash") is GameObject bloodySplashObject)
+                if (bloodySplashObject.LiquidVolume is LiquidVolume bloodSplashVolume)
                 {
-                    if (bloodySplashObject.LiquidVolume is LiquidVolume bloodSplashVolume)
-                    {
-                        bloodSplashVolume.InitialLiquid = bleedLiquid;
-                        suferrerCell.AddObject(bloodySplashObject);
-                        if (tookDamage)
-                        {
-                            DidX("spatter", "viscous gunk everywhere", "!");
-                        }
-                    }
-                    else
-                    {
-                        MetricsManager.LogError("generated " + bloodySplashObject.Blueprint + " with no " + nameof(LiquidVolume));
-                        bloodySplashObject?.Obliterate();
-                    }
+                    bloodSplashVolume.InitialLiquid = bleedLiquid;
+                    suferrerCell.AddObject(bloodySplashObject);
+                    if (tookDamage)
+                        DidX("spatter", "viscous gunk everywhere", "!");
+                }
+                else
+                {
+                    MetricsManager.LogError("generated " + bloodySplashObject.Blueprint + " with no " + nameof(LiquidVolume));
+                    bloodySplashObject?.Obliterate();
                 }
             }
         }
 
+        public string GetForegroundColor()
+            => (ColorToggle == !FlipRenderColors) ? "&K" : ("&" + SufferColor);
+
         public override bool WantEvent(int ID, int cascade)
-        {
-            return base.WantEvent(ID, cascade)
-                || ID == GetCompanionStatusEvent.ID
-                || ID == EndTurnEvent.ID
-                || ID == PhysicalContactEvent.ID
-                || ID == AfterLevelGainedEvent.ID;
-        }
+            => base.WantEvent(ID, cascade)
+            || ID == GetCompanionStatusEvent.ID
+            || ID == EndTurnEvent.ID
+            || ID == PhysicalContactEvent.ID
+            || ID == AfterLevelGainedEvent.ID
+            || ID == GetDebugInternalsEvent.ID
+            ;
         public override bool HandleEvent(GetCompanionStatusEvent E)
         {
             if (E.Object == Object)
-            {
                 E.AddStatus("suffering", 20);
-            }
+
             return base.HandleEvent(E);
         }
         public override bool HandleEvent(EndTurnEvent E)
         {
-            Suffer();
+            if (GracePeriod < 1)
+                Suffer();
+            else
+                GracePeriod--;
+
             return base.HandleEvent(E);
-        }
-        public override bool Render(RenderEvent E)
-        {
-            _ = Object.Render;
-            int currentFrame = XRLCore.CurrentFrame % 60;
-            bool firstRange = currentFrame > 15 && currentFrame < 25;
-            bool secondRange = currentFrame > 45 && currentFrame < 55;
-            if (firstRange || secondRange)
-            {
-                E.RenderString = "\u0003";
-                E.ApplyColors(firstRange ? "&K" : "&R", ICON_COLOR_PRIORITY);
-                return false;
-            }
-            return true;
         }
         public override bool HandleEvent(PhysicalContactEvent E)
         {
@@ -304,6 +354,36 @@ namespace XRL.World.Effects
         public override bool HandleEvent(AfterLevelGainedEvent E)
         {
             Initialize(UD_FleshGolems_ReanimatedCorpse.GetTierFromLevel(Object));
+            return base.HandleEvent(E);
+        }
+        public override bool Render(RenderEvent E)
+        {
+            int currentFrame = (XRLCore.CurrentFrame + FrameOffset) % FrameMod;
+
+            if (currentFrame > 25 && currentFrame < 35)
+            {
+                ColorLatch = true;
+                E.RenderString = "\u0003";
+                E.ApplyColors(GetForegroundColor(), ICON_COLOR_PRIORITY);
+                return false;
+            }
+            else
+                ColorLatch = false;
+
+            return base.Render(E);
+        }
+        public override bool HandleEvent(GetDebugInternalsEvent E)
+        {
+            E.AddEntry(this, nameof(FrameOffset), FrameOffset);
+            E.AddEntry(this, nameof(FlipRenderColors), FlipRenderColors);
+            E.AddEntry(this, nameof(SourceObject), SourceObject?.DebugName ?? NULL);
+            E.AddEntry(this, nameof(Damage), Damage);
+            E.AddEntry(this, nameof(CumulativeSuffering), CumulativeSuffering);
+            E.AddEntry(this, nameof(ChanceToDamage), ChanceToDamage);
+            E.AddEntry(this, nameof(ChanceToSmear), ChanceToSmear);
+            E.AddEntry(this, nameof(ChanceToSpatter), ChanceToSpatter);
+            E.AddEntry(this, nameof(SufferColor), SufferColor);
+            E.AddEntry(this, nameof(CurrentTier), CurrentTier);
             return base.HandleEvent(E);
         }
     }

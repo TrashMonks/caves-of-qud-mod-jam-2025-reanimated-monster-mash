@@ -7,6 +7,8 @@ namespace UD_FleshGolems
     public static class Options
     {
         // General Settings
+        [OptionFlag] public static bool GreatlyReduceSuffering;
+
         [OptionFlag] public static int SpecialReanimatedBuilderBaseChanceOneIn;
         [OptionFlag] public static int SpecialReanimatedBuilderChanceOneInMulti;
 

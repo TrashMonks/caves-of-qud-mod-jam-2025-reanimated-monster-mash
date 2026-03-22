@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using UD_FleshGolems;
+
 using XRL.Core;
 using XRL.World.Effects;
 
@@ -49,11 +51,15 @@ namespace XRL.World.Parts
         public override void Attach()
         {
             AttemptToSuffer();
-            ParentObject.AddPart(new UD_FleshGolems_CorpseIconColor(ParentObject.GetBlueprint()));
+            GameObjectBlueprint pastLifeBlueprint = null;
+            if (ParentObject.TryGetPart(out UD_FleshGolems_PastLife pastLife))
+                pastLifeBlueprint = GameObjectFactory.Factory.GetBlueprintIfExists(pastLife.Blueprint);
+
+            ParentObject.AddPart(new UD_FleshGolems_CorpseIconColor(ParentObject.GetBlueprint(), pastLifeBlueprint));
+
             foreach (string partToRemove in PartsInNeedOfRemovalWhenAnimated)
-            {
                 ParentObject.RemovePart(partToRemove);
-            }
+
             base.Attach();
         }
 

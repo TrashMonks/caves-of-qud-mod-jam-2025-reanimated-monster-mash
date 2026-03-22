@@ -17,14 +17,77 @@ using XRL.World.AI;
 using UD_FleshGolems;
 using static UD_FleshGolems.Const;
 using static UD_FleshGolems.Utils;
+using System.Linq;
+using XRL.Collections;
 
 namespace XRL.World.Parts
 {
+    [HasModSensitiveStaticCache]
     [Serializable]
     public class UD_FleshGolems_CorpseReanimationHelper : IScribedPart
     {
+        public enum TileMappingKeyword
+        {
+            Override,
+            Blueprint,
+            Taxon,
+            Species,
+            Golem,
+        }
+        [ModSensitiveStaticCache(CreateEmptyInstance = false)]
+        private static Dictionary<string, string> _TileMappings;
+        public static Dictionary<string, string> TileMappings
+        {
+            get
+            {
+                if (_TileMappings.IsNullOrEmpty())
+                {
+                    _TileMappings = new();
+                    if (GameObjectFactory.Factory.GetBlueprintsInheritingFrom("UD_FleshGolems_BaseTileMappings", false) is List<GameObjectBlueprint> tileMappingBlueprints)
+                        foreach (GameObjectBlueprint tileMappingsBlueprint in tileMappingBlueprints)
+                        {
+                            if (!tileMappingsBlueprint.Tags.IsNullOrEmpty())
+                            {
+                                foreach ((string name, string value) in tileMappingsBlueprint.Tags)
+                                {
+                                    if (name.StartsWith(REANIMATED_ALT_TILE_PROPTAG))
+                                    {
+                                        // UnityEngine.Debug.Log(name + "|" + value);
+                                        _TileMappings[name] = value;
+                                    }
+                                }
+                            }
+
+                            if (!tileMappingsBlueprint.Props.IsNullOrEmpty())
+                            {
+                                foreach ((string name, string value) in tileMappingsBlueprint.Props)
+                                {
+                                    if (name.StartsWith(REANIMATED_ALT_TILE_PROPTAG))
+                                    {
+                                        // UnityEngine.Debug.Log(name + "|" + value);
+                                        _TileMappings[name] = value;
+                                    }
+                                }
+                            }
+                                
+                        }
+                }
+                return _TileMappings;
+            }
+        }
+
+        [ModSensitiveStaticCache(CreateEmptyInstance = false)]
+        private static Dictionary<string, TileMappingKeyword> _TileMappingKeywordValues;
+        public static Dictionary<string, TileMappingKeyword> TileMappingKeywordValues
+            => _TileMappingKeywordValues ??= Enum.GetValues(typeof(TileMappingKeyword))
+                .OfType<TileMappingKeyword>()
+                .ToDictionary(keyword => keyword.ToString());
+
         public const string REANIMATED_CONVO_ID_TAG = "UD_FleshGolems_ReanimatedConversationID";
         public const string REANIMATED_EPITHETS_TAG = "UD_FleshGolems_ReanimatedEpithets";
+        public const string REANIMATED_ALT_TILE_PROPTAG = "UD_FleshGolems_AlternateTileFor:";
+        public const string REANIMATED_TILE_PROPTAG = "UD_FleshGolems_PastLife_TileOverride";
+        public const string REANIMATED_TAXA_XTAG = "UD_FleshGolems_Taxa";
 
         public UD_FleshGolems_PastLife PastLife => ParentObject?.GetPart<UD_FleshGolems_PastLife>();
 
@@ -77,19 +140,14 @@ namespace XRL.World.Parts
         }
 
         public override bool AllowStaticRegistration()
-        {
-            return true;
-        }
+            => true;
 
         public bool Animate(out GameObject FrankenCorpse)
         {
             FrankenCorpse = null;
-            // UnityEngine.Debug.Log(nameof(UD_FleshGolems_CorpseReanimationHelper) + "." + nameof(Animate));
             if (!ParentObject.HasPart<AnimatedObject>())
             {
-                // UnityEngine.Debug.Log("    " + nameof(ParentObject) + " not " + nameof(AnimatedObject));
                 AnimateObject.Animate(ParentObject);
-
                 if (ParentObject.HasPart<AnimatedObject>())
                 {
                     FrankenCorpse = ParentObject;
@@ -99,113 +157,82 @@ namespace XRL.World.Parts
             return false;
         }
         public bool Animate()
-        {
-            return Animate(out _);
-        }
+            => Animate(out _);
 
-        public static string FigureOutWhatBlueprintThisCorpseCameFrom(GameObject Corpse, UD_FleshGolems_PastLife PastLife = null, bool PrintCheckEvenWhenPastLife = false)
+        public static string FigureOutWhatBlueprintThisCorpseCameFrom(
+            GameObject Corpse,
+            UD_FleshGolems_PastLife PastLife = null,
+            bool PrintCheckEvenWhenPastLife = false
+            )
         {
             string blueprint = null;
             if (PastLife?.Blueprint is string pastLifeBlueprint)
             {
                 if (!PrintCheckEvenWhenPastLife)
-                {
                     return pastLifeBlueprint;
-                }
+
                 blueprint = pastLifeBlueprint;
             }
             string corpseDisplayNameLC = Corpse.GetReferenceDisplayName(Stripped: true, Short: true)?.ToLower();
             string baseGameSourceBlueprintLC = Corpse.GetPropertyOrTag("SourceBlueprint")?.ToLower();
             string corpseType = Corpse.Blueprint.Replace(" Corpse", "").Replace("UD_FleshGolems ", "");
             string corpseSpecies = Corpse.GetStringProperty("Species", corpseType);
-            List<string> probableBlueprints = new();
-            List<string> possibleBlueprints = new();
-            List<string> fallbackBlueprints = new();
-            /*
-            UnityEngine.Debug.Log(
-                "Finding Blueprints for " + (Corpse?.DebugName ?? NULL) + " | " +
-                nameof(corpseDisplayNameLC) + ": " + (corpseDisplayNameLC ?? NULL) + ", " +
-                nameof(baseGameSourceBlueprintLC) + ": " + (baseGameSourceBlueprintLC ?? NULL) + ", " +
-                nameof(corpseType) + ": " + (corpseType ?? NULL) + ", " +
-                nameof(corpseSpecies) + ": " + (corpseSpecies ?? NULL) + ", " +
-                nameof(corpseDisplayNameLC) + ": " + (corpseDisplayNameLC ?? NULL));
-            */
+            using var probableBlueprints = ScopeDisposedList<string>.GetFromPool();
+            using var possibleBlueprints = ScopeDisposedList<string>.GetFromPool();
+            using var fallbackBlueprints = ScopeDisposedList<string>.GetFromPool();
+
             List<GameObjectBlueprint> blueprintsToCheck = new(GameObjectFactory.Factory.Blueprints.Values);
             blueprintsToCheck.ShuffleInPlace();
             int maxChecks = int.MaxValue; // 2500;
             int checkCounter = 0;
-            // UnityEngine.Debug.Log("Checking " + maxChecks + "/" + blueprintsToCheck.Count);
             foreach (GameObjectBlueprint gameObjectBlueprint in blueprintsToCheck)
             {
                 if (++checkCounter > maxChecks)
-                {
                     break;
-                }
+
                 string blueprintName = gameObjectBlueprint.Name;
                 string blueprintNameLC = blueprintName?.ToLower() ?? "XKCD";
                 string gameObjectDisplayName = gameObjectBlueprint.DisplayName()?.Strip()?.ToLower() ?? "XKCD";
-                if (blueprintName == Corpse.Blueprint)
-                {
-                    // UnityEngine.Debug.Log(AppendCross("    ") + blueprintName + " is this corpse");
-                    continue;
-                }
-                if (gameObjectBlueprint.IsBaseBlueprint())
-                {
 
-                    // UnityEngine.Debug.Log(AppendCross("    ") + blueprintName + " is base blueprint");
+                if (blueprintName == Corpse.Blueprint)
                     continue;
-                }
+
+                if (gameObjectBlueprint.IsBaseBlueprint())
+                    continue;
+
                 if (!gameObjectBlueprint.InheritsFrom("Creature")
                     && !gameObjectBlueprint.InheritsFrom("Fungus")
                     && !gameObjectBlueprint.InheritsFrom("Plant")
                     && !gameObjectBlueprint.InheritsFrom("Corpse")
                     && !gameObjectBlueprint.InheritsFrom("Robot"))
-                {
-                    // UnityEngine.Debug.Log(AppendCross("    ") + blueprintName + " is not an entity capable of dying");
                     continue;
-                }
+
                 if (BlueprintsToSkipCheckingForCorpses.Contains(gameObjectBlueprint.Name))
-                {
-                    // UnityEngine.Debug.Log(AppendCross("    ") + blueprintName + " is definitely not the correct one.");
                     continue;
-                }
-                bool corpseDisplayNameContainsBlueprintDisplayName = corpseDisplayNameLC != null && corpseDisplayNameLC.Contains(gameObjectDisplayName);
-                bool corpseTaggedWithBlueprint = baseGameSourceBlueprintLC != null && baseGameSourceBlueprintLC == blueprintNameLC;
-                if (corpseDisplayNameContainsBlueprintDisplayName || corpseTaggedWithBlueprint)
-                {
-                    if (!probableBlueprints.Contains(blueprintName))
-                    {
-                        probableBlueprints.Add(blueprintName);
-                        /*
-                        UnityEngine.Debug.Log(AppendTick("    ") + blueprintName + " added to " + nameof(probableBlueprints) + " }{ [" +
-                            corpseDisplayNameLC + "] contains [" + gameObjectDisplayName + "] || [" + baseGameSourceBlueprintLC + "] == [" + blueprintNameLC + "]");
-                        */
-                    }
-                }
-                bool corpseTypeMatchesBlueprintName = corpseType != null && corpseType.ToLower() == blueprintNameLC;
-                if (corpseTypeMatchesBlueprintName)
-                {
-                    if(!possibleBlueprints.Contains(blueprintName))
-                    {
-                        possibleBlueprints.Add(blueprintName);
-                        /*
-                        UnityEngine.Debug.Log(AppendTick("    ") + blueprintName + " added to " + nameof(possibleBlueprints) + " }{ [" +
-                            corpseType.ToLower() + "] == [" + blueprintNameLC + "]");
-                        */
-                    }
-                }
-                bool corpseSpeciesMatchesBlueprintSpecies = corpseSpecies != null && corpseSpecies?.ToLower() == gameObjectBlueprint.GetPropertyOrTag("Species")?.ToLower();
-                if (corpseSpeciesMatchesBlueprintSpecies)
-                {
-                    if (!fallbackBlueprints.Contains(blueprintName))
-                    {
-                        fallbackBlueprints.Add(blueprintName);
-                        /*
-                        UnityEngine.Debug.Log(AppendTick("    ") + blueprintName + " added to " + nameof(fallbackBlueprints) + " }{ [" +
-                            corpseSpecies?.ToLower() + "] == [" + gameObjectBlueprint.GetPropertyOrTag("Species")?.ToLower() + "]");
-                        */
-                    }
-                }
+                bool corpseDisplayNameContainsBlueprintDisplayName = corpseDisplayNameLC != null 
+                    && corpseDisplayNameLC.Contains(gameObjectDisplayName);
+
+                bool corpseTaggedWithBlueprint = baseGameSourceBlueprintLC != null
+                    && baseGameSourceBlueprintLC == blueprintNameLC;
+
+                if ((corpseDisplayNameContainsBlueprintDisplayName
+                        || corpseTaggedWithBlueprint)
+                    && !probableBlueprints.Contains(blueprintName))
+                    probableBlueprints.Add(blueprintName);
+
+                bool corpseTypeMatchesBlueprintName = corpseType != null
+                    && corpseType.ToLower() == blueprintNameLC;
+
+                if (corpseTypeMatchesBlueprintName
+                    && !possibleBlueprints.Contains(blueprintName))
+                    possibleBlueprints.Add(blueprintName);
+
+                bool corpseSpeciesMatchesBlueprintSpecies = corpseSpecies != null
+                    && corpseSpecies?.ToLower() == gameObjectBlueprint.GetPropertyOrTag("Species")?.ToLower();
+
+                if (corpseSpeciesMatchesBlueprintSpecies
+                    && !fallbackBlueprints.Contains(blueprintName))
+                    fallbackBlueprints.Add(blueprintName);
             }
 
             if (possibleBlueprints.IsNullOrEmpty())
@@ -218,24 +245,133 @@ namespace XRL.World.Parts
                 probableBlueprints.AddRange(possibleBlueprints);
             }
 
-            // UnityEngine.Debug.Log("Probable Blueprints for " + Corpse.DebugName);
             if (!probableBlueprints.IsNullOrEmpty())
             {
-                /*
-                probableBlueprints.ShuffleInPlace();
-                foreach (string probableBlueprint in probableBlueprints)
-                {
-                    UnityEngine.Debug.Log("    " + probableBlueprint);
-                }
-                */
                 blueprint ??= probableBlueprints.GetRandomElement();
-                // UnityEngine.Debug.Log(nameof(blueprint) + " picked: " + blueprint);
                 return blueprint;
             }
 
             blueprint ??= "Trash Monk";
-            UnityEngine.Debug.Log(nameof(blueprint) + " picked: " + blueprint);
             return blueprint;
+        }
+
+        public static bool TileMappingTagExistsAndContainsLookup(string ParameterString, out List<string> Parameters, params string[] Lookup)
+            => (Parameters = ParameterString
+                    ?.CachedCommaExpansion()
+                    ?.ToList())
+                ?.Any(s => (Lookup?.Contains(s)) is true) is true
+            && !Lookup.IsNullOrEmpty()
+            ;
+
+        public static bool ParseTileMappings(TileMappingKeyword Keyword, out List<string> TileList, params string[] Lookup)
+        {
+            TileList = new();
+            string alternateTileTag = REANIMATED_ALT_TILE_PROPTAG + Keyword + ":";
+
+            if (Keyword == TileMappingKeyword.Override)
+            {
+                if (Lookup.IsNullOrEmpty())
+                    return false; // No tag, so nothing to parse.
+
+                if (Lookup.ToList() is not List<string> valueList
+                    || valueList.IsNullOrEmpty())
+                    MetricsManager.LogCallingModError(
+                        nameof(ParseTileMappings) + " passed invalid " +
+                        nameof(Lookup) + " for " +
+                        nameof(TileMappingKeyword) + "." + Keyword + ": " + Lookup);
+                else
+                    TileList.AddRange(valueList);
+
+                return true;
+            }
+            if (TileMappings.IsNullOrEmpty())
+            {
+                MetricsManager.LogModError(ThisMod, nameof(TileMappings) + " null or empty");
+                return false; // No TileMappings, so nothing to parse.
+            }
+
+            bool any = false;
+            foreach ((string tagName, string tagValue) in TileMappings)
+            {
+                bool tileMappingExists = false;
+                List<string> tileMappingParameters = new();
+                List<string> tagParameterList = new();
+                string parameterString = null;
+                if (tagName.StartsWith(alternateTileTag)
+                    && !(parameterString = tagName?.Replace(alternateTileTag, "")).IsNullOrEmpty())
+                {
+                    if (parameterString.Contains(":"))
+                    {
+                        tileMappingParameters = parameterString.Split(":").ToList();
+                        parameterString = tileMappingParameters[^1];
+                        tileMappingParameters.Remove(parameterString);
+                    }
+                    tileMappingExists = TileMappingTagExistsAndContainsLookup(
+                        ParameterString: parameterString,
+                        Parameters: out tagParameterList,
+                        Lookup: Lookup);
+                }
+
+                any = tileMappingExists || any;
+
+                if (Keyword == TileMappingKeyword.Taxon)
+                    if (Lookup.IsNullOrEmpty()
+                        || Lookup.Length < 2
+                        || tileMappingParameters.IsNullOrEmpty()
+                        || tagParameterList.IsNullOrEmpty()
+                        || tileMappingParameters[0] != Lookup[0]
+                        || Lookup[1].CachedCommaExpansion() is not List<string> lookupParams
+                        || lookupParams.Count < 1
+                        || !tagParameterList.Any(s => lookupParams.Contains(s)))
+                        continue;
+
+                if (!tileMappingExists
+                    || tagValue.CachedCommaExpansion() is not List<string> valueList
+                    || valueList.IsNullOrEmpty())
+                    continue;
+
+                TileList.AddRange(valueList);
+            }
+            return any; // successfully collected results, including none if the tag value was empty (logs warning).
+        }
+
+        public static bool CollectProspectiveTiles(
+            ref Dictionary<TileMappingKeyword, List<string>> Dictionary,
+            TileMappingKeyword Keyword,
+            params string[] Lookup
+            )
+        {
+            Dictionary ??= new()
+            {
+                { TileMappingKeyword.Override, new() },
+                { TileMappingKeyword.Blueprint, new() },
+                { TileMappingKeyword.Taxon, new() },
+                { TileMappingKeyword.Species, new() },
+                { TileMappingKeyword.Golem, new() },
+            };
+            if (!Dictionary.ContainsKey(Keyword))
+            {
+                MetricsManager.LogCallingModError(
+                    "Unexpected " + nameof(Keyword) + " supplied to " +
+                    nameof(CollectProspectiveTiles) + ": " + Keyword);
+
+                Dictionary.Add(Keyword, new());
+            }
+            if (!ParseTileMappings(Keyword, out List<string> prospectiveTiles, Lookup))
+                return true; // We successfully got 0 results due to absent tag.
+
+            if (prospectiveTiles.IsNullOrEmpty())
+            {
+                MetricsManager.LogCallingModError(
+                    "Empty " + nameof(prospectiveTiles) + " list parsed by " +
+                    nameof(ParseTileMappings) + " for " + nameof(Keyword) + ": " + Keyword);
+
+                return false; // We unsucessfully got any results because tag value was empty.
+            }
+
+            Dictionary[Keyword] ??= new();
+            Dictionary[Keyword].AddRange(prospectiveTiles);
+            return true;
         }
 
         public static bool AssignStatsFromStatistics(
@@ -700,9 +836,18 @@ namespace XRL.World.Parts
             ref string CorpseDescription,
             GameObject SourceObject = null)
         {
-            // UnityEngine.Debug.Log("    " + nameof(MakeItALIVE) + ", " + nameof(Corpse) + ": " + Corpse?.DebugName ?? "null");
             if (Corpse is GameObject frankenCorpse)
             {
+                Dictionary<TileMappingKeyword, List<string>> prospectiveTiles = null;
+
+                CollectProspectiveTiles(
+                    Dictionary: ref prospectiveTiles,
+                    Keyword: TileMappingKeyword.Override,
+                    Lookup: frankenCorpse
+                        .GetPropertyOrTag(REANIMATED_TILE_PROPTAG, Default: null)
+                        ?.CachedCommaExpansion()
+                        ?.ToArray());
+
                 bool wasPlayer = PastLife != null && PastLife.WasPlayer;
 
                 string corpseType = frankenCorpse.Blueprint.Replace(" Corpse", "").Replace("UD_FleshGolems ", "");
@@ -818,7 +963,7 @@ namespace XRL.World.Parts
                                 frankenCorpse.ModIntProperty(cyberneticsLicenses, cyberneticsCost);
                                 frankenCorpse.ModIntProperty(cyberneticsLicensesFree, cyberneticsCost);
 
-                                List<string> slotsList = slotsString.CachedCommaExpansion();
+                                List<string> slotsList = slotsString.CachedCommaExpansion().ToList();
                                 slotsList.ShuffleInPlace();
                                 foreach (string slot in slotsList)
                                 {
@@ -901,6 +1046,19 @@ namespace XRL.World.Parts
                 bool excludedFromDynamicEncounters = false;
                 if (GameObjectFactory.Factory.GetBlueprintIfExists(sourceBlueprintName) is GameObjectBlueprint sourceBlueprint)
                 {
+                    CollectProspectiveTiles(
+                            Dictionary: ref prospectiveTiles,
+                            Keyword: TileMappingKeyword.Blueprint,
+                            Lookup: sourceBlueprint.Name);
+
+                    if (sourceBlueprint.xTags is Dictionary<string, Dictionary<string, string>> sourceXTags
+                        && sourceXTags.TryGetValue(REANIMATED_TAXA_XTAG, out Dictionary<string, string> sourceTaxa))
+                        foreach ((string taxonLabel, string taxon) in sourceTaxa)
+                            CollectProspectiveTiles(
+                                Dictionary: ref prospectiveTiles,
+                                Keyword: TileMappingKeyword.Taxon,
+                                Lookup: new string[] { taxonLabel, taxon, });
+
                     bool isProblemPartOrFollowerPartOrPartAlreadyHave(IPart p)
                     {
                         return IPartsToSkipWhenReanimating.Contains(p.Name)
@@ -917,10 +1075,8 @@ namespace XRL.World.Parts
                     if (frankenCorpse.GetStat("Hitpoints") is Statistic frankenHitpoints)
                     {
                         int minHitpoints = Stat.RollCached("4d3+5");
-                        // UnityEngine.Debug.Log("        " + nameof(frankenHitpoints) + " " + nameof(minHitpoints) + ": " + minHitpoints);
                         frankenHitpoints.BaseValue = Math.Max(minHitpoints, frankenHitpoints.BaseValue);
                         frankenHitpoints.Penalty = 0;
-                        // UnityEngine.Debug.Log("        " + nameof(frankenHitpoints) + ": " + frankenHitpoints.Value + "/" + frankenHitpoints.BaseValue);
                     }
 
                     AssignPartsFromBlueprint(frankenCorpse, sourceBlueprint, Exclude: isProblemPartOrFollowerPartOrPartAlreadyHave);
@@ -942,7 +1098,8 @@ namespace XRL.World.Parts
                         }
                     }
 
-                    if (frankenCorpse.TryGetPart(out Leveler frankenLeveler))
+                    if (!frankenCorpse.IsPlayerDuringWorldGen()
+                        && frankenCorpse.TryGetPart(out Leveler frankenLeveler))
                     {
                         if (int.TryParse(frankenCorpse.GetPropertyOrTag("UD_FleshGolems_SkipLevelsOnReanimate", "0"), out int SkipLevelsOnReanimate)
                             && SkipLevelsOnReanimate < 1)
@@ -962,6 +1119,11 @@ namespace XRL.World.Parts
                     {
                         frankenCorpse.SetStringProperty("Species", sourceBlueprint.Tags["Species"]);
                     }
+                    CollectProspectiveTiles(
+                        Dictionary: ref prospectiveTiles,
+                        Keyword: TileMappingKeyword.Species,
+                        Lookup: sourceBlueprint.GetPropertyOrTag("Species"));
+
                     Brain frankenBrain = frankenCorpse.Brain;
                     if (frankenBrain != null
                         && PastLife?.Brain is Brain pastBrain)
@@ -1136,10 +1298,11 @@ namespace XRL.World.Parts
                                 frankenCorpse.Body.Rebuild(golemAnatomy);
                             }
                         }
-                        if (golemBodyBlueprint.TryGetPartParameter(nameof(Parts.Render), nameof(Parts.Render.Tile), out string golemTile))
-                        {
-                            frankenCorpse.Render.Tile = golemTile;
-                        }
+                        string golemSpecies = golemBodyBlueprint.Name.Replace(" Golem", "");
+                        CollectProspectiveTiles(
+                            Dictionary: ref prospectiveTiles,
+                            Keyword: TileMappingKeyword.Golem,
+                            Lookup: golemSpecies);
 
                         bool giganticIfNotAlready(BaseMutation BM)
                         {
@@ -1180,14 +1343,22 @@ namespace XRL.World.Parts
                             && frankenNaturalGear.GetBlueprint() is GameObjectBlueprint frankenNaturalGearBlueprint
                             && !frankenNaturalGearBlueprint.InheritsFrom("UD_FleshGolems Ragged Weapon"))
                         {
-                            if (frankenNaturalGear.TryGetPart(out MeleeWeapon mw)
-                                && !mw.IsImprovisedWeapon()
-                                && GetRaggedNaturalWeapons(bp => MeleeWeaponSlotAndSkillMatchesBlueprint(bp, mw))?.GetRandomElement()?.Name is string raggedWeaponBlueprintName
-                                && GameObject.CreateUnmodified(raggedWeaponBlueprintName) is GameObject raggedWeaponObject)
+                            if (frankenLimb.VariantTypeModel().DefaultBehavior == frankenNaturalGear.Blueprint
+                                && !frankenNaturalGear.HasPropertyOrTag("TemporaryDefaultBehavior"))
                             {
-                                frankenNaturalGear.Obliterate();
-                                frankenLimb.DefaultBehavior = raggedWeaponObject;
-                                frankenLimb.DefaultBehaviorBlueprint = raggedWeaponBlueprintName;
+                                if (frankenNaturalGear.TryGetPart(out MeleeWeapon mw)
+                                    && !mw.IsImprovisedWeapon()
+                                    && GetRaggedNaturalWeapons(bp => MeleeWeaponSlotAndSkillMatchesBlueprint(bp, mw))?.GetRandomElement()?.Name is string raggedWeaponBlueprintName
+                                    && GameObject.CreateUnmodified(raggedWeaponBlueprintName) is GameObject raggedWeaponObject)
+                                {
+                                    frankenNaturalGear.Obliterate();
+                                    frankenLimb.DefaultBehavior = raggedWeaponObject;
+                                    frankenLimb.DefaultBehaviorBlueprint = raggedWeaponBlueprintName;
+                                }
+                            }
+                            else
+                            {
+                                frankenNaturalGear.Render.DisplayName = "{{UD_FleshGolems_ragged|ragged}} " + frankenNaturalGear.Render.DisplayName;
                             }
                         }
                         else
@@ -1203,6 +1374,34 @@ namespace XRL.World.Parts
                     {
                         frankenBrain?.WantToReequip();
                     }
+
+                    string chosenTile = null;
+                    foreach (var keyword in TileMappingKeywordValues.Values)
+                    {
+                        if (prospectiveTiles.IsNullOrEmpty()
+                            || !prospectiveTiles.ContainsKey(keyword)
+                            || prospectiveTiles[keyword].IsNullOrEmpty())
+                            continue;
+
+                        chosenTile = prospectiveTiles[keyword].GetRandomElementCosmetic();
+                        break;
+                    }
+
+                    if (chosenTile != null)
+                        frankenCorpse.Render.Tile = chosenTile;
+                    else
+                    {
+                        if (PastLife?.PastRender?.Tile is string pastTile)
+                            frankenCorpse.Render.Tile = pastTile;
+                        else
+                        {
+                            sourceBlueprint ??= GameObjectFactory.Factory.GetBlueprintIfExists(PastLife.Blueprint);
+                            if (sourceBlueprint != null
+                                && sourceBlueprint.TryGetPartParameter(nameof(Parts.Render), nameof(Parts.Render.Tile), out string sourceTile))
+                                frankenCorpse.Render.Tile = sourceTile;
+                        }
+                    }
+
                     if (frankenMutations != null)
                     {
                         bool giveRegen = true;
@@ -1237,6 +1436,8 @@ namespace XRL.World.Parts
                             }
                         }
                     }
+
+                    frankenBody?.UpdateBodyParts();
                 }
 
                 if (!UD_FleshGolems_Reanimated.HasWorldGenerated || excludedFromDynamicEncounters)
@@ -1247,7 +1448,8 @@ namespace XRL.World.Parts
                     }
                 }
 
-                if (!frankenCorpse.IsPlayer() && frankenCorpse?.CurrentCell is Cell frankenCell)
+                if (!frankenCorpse.IsPlayer()
+                    && frankenCorpse?.CurrentCell is Cell frankenCell)
                 {
                     bool isItemThatNotSelf(GameObject GO)
                     {
@@ -1304,11 +1506,6 @@ namespace XRL.World.Parts
         }
         public override bool HandleEvent(AnimateEvent E)
         {
-            /*
-            UnityEngine.Debug.Log(
-                nameof(UD_FleshGolems_CorpseReanimationHelper) + "." + nameof(AnimateEvent) + ", " +
-                nameof(IsALIVE) + ": " + IsALIVE);
-            */
             if (!IsALIVE
                 && ParentObject == E.Object)
             {

@@ -3,7 +3,7 @@ namespace UD_FleshGolems
 {
     public static class Const
     {
-        public const string MOD_ID = "UD_FleshGolems";
+        public const string MOD_ID = "CavesOfQudModJam2025";
 
         public const string NULL = "\"null\"";
 

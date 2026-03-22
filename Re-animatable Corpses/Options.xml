@@ -5,6 +5,21 @@
   Mod Options
   -->
   <option
+        ID="Option_UD_FleshGolems_GreatlyReduceSuffering"
+        DisplayText="Reduce frequency with which reanimated corpses {{UD_FleshGolems_reanimated|suffer endlessly}} (improves performance)."
+        Category="Mod: Re-animatable Corpses"
+        Type="Checkbox"
+        Default="No">
+    <helptext>
+      When a large number of corpses are {{UD_FleshGolems_reanimated|endlessly suffering}} at once it can have quite a big impact on performance, since each turn each corpse rolls to take damage and then rolls to leak some gunk nearby.
+
+      When enabled the chance for any of these rolls to succeed is 2 orders of magnitude lower (divided by 100), which is significantly more performant.
+
+      The default is {{w|Disabled}}.
+    </helptext>
+  </option>
+  
+  <option
         ID="Option_UD_FleshGolems_SpecialReanimatedBuilderBaseChanceOneIn"
         DisplayText="Set base odds (chance, 1 in) that an entity will spawn as a shambling {{UD_FleshGolems_reanimated|Reanimated}} creature."
         Category="Mod: Re-animatable Corpses"

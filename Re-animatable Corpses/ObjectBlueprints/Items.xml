@@ -12,10 +12,18 @@
     <tag Name="BodyType" Value="Humanoid" />
     <xtagTextFragments
       Skin="leather"
-      PoeticFeatures="viscera,muck,entrails,sinew,bone"
+      PoeticFeatures="cracked teeth,sparse hair,glassy eyes,exposed muscle,exposed bone,unnaturally bent limbs,leaking viscera"
       PoeticVerbs="squirming,wriggling,squelching"
       PoeticAdjectives="wet,moist,meaty"
-      PoeticnNoises="gurgles,slurps,squelches" />
+      PoeticnNoises="gurgles,slurps,squelches"
+      YounglingNoise="*wilhelm scream*"
+      Activity="suffering endlessly"
+      VillageActivity="steeping in perpetual existential pain"
+      NeedsItemFor="to persue oblivion,because I want it,because it was mine while I lived,just to have,because it would ease my suffering,for secret reasons I won't tell you"
+      SacredThing="oblivion,a way to cease the endless suffering,the answer to why this was allowed to happen"
+      ArableLand="a place to truly belong,the bottom of a ditch"
+      ValuedOre="b... brains?..,answers to existential questions" />
+    <stag Name="HardMaterial" Value="bone" />
     <tag Name="AnimatedSkills" Value="CookingAndGathering,CookingAndGathering_Butchery,Persuasion_Intimidate,Multiweapon_Fighting,ShortBlades,Axe,Cudgel,LongBlades" />
     <tag Name="UD_FleshGolems LimbType" Value="*"/>
     <tag Name="UD_FleshGolems CyberneticsSlot" Value="*"/>
@@ -27,10 +35,18 @@
     <tag Name="BodyType" Value="HumanoidRobot" />
     <xtagTextFragments
       Skin="shorn metal"
-      PoeticFeatures="oil,gel,bent chrome,jagged edges"
+      PoeticFeatures="cracked micro-processors,frayed wires,dull photoreceptors,exposed circuitry,snapped antenna,bent joints,leaking lubricant"
       PoeticVerbs="jittering,stuttering,whining"
       PoeticAdjectives="slick,erratic,crunchy"
-      PoeticnNoises="sizzles,whirs,sputters" />
+      PoeticnNoises="sizzles,whirs,sputters"
+      YounglingNoise="*zzzt*"
+      Activity="suffering endlessly"
+      VillageActivity="steeping in perpetual existential pain"
+      NeedsItemFor="to persue oblivion,because I want it,because it was mine while I lived,just to have,because it would ease my suffering,for secret reasons I won't tell you"
+      SacredThing="oblivion,a way to cease the endless suffering,the answer to why this was allowed to happen"
+      ArableLand="a place to truly belong,the bottom of a ditch,a junk-yard"
+      ValuedOre="tinkering bits,p...processing units?..,answers to existential questions" />
+    <stag Name="HardMaterial" Value="metal plates" />
   </object>
   
   <object Name="UD_FleshGolems PlantCorpseHeroics">
@@ -51,17 +67,25 @@
     <part Name="Food" Message="The fibers are tough." />
     <xtagTextFragments
       Skin="fibres"
-      PoeticFeatures="sap,fibre,roots"
+      PoeticFeatures="dessicated sap,shorn fibre,twisted roots,wilted leaves,sparse twigs,dull foliage,snapped limbs"
       PoeticVerbs="tangling,stuttering,wriggling"
       PoeticAdjectives="damp,moist,mulchy"
-      PoeticnNoises="gurgles,slurps,squelches" />
+      PoeticnNoises="gurgles,slurps,squelches"
+      YounglingNoise="*creak*"
+      Activity="suffering endlessly"
+      VillageActivity="steeping in perpetual existential pain"
+      NeedsItemFor="to persue oblivion,because I want it,because it was mine while I lived,just to have,because it would ease my suffering,for secret reasons I won't tell you"
+      SacredThing="oblivion,a way to cease the endless suffering,the answer to why this was allowed to happen"
+      ArableLand="a place to truly belong,the bottom of a ditch,compost"
+      ValuedOre="compost,b...brains?..,answers to existential questions" />
+    <stag Name="HardMaterial" Value="lignin" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
   <object Name="UD_FleshGolems Bush Corpse" Inherits="UD_FleshGolems Plant Corpse">
     <part Name="Render" DisplayName="Bush Corpse" />
     <xtagTextFragments
       Skin="fibres"
-      PoeticFeatures="sap,fibre,roots,wood,fruit,leaves"
+      PoeticFeatures="dessicated sap,shorn fibre,twisted roots,fettid fruit,wilted leaves,sparse twigs,dull foliage,snapped limbs"
       PoeticVerbs="tangling,stuttering,wriggling"
       PoeticAdjectives="damp,moist,mulchy"
       PoeticnNoises="gurgles,slurps,squelches" />
@@ -71,7 +95,7 @@
     <part Name="Render" DisplayName="Cactus Corpse" DetailColor="M" />
     <xtagTextFragments
       Skin="fibres"
-      PoeticFeatures="sap,fibre,roots,spines,fruit"
+      PoeticFeatures="dessicated sap,shorn fibre,twisted roots,wilted leaves,sparse spines,snapped limbs"
       PoeticVerbs="tangling,stuttering,wriggling"
       PoeticAdjectives="damp,moist,mulchy"
       PoeticnNoises="gurgles,slurps,squelches" />
@@ -82,7 +106,7 @@
     <part Name="Physics" Weight="5" />
     <xtagTextFragments
       Skin="fibres"
-      PoeticFeatures="sap,fibre,roots,petals,leaves"
+      PoeticFeatures="dessicated sap,shorn fibre,twisted roots,wilted leaves,sparse twigs,snapped limbs,dull petals"
       PoeticVerbs="tangling,stuttering,wriggling"
       PoeticAdjectives="damp,moist,mulchy"
       PoeticnNoises="gurgles,slurps,squelches" />
@@ -93,7 +117,7 @@
     <part Name="Physics" Weight="5" />
     <xtagTextFragments
       Skin="fibres"
-      PoeticFeatures="sap,fibre,roots,petals,leaves,thorns,fruit"
+      PoeticFeatures="dessicated sap,shorn fibre,twisted roots,wilted leaves,sparse thorns,snapped limbs,dull petals"
       PoeticVerbs="tangling,stuttering,wriggling"
       PoeticAdjectives="damp,moist,mulchy"
       PoeticnNoises="gurgles,slurps,squelches" />
@@ -106,7 +130,7 @@
     <tag Name="Tree" />
     <xtagTextFragments
       Skin="fibres"
-      PoeticFeatures="sap,fibre,roots,leaves,fruit"
+      PoeticFeatures="dessicated sap,shorn fibre,twisted roots,wilted leaves,sparse twigs,dull foliage,snapped limbs"
       PoeticVerbs="tangling,stuttering,wriggling"
       PoeticAdjectives="damp,moist,mulchy"
       PoeticnNoises="gurgles,slurps,squelches" />
@@ -126,10 +150,18 @@
     <part Name="Food" Message="The material is soft and slimy." />
     <xtagTextFragments
       Skin="mycelia"
-      PoeticFeatures="spores,fibre,tendrils"
+      PoeticFeatures="rotten gills,sparse teeth,a dull skirt,snapped tendrils"
       PoeticVerbs="tangling,stuttering,wriggling"
       PoeticAdjectives="damp,moist,mulchy"
-      PoeticnNoises="gurgles,slurps,squelches" />
+      PoeticnNoises="gurgles,slurps,squelches"
+      YounglingNoise="*creak*"
+      Activity="suffering endlessly"
+      VillageActivity="steeping in perpetual existential pain"
+      NeedsItemFor="to persue oblivion,because I want it,because it was mine while I lived,just to have,because it would ease my suffering,for secret reasons I won't tell you"
+      SacredThing="oblivion,a way to cease the endless suffering,the answer to why this was allowed to happen"
+      ArableLand="a place to truly belong,the bottom of a ditch,graveyard"
+      ValuedOre="rotten flesh,b...brains?..,answers to existential questions" />
+    <stag Name="HardMaterial" Value="stipe" />
     <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
   </object>
   

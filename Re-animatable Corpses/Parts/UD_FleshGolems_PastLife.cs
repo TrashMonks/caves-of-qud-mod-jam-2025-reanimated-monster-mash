@@ -159,7 +159,7 @@ namespace XRL.World.Parts
             {
                 try
                 {
-                    WasPlayer = PastLife != null && PastLife.Blueprint.IsPlayerBlueprint();
+                    WasPlayer = PastLife != null && PastLife.IsPlayerDuringWorldGen();
                     Blueprint = PastLife?.Blueprint;
                     if (GameObjectFactory.Factory.GetBlueprintIfExists(Blueprint).InheritsFrom("Corpse"))
                     {
