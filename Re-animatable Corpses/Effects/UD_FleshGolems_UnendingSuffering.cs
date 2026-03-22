@@ -2,10 +2,10 @@
 
 using XRL.Core;
 using XRL.Rules;
-using XRL.World.Parts;
-using XRL.World.ObjectBuilders;
 using XRL.World.Capabilities;
 using XRL.World.Conversations;
+using XRL.World.Parts;
+using XRL.World.ObjectBuilders;
 
 using UD_FleshGolems;
 using static UD_FleshGolems.Utils;
